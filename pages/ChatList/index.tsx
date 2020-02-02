@@ -14,19 +14,20 @@ const ChatList: React.FunctionComponent = () => {
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}
         userName="Harish"
-        timeStamp={new Date()}
+        timeStamp={new Date('2020/02/01')}
         lastMessage={"Hey there!!!"}
       />
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}
         userName="Manoj"
         timeStamp={new Date()}
-        lastMessage={"Hey there!!!"}
+        lastMessage={"The JavaScript world is moving fast. The world of frontEnd development (and web development) is moving blazingly fast."}
+        notificationCount={2}
       />
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}
         userName="Swati"
-        timeStamp={new Date()}
+        timeStamp={new Date('2020/01/30')}
         lastMessage={"Hey there!!!"}
       />
       <ChatItem
