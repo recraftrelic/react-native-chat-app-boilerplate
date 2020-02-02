@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import ChatItem from '../../components/Chat/ChatItem';
+import moment from 'moment';
 
 const ChatList: React.FunctionComponent = () => {
   return (
@@ -14,7 +15,7 @@ const ChatList: React.FunctionComponent = () => {
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}
         userName="Harish"
-        timeStamp={new Date('2020/02/01')}
+        timeStamp={moment().subtract(1, 'day').toDate()}
         lastMessage={"Hey there!!!"}
       />
       <ChatItem

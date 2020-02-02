@@ -8,7 +8,7 @@ interface Props {
 
 const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle }: Props) => {
     return (
-      <View style={[style.container, containerStyle]}>
+      <View style={[containerStyle]}>
         <Image
           style={style.image}
           source={source}
@@ -20,14 +20,10 @@ const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle 
 export default ChatUserImage;
 
 interface Style {
-  container: ViewStyle,
   image: ImageStyle
 }
 
 const style: Style = StyleSheet.create<Style>({
-  container: {
-    // padding: 10
-  },
   image: {
     width: 50,
     height: 50,
