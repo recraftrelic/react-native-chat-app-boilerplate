@@ -17,6 +17,7 @@ const ChatList: React.FunctionComponent = () => {
         userName="Harish"
         timeStamp={moment().subtract(1, 'day').toDate()}
         lastMessage={"Hey there!!!"}
+        notificationCount={2}
       />
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}

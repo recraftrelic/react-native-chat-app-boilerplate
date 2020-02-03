@@ -35,7 +35,7 @@ const ChatItem: React.FunctionComponent<Props> = ({
                             date={timeStamp}
                         />
                     </View>
-                    <View style={style.topContentContainer}>
+                    <View style={[style.topContentContainer, { alignItems: 'flex-end' }]}>
                         <View style={style.lastMessageContainer}>
                             <Text numberOfLines={1}>{lastMessage}</Text>
                         </View>

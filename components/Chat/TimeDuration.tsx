@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useContext } from 'react';
-import { Text } from 'react-native';
+import { Text, TextStyle, StyleSheet } from 'react-native';
 import ConfigContext from '../../config/AppConfigProvider';
 import { AppDateFormats } from '../../config/DefaultConfig';
 
@@ -28,7 +28,17 @@ const TimeDuration: React.FunctionComponent<Props> = ( {
     date
 }: Props ) => {
     const config = useContext(ConfigContext)
-    return <Text>{getTimeLabel(date, config.constants?.dateFormats)}</Text>
+    return <Text style={style.text}>{getTimeLabel(date, config.constants?.dateFormats)}</Text>
 };
 
 export default TimeDuration;
+
+interface Style {
+    text: TextStyle
+}
+
+const style: Style = StyleSheet.create<Style>({
+    text: {
+        fontSize: 10
+    }
+})
