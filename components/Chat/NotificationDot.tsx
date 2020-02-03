@@ -24,14 +24,15 @@ interface Style {
 
 const style: Style = StyleSheet.create<Style>({
     container: {
-        width: 20,
-        height: 20,
+        width: 18,
+        height: 18,
         backgroundColor: "green",
-        borderRadius: 10,
+        borderRadius: 9,
         justifyContent: "center",
         alignItems: "center"
     },
     text: {
-        color: "white"
+        color: "white",
+        fontSize: 10
     }
 })
