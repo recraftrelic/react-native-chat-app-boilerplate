@@ -1,9 +1,17 @@
+import moment from 'moment';
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { RouteComponentProps } from 'react-router-native';
 import ChatItem from '../../components/Chat/ChatItem';
-import moment from 'moment';
 
-const ChatList: React.FunctionComponent = () => {
+const ChatList: React.FunctionComponent<RouteComponentProps> = ({
+  history
+}: RouteComponentProps) => {
+
+  const goToChatDetails = () => {
+    history.push('/chat')
+  }
+
   return (
     <ScrollView>
       <ChatItem
@@ -11,6 +19,7 @@ const ChatList: React.FunctionComponent = () => {
         userName="Amenda"
         timeStamp={new Date()}
         lastMessage={"Hey there!!!"}
+        onChatPress={goToChatDetails}
       />
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}

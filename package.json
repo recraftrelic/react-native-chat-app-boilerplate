@@ -7,9 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.4",
+    "@types/react-router-native": "^5.1.0",
     "moment": "^2.24.0",
     "react": "16.8.6",
     "react-native": "0.60.5",
+    "react-router": "^5.1.2",
     "react-router-native": "^5.1.2"
   },
   "devDependencies": {
