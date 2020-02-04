@@ -5,7 +5,7 @@ import moment from 'moment';
 
 const ChatList: React.FunctionComponent = () => {
   return (
-    <ScrollView style={{ marginTop: 50 }}>
+    <ScrollView>
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}
         userName="Amenda"
@@ -25,6 +25,7 @@ const ChatList: React.FunctionComponent = () => {
         timeStamp={new Date()}
         lastMessage={"The JavaScript world is moving fast. The world of frontEnd development (and web development) is moving blazingly fast."}
         notificationCount={2}
+        isTyping={true}
       />
       <ChatItem
         userImageSource={{ uri: "https://picsum.photos/200" }}

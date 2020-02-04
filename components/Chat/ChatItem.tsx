@@ -1,6 +1,7 @@
 import React from 'react';
 import { GestureResponderEvent, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
 import ChatUserImage from './ChatUserImage';
+import LastMessage from './LastMessage';
 import NotificationDot from './NotificationDot';
 import TimeDuration from './TimeDuration';
 
@@ -10,10 +11,12 @@ interface Props {
     timeStamp: Date;
     lastMessage: string;
     notificationCount?: number;
+    isTyping?: boolean;
     onChatPress?: (event: GestureResponderEvent) => void
 };
 
 const ChatItem: React.FunctionComponent<Props> = ({
+    isTyping,
     notificationCount,
     lastMessage,
     onChatPress,
@@ -37,7 +40,10 @@ const ChatItem: React.FunctionComponent<Props> = ({
                     </View>
                     <View style={[style.topContentContainer, { alignItems: 'flex-end' }]}>
                         <View style={style.lastMessageContainer}>
-                            <Text numberOfLines={1}>{lastMessage}</Text>
+                            <LastMessage
+                                lastMessage={lastMessage}
+                                isTyping={isTyping}
+                            />
                         </View>
                         {
                             notificationCount && (
