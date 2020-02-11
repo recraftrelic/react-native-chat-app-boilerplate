@@ -1,8 +1,9 @@
 import moment from 'moment';
 import React, { useContext } from 'react';
-import { Text, TextStyle, StyleSheet } from 'react-native';
+import { TextStyle, StyleSheet } from 'react-native';
 import ConfigContext from '../../config/AppConfigProvider';
 import { AppDateFormats } from '../../config/DefaultConfig';
+import ThemedText from '../UI/ThemedText';
 
 interface Props {
     date: Date
@@ -28,7 +29,7 @@ const TimeDuration: React.FunctionComponent<Props> = ( {
     date
 }: Props ) => {
     const config = useContext(ConfigContext)
-    return <Text style={style.text}>{getTimeLabel(date, config.constants?.dateFormats)}</Text>
+    return <ThemedText styleKey="textColor" style={style.text}>{getTimeLabel(date, config.constants?.dateFormats)}</ThemedText>
 };
 
 export default TimeDuration;

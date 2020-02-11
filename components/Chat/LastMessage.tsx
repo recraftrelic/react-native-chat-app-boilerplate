@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TextStyle } from 'react-native';
+import { StyleSheet, TextStyle } from 'react-native';
+import ThemedText from '../UI/ThemedText';
 
 interface Props {
     lastMessage: string;
@@ -12,10 +13,10 @@ const LastMessage: React.FunctionComponent<Props> = ({
 }: Props) => {
 
     if (isTyping) {
-        return <Text style={style.typingText}>typing...</Text>
+        return <ThemedText styleKey="highlightColor" style={style.typingText}>typing...</ThemedText>
     }
 
-    return <Text numberOfLines={1}>{lastMessage}</Text>
+    return <ThemedText styleKey="textColor" numberOfLines={1}>{lastMessage}</ThemedText>
 }
 
 export default LastMessage;
@@ -26,7 +27,6 @@ interface Style {
 
 const style: Style = StyleSheet.create<Style>({
     typingText: {
-        color: "green",
         fontWeight: "bold"
     }
 })

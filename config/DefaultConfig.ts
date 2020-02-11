@@ -1,4 +1,9 @@
-export interface AppTheme {}
+export interface AppTheme {
+  backgroundColor: string,
+  highlightColor: string,
+  highlightTextColor: string,
+  textColor: string,
+}
 
 export interface AppDateFormats {
   chatDateFormat: string,
@@ -15,7 +20,22 @@ export interface ApplicationConfig {
     constants?: AppConstants
 }
 
+export const darkTheme: AppTheme = {
+  backgroundColor: "#000000",
+  highlightColor: "grey",
+  highlightTextColor: "#ffffff",
+  textColor: "#fff"
+}
+
+export const lightTheme: AppTheme = {
+  backgroundColor: "#ffffff",
+  highlightColor: "green",
+  highlightTextColor: "#ffffff",
+  textColor: "#333"
+}
+
 export const defaultConfig: ApplicationConfig = {
+    theme: darkTheme,
     constants: {
       dateFormats: {
         chatDateFormat: "MM/DD/YY",

@@ -1,9 +1,10 @@
 import React from 'react';
-import { GestureResponderEvent, ImageSourcePropType, StyleSheet, Text, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
+import { GestureResponderEvent, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
 import ChatUserImage from './ChatUserImage';
 import LastMessage from './LastMessage';
 import NotificationDot from './NotificationDot';
 import TimeDuration from './TimeDuration';
+import ThemedText from '../UI/ThemedText';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -33,7 +34,7 @@ const ChatItem: React.FunctionComponent<Props> = ({
                 />
                 <View style={style.contentContainer}>
                     <View style={style.topContentContainer}>
-                        <Text style={style.userNameStyle}>{userName}</Text>
+                        <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
                         <TimeDuration
                             date={timeStamp}
                         />
