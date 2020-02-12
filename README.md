@@ -1,6 +1,8 @@
 React native chat app boilerplate
 =======
 
+![Image of Yaktocat](./demo.gif)
+
 This chat app is a boilerplate for any react native developer who wants to build a chat app.
 
 The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.
