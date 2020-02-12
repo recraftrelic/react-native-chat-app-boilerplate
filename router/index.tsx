@@ -1,30 +1,39 @@
 import React from 'react';
-import { SafeAreaView, ViewStyle, StyleSheet } from 'react-native';
+import { ViewStyle, StyleSheet } from 'react-native';
 import { NativeRouter, Route, Switch } from "react-router-native";
+import { connect } from "react-redux";
 import BackHandlerHOC from '../components/HOC/BackHandlerHOC';
 import ChatList from '../pages/ChatList';
 import ChatDetails from '../pages/ChatDetails';
-import { AppTheme } from '../config/DefaultConfig';
-import useTheme from '../hooks/useTheme';
+import { ApplicationConfig } from '../config/DefaultConfig';
+import ConfigContext from '../config/AppConfigProvider';
+import ThemedView from '../components/UI/ThemedView';
 
-const Router: React.FunctionComponent = () => {
-  const theme: AppTheme = useTheme();
+interface Props {
+  configReducer: ApplicationConfig
+}
 
+const Router: React.FunctionComponent<Props> = ({
+  configReducer
+}: Props) => {
+  console.log(configReducer.theme)
   return (
-    <SafeAreaView style={[style.container, { backgroundColor: theme.backgroundColor}]}>
-      <NativeRouter>
-        <BackHandlerHOC>
-          <Switch>
-            <Route exact path="/" component={ChatList} />
-            <Route exact path="/chat/" component={ChatDetails} />
-          </Switch>
-        </BackHandlerHOC>
-      </NativeRouter>
-    </SafeAreaView>
+    <ConfigContext.Provider value={configReducer}>
+      <ThemedView style={style.container}>
+        <NativeRouter>
+          <BackHandlerHOC>
+            <Switch>
+              <Route exact path="/" component={ChatList} />
+              <Route exact path="/chat/" component={ChatDetails} />
+            </Switch>
+          </BackHandlerHOC>
+        </NativeRouter>
+      </ThemedView>
+    </ConfigContext.Provider>
   )
 }
 
-export default Router;
+export default connect(({ configReducer }) => ({ configReducer }))(Router);
 
 interface Style {
   container: ViewStyle
