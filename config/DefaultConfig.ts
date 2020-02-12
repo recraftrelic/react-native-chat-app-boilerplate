@@ -3,6 +3,8 @@ export interface AppTheme {
   highlightColor: string,
   highlightTextColor: string,
   textColor: string,
+  lightTextColor: string,
+  lightBottomColor: string,
 }
 
 export interface AppDateFormats {
@@ -12,7 +14,8 @@ export interface AppDateFormats {
 }
 
 export interface AppConstants {
-    dateFormats?: AppDateFormats
+    dateFormats?: AppDateFormats,
+    searchPlacerHolder: string
 }
 
 export interface ApplicationConfig {
@@ -24,14 +27,18 @@ export const darkTheme: AppTheme = {
   backgroundColor: "#000000",
   highlightColor: "grey",
   highlightTextColor: "#ffffff",
-  textColor: "#fff"
+  textColor: "#fff",
+  lightTextColor: "#b3b3b3",
+  lightBottomColor: "#666666",
 }
 
 export const lightTheme: AppTheme = {
   backgroundColor: "#ffffff",
   highlightColor: "green",
   highlightTextColor: "#ffffff",
-  textColor: "#333"
+  textColor: "#333",
+  lightTextColor: "#b3b3b3",
+  lightBottomColor: "#e6e6e6",
 }
 
 export const defaultConfig: ApplicationConfig = {
@@ -41,6 +48,7 @@ export const defaultConfig: ApplicationConfig = {
         chatDateFormat: "MM/DD/YY",
         chatHourDisplayFormat: "hh:mm A",
         chatYesterdayText: "Yesterday",
-      }
+      },
+      searchPlacerHolder: "Search Chats"
     }
 }

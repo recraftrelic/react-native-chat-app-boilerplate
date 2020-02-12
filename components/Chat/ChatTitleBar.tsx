@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, ViewStyle, StyleSheet, Switch } from 'react-native';
+import { View, TouchableOpacity, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { AppTheme, lightTheme, darkTheme } from '../../config/DefaultConfig';
+import { AppTheme, lightTheme, darkTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
+import ThemedText from '../UI/ThemedText';
+import SearchBar from '../UI/SearchBar';
+import useConstants from '../../hooks/useConstants';
 
 interface Props {
   updateTheme: (theme: AppTheme) => void
@@ -12,6 +15,8 @@ const ChatTitleBar: React.FunctionComponent<Props> = ({
   updateTheme
 }: Props) => {
   const theme: AppTheme = useTheme();
+  const constants: AppConstants = useConstants();
+
   const [isDarkTheme, toggleDarkTheme] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,11 +24,26 @@ const ChatTitleBar: React.FunctionComponent<Props> = ({
   }, [isDarkTheme]);
 
   return (
-    <View style={style.container}>
-      <Switch value={isDarkTheme} onValueChange={toggleDarkTheme} />
-      <TouchableOpacity>
-        <Icon name="cog" size={20} color={theme.textColor} />
-      </TouchableOpacity>
+    <View>
+      <View style={style.topContainer}>
+        <View style={[style.childContainer, style.leftContainer]}>
+          <Switch trackColor={{
+            false: theme.lightTextColor,
+            true: theme.lightTextColor
+          }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
+        </View>
+        <View style={[style.childContainer, style.centerContainer]}>
+          <ThemedText styleKey="textColor" style={style.title}>Chats</ThemedText>
+        </View>
+        <View style={[style.childContainer, style.rightContainer]}>
+          <TouchableOpacity>
+            <Icon name="cog" size={20} color={theme.textColor} />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <SearchBar
+        placeHolder={constants.searchPlacerHolder}
+      />
     </View>
   )
 };
@@ -31,13 +51,46 @@ const ChatTitleBar: React.FunctionComponent<Props> = ({
 export default ChatTitleBar;
 
 interface Style {
-  container: ViewStyle;
+  topContainer: ViewStyle;
+  childContainer: ViewStyle;
+  leftContainer: ViewStyle;
+  centerContainer: ViewStyle;
+  rightContainer: ViewStyle;
+  searchContainer: ViewStyle;
+  title: TextStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
-  container: {
-    padding: 10,
+  topContainer: {
     justifyContent: "space-between",
     flexDirection: "row",
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 10,
+  },
+  childContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  leftContainer: {
+    alignItems: "flex-start",
+  },
+  centerContainer: {
+    alignItems: "center",
+  },
+  rightContainer: {
+    alignItems: "flex-end",
+  },
+  searchContainer: {
+    borderBottomWidth: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 10,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold"
   }
 });
