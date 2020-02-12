@@ -1,13 +1,15 @@
 import React from 'react';
 import Router from './router';
+import { Provider } from 'react-redux';
 import ConfigContext from './config/AppConfigProvider';
 import { defaultConfig } from './config/DefaultConfig';
+import store from './store';
 
 const App: React.FunctionComponent = () => {
     return (
-        <ConfigContext.Provider value={defaultConfig}>
+        <Provider store={store}>
             <Router />
-        </ConfigContext.Provider>
+        </Provider>
     );
 };
 

@@ -35,7 +35,7 @@ export const lightTheme: AppTheme = {
 }
 
 export const defaultConfig: ApplicationConfig = {
-    theme: darkTheme,
+    theme: lightTheme,
     constants: {
       dateFormats: {
         chatDateFormat: "MM/DD/YY",
