@@ -27,7 +27,10 @@ const ChatTitleBar: React.FunctionComponent<Props> = ({
     <View>
       <View style={style.topContainer}>
         <View style={[style.childContainer, style.leftContainer]}>
-          <Switch value={isDarkTheme} onValueChange={toggleDarkTheme} />
+          <Switch trackColor={{
+            false: theme.lightTextColor,
+            true: theme.lightTextColor
+          }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>
           <ThemedText styleKey="textColor" style={style.title}>Chats</ThemedText>
@@ -79,7 +82,6 @@ const style: Style = StyleSheet.create<Style>({
     alignItems: "flex-end",
   },
   searchContainer: {
-    borderBottomColor: "lightgrey",
     borderBottomWidth: 1,
     flexDirection: "row",
     alignItems: "center",
