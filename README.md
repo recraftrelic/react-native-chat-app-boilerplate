@@ -16,6 +16,18 @@ Packages & Libraries used
 * [moment](https://www.npmjs.com/package/moment)
 * [TypeScript](https://www.npmjs.com/package/typescript)
 
+Steps to Run & Build the Project
+=======
+* git clone git@github.com:recraftrelic/react-native-chat-app-boilerplate.git
+* cd react-native-chat-app-boilerplate
+* yarn install
+* sudo npm install -g react-native-cli
+* sudo gem install cocoapods
+* cd ios
+* pod install
+* react-native run-ios
+
 Contributors
 =======
 * [manojsinghnegiwd](https://github.com/manojsinghnegiwd) - Manoj Singh Negi
+* [yashkapoor8710](https://github.com/yashkapoor8710) - Yogesh Kapoor
