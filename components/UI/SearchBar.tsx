@@ -3,6 +3,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { View, TextInput, StyleSheet, ViewStyle } from "react-native";
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
+import { isIOS } from "../../utils";
 
 interface Props {
   placeHolder: string
@@ -47,7 +48,8 @@ const style: Style = StyleSheet.create<Style>({
     alignItems: "center",
     paddingLeft: 10,
     paddingRight: 10,
-    paddingTop: 10,
+    paddingTop: isIOS() ? 20 : 10,
+    paddingBottom: isIOS() ? 10 : 0
   },
   iconContainer: {
     flex: 1,
