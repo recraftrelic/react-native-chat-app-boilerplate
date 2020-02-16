@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { View, TextInput, StyleSheet, ViewStyle } from "react-native";
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
@@ -24,7 +24,7 @@ const SearchBar: React.FunctionComponent<Props> = ({
         />
       </View>
       <View style={style.iconContainer}>
-        <Icon name="search" size={15} color={theme.lightTextColor} />
+        <Icon name="ios-search" size={15} color={theme.lightTextColor} />
       </View>
     </View>
   )

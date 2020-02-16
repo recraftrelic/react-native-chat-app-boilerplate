@@ -1,9 +1,10 @@
 import React from 'react';
 import Router from './router';
 import { Provider } from 'react-redux';
-import ConfigContext from './config/AppConfigProvider';
-import { defaultConfig } from './config/DefaultConfig';
 import store from './store';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+Icon.loadFont()
 
 const App: React.FunctionComponent = () => {
     return (
