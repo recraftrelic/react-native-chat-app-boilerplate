@@ -25,7 +25,7 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
     const constants: AppConstants = useConstants();
 
     return (
-        <View style={style.container}>
+        <View style={[style.container, {borderBottomColor: theme.lightBottomColor}]}>
             <TouchableOpacity onPress={onBackPress}>
                 <Icon name="ios-arrow-back" size={40} color={theme.textColor} style={style.contentIcons}/>
             </TouchableOpacity>  
@@ -63,7 +63,6 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         padding: 20,
         borderBottomWidth: 1,
-        borderBottomColor: '#cccccc',
     },
     contentContainer: {
         flex: 17,
