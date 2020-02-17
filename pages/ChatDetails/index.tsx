@@ -1,16 +1,11 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import ChatShow from '../../components/Chat/ChatShow';
+import ChatDetailHeader from '../../components/Chat/ChatShow';
 import { RouteComponentProps } from 'react-router-native';
-import { Dispatch } from 'redux';
 
-interface Props extends RouteComponentProps {
-    dispatch: Dispatch
-}
-
-const ChatDetails: React.FunctionComponent<Props> = ({
+const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     history
-}: Props) => {
+}: RouteComponentProps) => {
       
     const goToChatList = () => {
         history.push('/')
@@ -19,11 +14,11 @@ const ChatDetails: React.FunctionComponent<Props> = ({
     return (
         <>
         <ScrollView>
-          <ChatShow
+          <ChatDetailHeader
             userImageSource={{ uri: "https://picsum.photos/200" }}
             userName="Amenda"
             status="online"
-            onChatPress={goToChatList}
+            onBackPress={goToChatList}
           />
         </ScrollView>
         </>

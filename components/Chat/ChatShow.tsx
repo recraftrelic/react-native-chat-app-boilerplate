@@ -12,20 +12,21 @@ interface Props {
     userImageSource: ImageSourcePropType;
     userName: string;
     status: string;
-    onChatPress?: (event: GestureResponderEvent) => void
+    onBackPress?: (event: GestureResponderEvent) => void
 };
 
-const ChatShow: React.FunctionComponent<Props> = ({
-    onChatPress,
+const ChatDetailHeader: React.FunctionComponent<Props> = ({
+    onBackPress,
     userImageSource,
     userName,
     status,
 }: Props) => {
     const theme: AppTheme = useTheme();
     const constants: AppConstants = useConstants();
+
     return (
         <View style={style.container}>
-            <TouchableOpacity onPress={onChatPress}>
+            <TouchableOpacity onPress={onBackPress}>
                 <Icon name="ios-arrow-back" size={40} color={theme.textColor} style={style.contentIcons}/>
             </TouchableOpacity>  
             <ChatUserImage
@@ -45,7 +46,7 @@ const ChatShow: React.FunctionComponent<Props> = ({
     );
 };
 
-export default ChatShow;
+export default ChatDetailHeader;
 
 interface Style {
     container: ViewStyle;
@@ -61,6 +62,8 @@ const style: Style = StyleSheet.create<Style>({
     container: {
         flexDirection: 'row',
         padding: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#cccccc',
     },
     contentContainer: {
         flex: 17,

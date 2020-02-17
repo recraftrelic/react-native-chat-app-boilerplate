@@ -15,8 +15,7 @@ export interface AppDateFormats {
 
 export interface AppConstants {
     dateFormats?: AppDateFormats,
-    searchPlacerHolder: string,
-    chatDetailTitle: string
+    searchPlacerHolder: string
 }
 
 export interface ApplicationConfig {
@@ -50,7 +49,6 @@ export const defaultConfig: ApplicationConfig = {
         chatHourDisplayFormat: "hh:mm A",
         chatYesterdayText: "Yesterday",
       },
-      searchPlacerHolder: "Search Chats",
-      chatDetailTitle: "white"
+      searchPlacerHolder: "Search Chats"
     }
 }
