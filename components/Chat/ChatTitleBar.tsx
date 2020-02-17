@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { AppTheme, lightTheme, darkTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';
@@ -37,7 +37,7 @@ const ChatTitleBar: React.FunctionComponent<Props> = ({
         </View>
         <View style={[style.childContainer, style.rightContainer]}>
           <TouchableOpacity>
-            <Icon name="cog" size={20} color={theme.textColor} />
+            <Icon name="md-settings" size={20} color={theme.textColor} />
           </TouchableOpacity>
         </View>
       </View>
