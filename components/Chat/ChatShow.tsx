@@ -1,67 +1,47 @@
 import React from 'react';
 import { GestureResponderEvent, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
+import { AppTheme, lightTheme, darkTheme, AppConstants } from '../../config/DefaultConfig';
+import useTheme from "../../hooks/useTheme";
 import ChatUserImage from './ChatUserImage';
-import LastMessage from './LastMessage';
-import NotificationDot from './NotificationDot';
-import TimeDuration from './TimeDuration';
 import ThemedText from '../UI/ThemedText';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Text} from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import useConstants from '../../hooks/useConstants';
 
 interface Props {
     userImageSource: ImageSourcePropType;
     userName: string;
-    timeStamp: Date;
-    lastMessage: string;
-    notificationCount?: number;
-    isTyping?: boolean;
+    status: string;
     onChatPress?: (event: GestureResponderEvent) => void
 };
 
 const ChatShow: React.FunctionComponent<Props> = ({
-    isTyping,
-    notificationCount,
-    lastMessage,
     onChatPress,
-    timeStamp,
     userImageSource,
     userName,
+    status,
 }: Props) => {
+    const theme: AppTheme = useTheme();
+    const constants: AppConstants = useConstants();
     return (
-        <TouchableOpacity onPress={onChatPress}>
-            <View style={style.container}>
-                <Icon name="ios-arrow-back" size={40} color="white" style={style.contentIcons}/>
-                <ChatUserImage
-                    source={userImageSource}
-                    containerStyle={style.userImageContainer}
-                />
-                <View style={style.contentContainer}>
-                    <View style={style.topContentContainer}>
-                        <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
-                        <MaterialIcon name="dots-vertical" size={20} color="white" style={style.contentMaterialIcons} />
-                    </View>
-                    <View style={[style.topContentContainer, { alignItems: 'flex-end' }]}>
-                        <View style={style.lastMessageContainer}>
-                            <LastMessage 
-                                lastMessage={lastMessage}
-                                isTyping={isTyping}
-                            />
-                        </View>
-                        {
-                            notificationCount && (
-                                <View style={style.notificationDotContainer}>
-                                    <NotificationDot
-                                        notificationCount={notificationCount}
-                                    />
-                                </View>
-                            )
-                        }
-                    </View>
+        <View style={style.container}>
+            <TouchableOpacity onPress={onChatPress}>
+                <Icon name="ios-arrow-back" size={40} color={theme.textColor} style={style.contentIcons}/>
+            </TouchableOpacity>  
+            <ChatUserImage
+                source={userImageSource}
+                containerStyle={style.userImageContainer}
+            />
+            <View style={style.contentContainer}>
+                <View style={style.topContentContainer}>
+                    <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
+                    <MaterialIcon name="dots-vertical" size={20} color={theme.textColor} style={style.contentMaterialIcons} />
+                </View>
+                <View style={style.topContentContainer}>
+                    <ThemedText styleKey="textColor">{status}</ThemedText>
                 </View>
             </View>
-            
-        </TouchableOpacity>
+        </View>
     );
 };
 
@@ -72,8 +52,6 @@ interface Style {
     contentContainer: ViewStyle;
     contentIcons: ViewStyle;
     contentMaterialIcons: ViewStyle;
-    lastMessageContainer: ViewStyle;
-    notificationDotContainer: ViewStyle;
     topContentContainer: ViewStyle;
     userImageContainer: ViewStyle;
     userNameStyle: TextStyle;
@@ -83,8 +61,6 @@ const style: Style = StyleSheet.create<Style>({
     container: {
         flexDirection: 'row',
         padding: 20,
-        backgroundColor: '#62b34c',
-        color: 'white',
     },
     contentContainer: {
         flex: 17,
@@ -102,14 +78,6 @@ const style: Style = StyleSheet.create<Style>({
     contentMaterialIcons: {
         justifyContent: "center",
     },
-    lastMessageContainer: {
-        flex: 9,
-        color: 'white',
-    },
-    notificationDotContainer: {
-        flex: 1,
-        alignItems: "flex-end"
-    },
     topContentContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -117,10 +85,10 @@ const style: Style = StyleSheet.create<Style>({
     userImageContainer: {
         flex: 3,
         paddingRight: 10,
+        paddingLeft: 20,
     },
     userNameStyle: {
         fontWeight: "bold",
         fontSize: 18,
-        color: 'white',
     }
 })
