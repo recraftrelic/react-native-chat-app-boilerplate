@@ -33,7 +33,7 @@ const ChatTitleBar: React.FunctionComponent<Props> = ({
           }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>
-          <ThemedText styleKey="textColor" style={style.title}>Chats</ThemedText>
+          <ThemedText styleKey="textColor" style={style.title}>{constants.chatTitle}</ThemedText>
         </View>
         <View style={[style.childContainer, style.rightContainer]}>
           <TouchableOpacity>
