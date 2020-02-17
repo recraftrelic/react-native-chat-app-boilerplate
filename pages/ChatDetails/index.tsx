@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import ChatItem from '../../components/Chat/ChatItem';
-import { Text } from 'react-native';
+import ChatShow from '../../components/Chat/ChatShow';
 
 interface Props {};
 
@@ -9,8 +8,7 @@ const ChatDetails: React.FunctionComponent<Props> = (props: Props) => {
     return (
         <>
         <ScrollView>
-          <Text>Back</Text>
-          <ChatItem
+          <ChatShow
             userImageSource={{ uri: "https://picsum.photos/200" }}
             userName="Amenda"
             timeStamp={new Date()}
