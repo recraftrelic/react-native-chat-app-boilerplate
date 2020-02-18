@@ -11,7 +11,7 @@ interface Props {
     isRightAlign: boolean;
 };
 
-const ChatDetailBody: React.FunctionComponent<Props> = ({
+const ChatMessage: React.FunctionComponent<Props> = ({
     message,
     timeStamp,
     isRightAlign,
@@ -37,7 +37,7 @@ const ChatDetailBody: React.FunctionComponent<Props> = ({
     );
 };
 
-export default ChatDetailBody;
+export default ChatMessage;
 
 interface Style {
     container: ViewStyle;
