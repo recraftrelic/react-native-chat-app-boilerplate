@@ -32,7 +32,7 @@ export const darkTheme: AppTheme = {
   textColor: "#fff",
   lightTextColor: "#b3b3b3",
   lightBottomColor: "#666666",
-  alternateMessageBackgroundColor: 'steelblue',
+  alternateMessageBackgroundColor: '#4682b4',
 }
 
 export const lightTheme: AppTheme = {

@@ -17,7 +17,7 @@ const ChatDetailBody: React.FunctionComponent<Props> = ({
     isRightAlign,
 }: Props) => {
     const theme: AppTheme = useTheme();
-    const rowStyle: object = isRightAlign ? { flexDirection: 'row' } : { flexDirection: 'row-reverse' }
+    const rowStyle: object = { flexDirection: isRightAlign ? 'row' : 'row-reverse' }
 
     return (
         <View style={[style.container, rowStyle]}>
