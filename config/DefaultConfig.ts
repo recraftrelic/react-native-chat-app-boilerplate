@@ -5,6 +5,7 @@ export interface AppTheme {
   textColor: string,
   lightTextColor: string,
   lightBottomColor: string,
+  alternateMessageBackgroundColor: string,
 }
 
 export interface AppDateFormats {
@@ -16,6 +17,7 @@ export interface AppDateFormats {
 export interface AppConstants {
     dateFormats?: AppDateFormats,
     searchPlacerHolder: string,
+    messagePlacerHolder: string,
     chatTitle: string,
 }
 
@@ -31,6 +33,7 @@ export const darkTheme: AppTheme = {
   textColor: "#fff",
   lightTextColor: "#b3b3b3",
   lightBottomColor: "#666666",
+  alternateMessageBackgroundColor: '#4682b4',
 }
 
 export const lightTheme: AppTheme = {
@@ -40,6 +43,7 @@ export const lightTheme: AppTheme = {
   textColor: "#333",
   lightTextColor: "#b3b3b3",
   lightBottomColor: "#e6e6e6",
+  alternateMessageBackgroundColor: '#B0E0E6',
 }
 
 export const defaultConfig: ApplicationConfig = {
@@ -51,6 +55,7 @@ export const defaultConfig: ApplicationConfig = {
         chatYesterdayText: "Yesterday",
       },
       searchPlacerHolder: "Search Chats",
+      messagePlacerHolder: "Type Text here for message...",
       chatTitle: "Chats"
     }
 }
