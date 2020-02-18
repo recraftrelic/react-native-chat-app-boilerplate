@@ -3,7 +3,6 @@ React native chat app boilerplate
 
 <p align="center">
   <img src="./ios.gif">
-  <img src="./android.gif">
 </p>
 
 This chat app is a boilerplate for any react native developer who wants to build a chat app.
