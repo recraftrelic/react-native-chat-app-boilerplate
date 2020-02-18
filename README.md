@@ -1,8 +1,12 @@
 React native chat app boilerplate
 =======
 
-![Image of Yaktocat](./ios.gif)
-![Image of Yaktocat](./android.gif)
+<p align="center">
+  <img src="./ios.gif">
+</p>
+<p align="center">
+  <img src="./android.gif">
+</p>
 
 This chat app is a boilerplate for any react native developer who wants to build a chat app.
 
