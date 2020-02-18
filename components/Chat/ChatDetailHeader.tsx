@@ -79,6 +79,8 @@ const style: Style = StyleSheet.create<Style>({
     },
     contentMaterialIcons: {
         justifyContent: "center",
+        alignItems: "center",
+        paddingTop: 3,
     },
     topContentContainer: {
         flexDirection: "column",
