@@ -18,18 +18,16 @@ const ChatDetailBody: React.FunctionComponent<Props> = ({
 
     return (
         <View style={style.container}>
-            <View style={style.contentContainer}>
-                <View style={style.topContentContainer}>
-                    <View style={style.timeContainer}>
-                        <TimeDuration
-                            date={timeStamp}
-                        />
-                    </View>
+            <View style={style.topContentContainer}>
+                <View style={style.timeContainer}>
+                    <TimeDuration
+                        date={timeStamp}
+                    />
                 </View>
-                <View style={[style.topContentData, {backgroundColor: theme.lightBottomColor}]}>
-                    <View style={style.dataContainer}>
-                        <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
-                    </View>
+            </View>
+            <View style={[style.topContentData, {backgroundColor: theme.lightBottomColor}]}>
+                <View style={style.dataContainer}>
+                    <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
                 </View>
             </View>
         </View>
@@ -40,7 +38,6 @@ export default ChatDetailBody;
 
 interface Style {
     container: ViewStyle;
-    contentContainer: ViewStyle;
     topContentContainer: ViewStyle;
     timeContainer: ViewStyle;
     dataContainer: ViewStyle;
@@ -51,32 +48,30 @@ interface Style {
 const style: Style = StyleSheet.create<Style>({
     container: {
         flexDirection: 'row',
-        padding: 20,
-    },
-    contentContainer: {
-        flex: 10,
-        justifyContent: "space-between",
-        paddingTop: 5,
-        paddingBottom: 5,
+        paddingTop: 30,
+        paddingBottom: 20,
+        flex:1,
     },
     topContentContainer: {
-        flexDirection: "column",
-        justifyContent: "space-between",
+        flexDirection: 'row',
+        flex:1,
+        alignItems: 'center',
+    },
+    topContentData: {
+        flexDirection: 'row-reverse',
+        flex: 2,
+        borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 20,
     },
     timeContainer: {
-        flex: 3,
-        paddingTop: 5,
+        flex:1,
+        alignItems: 'center',
     },
     dataContainer: {
-        flex: 7,
-        alignItems: "flex-end"
+        flex: 2,
+        padding: 20,
     },
     userNameStyle: {
         fontSize: 14,
-    },
-    topContentData: {
-        flexDirection: "column",
-        padding: 20,
-        justifyContent: "space-between",
-    },
+    }
 })
