@@ -19,26 +19,18 @@ const ChatDetailBody: React.FunctionComponent<Props> = ({
     const theme: AppTheme = useTheme();
 
     return (
-        <View style={style.container}>
-            <View style={ messageDirect ? style.topContentContainer : [style.flipContentContainer, {backgroundColor: 'rgb(176, 224, 230)'}] }>
-                { messageDirect ?
+        <View style={[style.container, messageDirect ? {flexDirection: 'row'}: {flexDirection: 'row-reverse'}]}>
+            <View style={ messageDirect ? style.topContentContainer : style.flipContentContainer }>
                 <View style={style.timeContainer}>
                     <TimeDuration
                         date={timeStamp}
                     />
-                </View> : <View style={style.dataContainer}>
-                    <ThemedText styleKey="textColor" style={style.userNameStyle}>{message}</ThemedText>
-                </View>}
+                </View>
             </View>
-            <View style={ messageDirect ? [style.topContentData, {backgroundColor: theme.lightBottomColor}] : style.flipContentData }>
-            { messageDirect ?
+            <View style={ messageDirect ? [style.topContentData, {backgroundColor: theme.lightBottomColor}] :  [style.flipContentData, {backgroundColor: 'rgb(176, 224, 230)'}]}>
                 <View style={style.dataContainer}>
                     <ThemedText styleKey="textColor" style={style.userNameStyle}>{message}</ThemedText>
-                </View> : <View style={style.timeContainer}>
-                    <TimeDuration
-                        date={timeStamp}
-                    />
-                </View>}
+                </View>
             </View>
         </View>
     );
@@ -59,7 +51,6 @@ interface Style {
 
 const style: Style = StyleSheet.create<Style>({
     container: {
-        flexDirection: 'row',
         paddingTop: 30,
         flex: 1,
     },
@@ -75,15 +66,15 @@ const style: Style = StyleSheet.create<Style>({
         borderBottomLeftRadius: 20,
     },
     flipContentContainer: {
+        flexDirection: 'row-reverse',
+        flex: 1,
+        alignItems: 'center',
+    },
+    flipContentData: {
         flexDirection: 'row',
         flex: 2,
         borderTopRightRadius: 20,
         borderBottomRightRadius: 20,
-    },
-    flipContentData: {
-        flexDirection: 'row-reverse',
-        flex: 1,
-        alignItems: 'center',
     },
     timeContainer: {
         flex: 1,

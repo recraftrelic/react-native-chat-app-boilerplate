@@ -36,11 +36,11 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
             <View style={style.contentContainer}>
                 <View style={style.topContentContainer}>
                     <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
-                    <MaterialIcon name="dots-vertical" size={20} color={theme.textColor} style={style.contentMaterialIcons} />
-                </View>
-                <View style={style.topContentContainer}>
                     <ThemedText styleKey="textColor">{status}</ThemedText>
                 </View>
+            </View>
+            <View style={style.topContentContainer}>
+                <MaterialIcon name="dots-vertical" size={40} color={theme.textColor} style={style.contentMaterialIcons} />
             </View>
         </View>
     );
@@ -74,15 +74,15 @@ const style: Style = StyleSheet.create<Style>({
     contentIcons: {
         flex: 3,
         justifyContent: "space-between",
-        paddingLeft: 15,
+        paddingLeft: 5,
         paddingTop: 5,
     },
     contentMaterialIcons: {
         justifyContent: "center",
     },
     topContentContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: "column",
+        alignItems: 'stretch',
     },
     userImageContainer: {
         flex: 3,
