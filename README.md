@@ -1,13 +1,15 @@
 React native chat app boilerplate
 =======
 
-<p align="center">
-  <img src="./ios.gif">
-</p>
-
 This chat app is a boilerplate for any react native developer who wants to build a chat app.
 
 The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.
+
+Demo
+=======
+<p align="center">
+  <img src="./ios.gif">
+</p>
 
 Packages & Libraries used
 =======
