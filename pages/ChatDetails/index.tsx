@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
 import ChatDetailHeader from '../../components/Chat/ChatDetailHeader';
-import ChatDetailBody from '../../components/Chat/ChatDetailBody';
+import ChatMessage from '../../components/Chat/ChatMessage';
 
 const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     history
@@ -21,20 +21,20 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
             status="online"
             onBackPress={goToChatList}
           />
-          <ChatDetailBody
+          <ChatMessage
             message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             timeStamp={new Date()}
-            messageDirect={true}
+            isRightAlign={true}
           />
-          <ChatDetailBody
+          <ChatMessage
             message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             timeStamp={new Date()}
-            messageDirect={false}
+            isRightAlign={false}
           />
-          <ChatDetailBody
+          <ChatMessage
             message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             timeStamp={new Date()}
-            messageDirect={true}
+            isRightAlign={true}
           />
         </ScrollView>
         </>

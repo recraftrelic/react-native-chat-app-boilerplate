@@ -5,6 +5,7 @@ export interface AppTheme {
   textColor: string,
   lightTextColor: string,
   lightBottomColor: string,
+  alternateMessageBackgroundColor: string,
 }
 
 export interface AppDateFormats {
@@ -31,6 +32,7 @@ export const darkTheme: AppTheme = {
   textColor: "#fff",
   lightTextColor: "#b3b3b3",
   lightBottomColor: "#666666",
+  alternateMessageBackgroundColor: 'steelblue',
 }
 
 export const lightTheme: AppTheme = {
@@ -40,6 +42,7 @@ export const lightTheme: AppTheme = {
   textColor: "#333",
   lightTextColor: "#b3b3b3",
   lightBottomColor: "#e6e6e6",
+  alternateMessageBackgroundColor: '#B0E0E6',
 }
 
 export const defaultConfig: ApplicationConfig = {

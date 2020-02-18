@@ -8,26 +8,27 @@ import TimeDuration from './TimeDuration';
 interface Props {
     message: string;
     timeStamp: Date;
-    messageDirect: boolean;
+    isRightAlign: boolean;
 };
 
 const ChatDetailBody: React.FunctionComponent<Props> = ({
     message,
     timeStamp,
-    messageDirect,
+    isRightAlign,
 }: Props) => {
     const theme: AppTheme = useTheme();
+    const rowStyle: object = isRightAlign ? { flexDirection: 'row' } : { flexDirection: 'row-reverse' }
 
     return (
-        <View style={[style.container, messageDirect ? {flexDirection: 'row'}: {flexDirection: 'row-reverse'}]}>
-            <View style={ messageDirect ? style.topContentContainer : style.flipContentContainer }>
+        <View style={[style.container, rowStyle]}>
+            <View style={ isRightAlign ? style.topContentContainer : style.flipContentContainer }>
                 <View style={style.timeContainer}>
                     <TimeDuration
                         date={timeStamp}
                     />
                 </View>
             </View>
-            <View style={ messageDirect ? [style.topContentData, {backgroundColor: theme.lightBottomColor}] :  [style.flipContentData, {backgroundColor: 'rgb(176, 224, 230)'}]}>
+            <View style={ isRightAlign ? [style.topContentData, {backgroundColor: theme.lightBottomColor}] :  [style.flipContentData, {backgroundColor: theme.alternateMessageBackgroundColor}]}>
                 <View style={style.dataContainer}>
                     <ThemedText styleKey="textColor" style={style.userNameStyle}>{message}</ThemedText>
                 </View>
