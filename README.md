@@ -49,3 +49,5 @@ Contributors
 =======
 * [manojsinghnegiwd](https://github.com/manojsinghnegiwd) - Manoj Singh Negi
 * [yashkapoor8710](https://github.com/yashkapoor8710) - Yogesh Kapoor
+
+[<img src="http://www.recraftstudio.com/images/logo.png" alt="Recraft Relic Private Limited" width="50"/>](http://www.recraftrelic.com)
