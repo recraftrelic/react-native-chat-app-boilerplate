@@ -22,8 +22,19 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
             onBackPress={goToChatList}
           />
           <ChatDetailBody
-            userName="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             timeStamp={new Date()}
+            messageDirect={true}
+          />
+          <ChatDetailBody
+            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            timeStamp={new Date()}
+            messageDirect={false}
+          />
+          <ChatDetailBody
+            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            timeStamp={new Date()}
+            messageDirect={true}
           />
         </ScrollView>
         </>
