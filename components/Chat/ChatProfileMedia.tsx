@@ -11,7 +11,7 @@ const ChatProfileMedia: React.FunctionComponent<Props> = ({
 
     return (
         <View style={style.container}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <Image
             style={style.image}
             source={source}
