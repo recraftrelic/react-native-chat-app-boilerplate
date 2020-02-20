@@ -2,6 +2,7 @@ import React from 'react';
 import { GestureResponderEvent, Image, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import Icon from 'react-native-vector-icons/Ionicons';
+import ChatUserImage from './ChatUserImage';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../UI/ThemedText';
 
@@ -28,9 +29,10 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
             </TouchableOpacity> 
         </View>
         <View style={style.contentContainer}>
-            <Image
+            <ChatUserImage
                 source={userImageSource}
-                style={style.userImageContainer}
+                containerStyle={style.userImageContainer}
+                style={{width: 100, height: 100, borderRadius: 50}}
             />
         </View>
         <View style={style.contentContainer}>
