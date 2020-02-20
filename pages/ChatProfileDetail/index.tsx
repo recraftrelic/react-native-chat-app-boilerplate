@@ -24,8 +24,8 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
           source={{ uri: "https://picsum.photos/200" }}
         />
         <ChatProfile
-          label="Back"
-          onButtonPress={goToChatList}
+          block="Block"
+          report="Report"
         />
         </>
     );

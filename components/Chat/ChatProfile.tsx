@@ -5,22 +5,29 @@ import { AppTheme } from "../../config/DefaultConfig";
 import ThemedText from '../UI/ThemedText';
 
 interface Props{
-    label: string;
-    onButtonPress?: (event: GestureResponderEvent) => void
+    block: string;
+    report: string;
 };
 
 const ChatProfile: React.FunctionComponent<Props> = ({
-    onButtonPress,
-    label,
+    block,
+    report,
 }: Props) => {
     const theme: AppTheme = useTheme();
 
     return (
-        <TouchableOpacity onPress={onButtonPress}>
+        <View>
+        <TouchableOpacity>
             <View style={style.container}>
-                <ThemedText styleKey="textColor" style={[style.userNameStyle, {borderColor: theme.lightBottomColor}]}>{label}</ThemedText>
+                <ThemedText styleKey="textColor" style={[style.userNameStyle, {borderColor: theme.lightBottomColor}]}>{block}</ThemedText>
             </View>
         </TouchableOpacity>
+        <TouchableOpacity>
+            <View style={style.container}>
+                <ThemedText styleKey="textColor" style={[style.userNameStyle, {borderColor: theme.lightBottomColor}]}>{report}</ThemedText>
+            </View>
+        </TouchableOpacity>
+        </View>
     );
 };
 
@@ -33,17 +40,16 @@ interface Style {
 
 const style: Style = StyleSheet.create<Style>({
     container: {
-        flexDirection: 'row',
-        padding: 20,
+        flexDirection: 'column',
         justifyContent: "center",
+        alignItems: 'stretch',
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 10,
     },
     userNameStyle: {
         fontWeight: "bold",
         borderWidth: 2,
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 25,
-        paddingRight: 25,
-        borderRadius: 25,
+        padding: 10,
     }
 })
