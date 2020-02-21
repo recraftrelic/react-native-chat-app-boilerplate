@@ -32,7 +32,7 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
             <ChatUserImage
                 source={userImageSource}
                 containerStyle={style.userImageContainer}
-                style={{width: 100, height: 100, borderRadius: 50}}
+                styleImage={{width: 100, height: 100, borderRadius: 50}}
             />
         </View>
         <View style={style.contentContainer}>

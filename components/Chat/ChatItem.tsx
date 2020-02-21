@@ -25,15 +25,16 @@ const ChatItem: React.FunctionComponent<Props> = ({
     userImageSource,
     userName,
 }: Props) => {
+
     return (
-        <TouchableOpacity onPress={onChatPress}>
-            <View style={style.container}>
-                <ChatUserImage
-                    source={userImageSource}
-                    containerStyle={style.userImageContainer}
-                    style={{width: 50, height: 50, borderRadius: 50}}
-                />
-                <View style={style.contentContainer}>
+        <View style={style.container}>
+            <ChatUserImage
+                source={userImageSource}
+                containerStyle={style.userImageContainer}
+                styleImage={{width: 50, height: 50, borderRadius: 50}}
+            />
+            <View style={style.contentContainer}>
+                <TouchableOpacity onPress={onChatPress}>
                     <View style={style.topContentContainer}>
                         <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
                         <TimeDuration
@@ -57,9 +58,9 @@ const ChatItem: React.FunctionComponent<Props> = ({
                             )
                         }
                     </View>
-                </View>
+                </TouchableOpacity>
             </View>
-        </TouchableOpacity>
+        </View>
     );
 };
 
