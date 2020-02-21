@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
+import { AppTheme } from '../../config/DefaultConfig';
+
+import useTheme from "../../hooks/useTheme";
 import { Modal, Image, ImageStyle, ImageSourcePropType, View, ViewStyle, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 
 interface Props {
   containerStyle?: ViewStyle;
   source: ImageSourcePropType;
-  styleImage: ImageStyle;
+  imageStyle: ImageStyle;
 };
 
-const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle, styleImage }: Props) => {
-
-  const [Modals, setModalVisible] = useState<boolean>(false);
-
-  const handleModal = (visible: boolean): void => {
-        setModalVisible(true);
-  }
+const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle, imageStyle }: Props) => {
+  const theme: AppTheme = useTheme();
+  const [isModalsVisible, setModalVisible] = useState<boolean>(false);
 
     return (
       <View style={[containerStyle]}>
-        { Modals? <Modal
+        { isModalsVisible ? 
+        <Modal
           animationType="fade"
           transparent={true}
-          visible={Modals}
+          visible={isModalsVisible}
           onRequestClose={() => {alert('Modal');}}>
-          <TouchableOpacity style={style.modalContainer} activeOpacity={1.0} onPress={() => {setModalVisible(false);}}>
+          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.modalBackgroundColor}]} activeOpacity={1.0} onPress={() => {setModalVisible(false);}}>
             <View>
               <Image
-                  style={[styleImage, {width: 250, height: 250, borderRadius: 0}]}
+                  style={[imageStyle, {width: 250, height: 250, borderRadius: 0}]}
                   source={source}
                 />
             </View>
           </TouchableOpacity>
-        </Modal> : null }
-        <TouchableOpacity onPress={() => {handleModal(true);}}>
+        </Modal> 
+        : null }
+        <TouchableOpacity onPress={() => {setModalVisible(true);}}>
           <Image
-            style={styleImage}
+            style={imageStyle}
             source={source}
           />
         </TouchableOpacity>
@@ -54,6 +55,5 @@ const style: Style = StyleSheet.create<Style>({
       alignItems: 'center',
       width: Dimensions.get('window').width,
       height: Dimensions.get('window').height,
-      backgroundColor: 'rgba(0,0,0,0.5)'
   },
 })
