@@ -29,7 +29,7 @@ const ChatList: React.FunctionComponent<Props> = ({
       <ChatTitleBar updateTheme={updateTheme} />
       <ScrollView>
         <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
+          userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}
           userName="Amenda"
           timeStamp={new Date()}
           lastMessage={"Hey there!!!"}
