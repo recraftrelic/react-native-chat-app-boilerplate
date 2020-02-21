@@ -5,10 +5,10 @@ This chat app is a boilerplate for any react native developer who wants to build
 
 The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.
 
-Demo
+IOS Demo
 =======
 <p align="center">
-  <img src="./ios.gif">
+  <img width="250" src="./ios-1.gif"><img width="250" src="./ios-2.gif"><img width="250" src="./ios-3.gif">
 </p>
 
 Packages & Libraries used
