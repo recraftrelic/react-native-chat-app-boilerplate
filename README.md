@@ -19,6 +19,7 @@ Packages & Libraries used
 * [React router native](https://www.npmjs.com/package/react-router-native)
 * [moment](https://www.npmjs.com/package/moment)
 * [TypeScript](https://www.npmjs.com/package/typescript)
+* [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons)
 
 Steps to Run the Project in Development Mode
 =======
