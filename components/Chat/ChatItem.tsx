@@ -31,6 +31,7 @@ const ChatItem: React.FunctionComponent<Props> = ({
                 <ChatUserImage
                     source={userImageSource}
                     containerStyle={style.userImageContainer}
+                    style={{width: 50, height: 50, borderRadius: 50}}
                 />
                 <View style={style.contentContainer}>
                     <View style={style.topContentContainer}>

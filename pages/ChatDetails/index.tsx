@@ -14,6 +14,9 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     const goToChatList = () => {
         history.push('/')
     }   
+    const goToProfileDetail = () => {
+      history.push('/profile')
+    } 
     const constants: AppConstants = useConstants(); 
 
     return (
@@ -23,6 +26,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
             userName="Amenda"
             status="online"
             onBackPress={goToChatList}
+            onNextPress={goToProfileDetail}
         />
         <ScrollView>
           <ChatMessage

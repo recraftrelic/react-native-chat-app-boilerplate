@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import BackHandlerHOC from '../components/HOC/BackHandlerHOC';
 import ChatList from '../pages/ChatList';
 import ChatDetails from '../pages/ChatDetails';
+import ChatProfileDetail from '../pages/ChatProfileDetail';
 import { ApplicationConfig } from '../config/DefaultConfig';
 import ConfigContext from '../config/AppConfigProvider';
 import ThemedView from '../components/UI/ThemedView';
@@ -25,6 +26,7 @@ const Router: React.FunctionComponent<Props> = ({
             <Switch>
               <Route exact path="/" component={ChatList} />
               <Route exact path="/chat/" component={ChatDetails} />
+              <Route exact path="/profile" component={ChatProfileDetail} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>

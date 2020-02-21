@@ -13,10 +13,12 @@ interface Props {
     userName: string;
     status: string;
     onBackPress?: (event: GestureResponderEvent) => void
+    onNextPress?: (event: GestureResponderEvent) => void
 };
 
 const ChatDetailHeader: React.FunctionComponent<Props> = ({
     onBackPress,
+    onNextPress,
     userImageSource,
     userName,
     status,
@@ -32,11 +34,14 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
             <ChatUserImage
                 source={userImageSource}
                 containerStyle={style.userImageContainer}
+                style={{width: 50, height: 50, borderRadius: 50}}
             />
             <View style={style.contentContainer}>
                 <View style={style.topContentContainer}>
-                    <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
-                    <ThemedText styleKey="textColor">{status}</ThemedText>
+                    <TouchableOpacity onPress={onNextPress}>
+                        <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
+                        <ThemedText styleKey="textColor">{status}</ThemedText>
+                    </TouchableOpacity> 
                 </View>
             </View>
             <View style={style.topContentContainer}>

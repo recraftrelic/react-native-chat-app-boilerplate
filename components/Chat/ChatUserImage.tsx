@@ -1,16 +1,17 @@
 import React from 'react';
-import { Image, ImageStyle, ImageSourcePropType, StyleSheet, View, ViewStyle } from 'react-native';
+import { Image, ImageStyle, ImageSourcePropType, View, ViewStyle } from 'react-native';
 
 interface Props {
   containerStyle?: ViewStyle;
-  source: ImageSourcePropType
+  source: ImageSourcePropType;
+  style: ImageStyle;
 };
 
-const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle }: Props) => {
+const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle, style }: Props) => {
     return (
       <View style={[containerStyle]}>
         <Image
-          style={style.image}
+          style={style}
           source={source}
         />
       </View>
@@ -18,15 +19,3 @@ const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle 
 };
 
 export default ChatUserImage;
-
-interface Style {
-  image: ImageStyle
-}
-
-const style: Style = StyleSheet.create<Style>({
-  image: {
-    width: 50,
-    height: 50,
-    borderRadius: 25
-  }
-})
