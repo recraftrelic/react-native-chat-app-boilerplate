@@ -10,6 +10,8 @@ interface Props {
   imageStyle: ImageStyle;
 };
 
+const { height, width } = Dimensions.get('window')
+
 const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle, imageStyle }: Props) => {
   const theme: AppTheme = useTheme();
   const [isModalsVisible, setModalVisible] = useState<boolean>(false);
@@ -53,7 +55,7 @@ const style: Style = StyleSheet.create<Style>({
       flexDirection: 'column',
       justifyContent: "center",
       alignItems: 'center',
-      width: Dimensions.get('window').width,
-      height: Dimensions.get('window').height,
+      width: width,
+      height: height,
   },
 })

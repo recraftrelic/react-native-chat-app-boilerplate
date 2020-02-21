@@ -8,11 +8,13 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 interface Props{
     block: string;
     report: string;
+    deleteConversation: string;
 };
 
 const ChatProfile: React.FunctionComponent<Props> = ({
     block,
     report,
+    deleteConversation
 }: Props) => {
     const theme: AppTheme = useTheme();
 
@@ -21,13 +23,19 @@ const ChatProfile: React.FunctionComponent<Props> = ({
         <TouchableOpacity>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
                 <ThemedText styleKey="textColor" style={style.userNameStyle}>{block}</ThemedText>
-                <MaterialIcon name="block-helper" size={20} color={theme.textColor} style={style.materialStyle}/>           
+                <MaterialIcon name="block-helper" size={20} color={theme.textColor} style={[style.materialStyle, {color: theme.warningColor}]}/>           
             </View>
         </TouchableOpacity>
         <TouchableOpacity>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
                 <ThemedText styleKey="textColor" style={style.userNameStyle}>{report}</ThemedText>
-                <MaterialIcon name="flag-variant" size={20} color={theme.textColor} style={style.materialStyle}/>   
+                <MaterialIcon name="flag-variant" size={20} color={theme.textColor} style={[style.materialStyle, {color: theme.warningColor}]}/>   
+            </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+            <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
+                <ThemedText styleKey="textColor" style={style.userNameStyle}>{deleteConversation}</ThemedText>
+                <MaterialIcon name="delete" size={20} color={theme.textColor} style={[style.materialStyle, {color: theme.warningColor}]}/>   
             </View>
         </TouchableOpacity>
         </View>

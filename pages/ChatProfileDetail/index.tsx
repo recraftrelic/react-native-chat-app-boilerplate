@@ -21,11 +21,12 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
           onButtonPress={goToChatList}
         />
         <ChatProfileMedia
-          source={{ uri: "https://picsum.photos/200" }}
+          source={{ uri: `https://picsum.photos/200?time=${new Date().getTime()}` }}
         />
         <ChatProfile
           block="Block"
           report="Report"
+          deleteConversation="Delete Conversation"
         />
         </>
     );

@@ -7,6 +7,7 @@ export interface AppTheme {
   lightBottomColor: string,
   alternateMessageBackgroundColor: string,
   modalBackgroundColor: string,
+  warningColor: string;
 }
 
 export interface AppDateFormats {
@@ -36,6 +37,7 @@ export const darkTheme: AppTheme = {
   lightBottomColor: "#666666",
   alternateMessageBackgroundColor: '#4682b4',
   modalBackgroundColor: 'rgba(0,0,0,0.5)',
+  warningColor: '#FF0000',
 }
 
 export const lightTheme: AppTheme = {
@@ -47,6 +49,7 @@ export const lightTheme: AppTheme = {
   lightBottomColor: "#e6e6e6",
   alternateMessageBackgroundColor: '#B0E0E6',
   modalBackgroundColor: 'rgba(0,0,0,0.5)',
+  warningColor: '#FF0000',
 }
 
 export const defaultConfig: ApplicationConfig = {
