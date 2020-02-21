@@ -9,7 +9,7 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
 }: RouteComponentProps) => {
       
     const goToChatList = () => {
-        history.push('/chat')
+        history.goBack()
     } 
 
     return (
