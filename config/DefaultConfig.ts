@@ -10,7 +10,6 @@ export interface AppTheme {
   alternateMessageBackgroundColor: string,
   modalBackgroundColor: string,
   warningColor: string;
-  versionColor: string;
 }
 
 export interface AppDateFormats {

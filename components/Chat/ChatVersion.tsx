@@ -6,7 +6,7 @@ interface Props {
   name: string;
 };
 
-const { height, width } = Dimensions.get('window')
+const { height, width}: any = Dimensions.get('window');
 
 const ChatVersion: React.FunctionComponent<Props> = ({
  name,

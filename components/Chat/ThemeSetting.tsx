@@ -9,14 +9,10 @@ import { ThemeKey } from '../../config/themes';
 
 interface Props {
   updateTheme: (theme: ThemeKey) => void;
-  changeTheme: string;
-  logout: string;
 };
 
-const ChatSettingTheme: React.FunctionComponent<Props> = ({
+const ThemeSetting: React.FunctionComponent<Props> = ({
   updateTheme,
-  changeTheme,
-  logout,
 }: Props) => {
   const theme: AppTheme = useTheme();
   const { selectedTheme }: AppConstants = useConstants();
@@ -32,7 +28,7 @@ const ChatSettingTheme: React.FunctionComponent<Props> = ({
     <View>
       <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
         <View style={style.leftContainer}>
-          <ThemedText styleKey="textColor">{changeTheme}</ThemedText>
+          <ThemedText styleKey="textColor">Dark Theme</ThemedText>
         </View>
         <View style={style.rightContainer}>
           <Switch trackColor={{
@@ -44,7 +40,7 @@ const ChatSettingTheme: React.FunctionComponent<Props> = ({
       <TouchableOpacity>
         <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
           <View style={style.leftContainer}>
-            <ThemedText styleKey="textColor">{logout}</ThemedText>
+            <ThemedText styleKey="textColor">Logout</ThemedText>
           </View>
           <View style={style.rightContainer}>
             <MaterialIcon name="logout" size={30} color={theme.warningColor} />   
@@ -55,7 +51,7 @@ const ChatSettingTheme: React.FunctionComponent<Props> = ({
   )
 };
 
-export default ChatSettingTheme;
+export default ThemeSetting;
 
 interface Style {
   container: ViewStyle;

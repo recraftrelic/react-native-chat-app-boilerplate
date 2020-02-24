@@ -1,3 +1,4 @@
+//todo need to refactor
 import React, { useState } from 'react';
 import { GestureResponderEvent, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
@@ -37,7 +38,10 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
                     <TouchableOpacity onPress={() => {setSaveItem(true);}}>
                         <MaterialIcon name="account-edit" size={40} color={theme.textColor} style={style.editButton}/>
                     </TouchableOpacity> 
-                : 
+                : null
+            }
+            {
+                editInfo && saveItem ?
                 <View style={[style.container, {padding: 0}]}>
                     <TouchableOpacity onPress={() => {setSaveItem(false);}}>
                         <MaterialIcon name="check" size={40} color={theme.textColor} />
@@ -45,7 +49,8 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
                     <TouchableOpacity onPress={() => {setSaveItem(false);}}>
                         <EntypoIcon name="cross" size={40} color={theme.textColor} />
                     </TouchableOpacity>
-                    </View>
+                </View>
+                :null
             }
         </View>
         <View style={style.contentContainer}>

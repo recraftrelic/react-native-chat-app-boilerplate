@@ -19,7 +19,6 @@ export const darkTheme: AppTheme = {
     alternateMessageBackgroundColor: '#4682b4',
     modalBackgroundColor: 'rgba(0,0,0,0.5)',
     warningColor: '#FF0000',
-    versionColor: '#B0E0E6',
   }
   
 export const lightTheme: AppTheme = {
@@ -32,7 +31,6 @@ export const lightTheme: AppTheme = {
     alternateMessageBackgroundColor: '#B0E0E6',
     modalBackgroundColor: 'rgba(0,0,0,0.5)',
     warningColor: '#FF0000',
-    versionColor: '#B0E0E6',
 }
 
 export const themes: ThemesMap = {
