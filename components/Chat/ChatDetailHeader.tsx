@@ -1,6 +1,6 @@
 import React from 'react';
 import { GestureResponderEvent, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
-import { AppTheme, lightTheme, darkTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ChatUserImage from './ChatUserImage';
 import ThemedText from '../UI/ThemedText';

@@ -1,3 +1,5 @@
+import { themes, ThemeKey } from "./themes";
+
 export interface AppTheme {
   backgroundColor: string,
   highlightColor: string,
@@ -8,6 +10,7 @@ export interface AppTheme {
   alternateMessageBackgroundColor: string,
   modalBackgroundColor: string,
   warningColor: string;
+  versionColor: string;
 }
 
 export interface AppDateFormats {
@@ -17,6 +20,7 @@ export interface AppDateFormats {
 }
 
 export interface AppConstants {
+    selectedTheme: ThemeKey,
     dateFormats?: AppDateFormats,
     searchPlacerHolder: string,
     messagePlacerHolder: string,
@@ -24,37 +28,12 @@ export interface AppConstants {
 }
 
 export interface ApplicationConfig {
-    theme?: AppTheme,
     constants?: AppConstants
 }
 
-export const darkTheme: AppTheme = {
-  backgroundColor: "#000000",
-  highlightColor: "grey",
-  highlightTextColor: "#ffffff",
-  textColor: "#fff",
-  lightTextColor: "#b3b3b3",
-  lightBottomColor: "#666666",
-  alternateMessageBackgroundColor: '#4682b4',
-  modalBackgroundColor: 'rgba(0,0,0,0.5)',
-  warningColor: '#FF0000',
-}
-
-export const lightTheme: AppTheme = {
-  backgroundColor: "#ffffff",
-  highlightColor: "green",
-  highlightTextColor: "#ffffff",
-  textColor: "#333",
-  lightTextColor: "#b3b3b3",
-  lightBottomColor: "#e6e6e6",
-  alternateMessageBackgroundColor: '#B0E0E6',
-  modalBackgroundColor: 'rgba(0,0,0,0.5)',
-  warningColor: '#FF0000',
-}
-
 export const defaultConfig: ApplicationConfig = {
-    theme: lightTheme,
     constants: {
+      selectedTheme: ThemeKey.light,
       dateFormats: {
         chatDateFormat: "MM/DD/YY",
         chatHourDisplayFormat: "hh:mm A",

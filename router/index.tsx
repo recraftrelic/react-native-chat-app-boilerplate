@@ -6,6 +6,7 @@ import BackHandlerHOC from '../components/HOC/BackHandlerHOC';
 import ChatList from '../pages/ChatList';
 import ChatDetails from '../pages/ChatDetails';
 import ChatProfileDetail from '../pages/ChatProfileDetail';
+import ChatSetting from '../pages/ChatSetting';
 import { ApplicationConfig } from '../config/DefaultConfig';
 import ConfigContext from '../config/AppConfigProvider';
 import ThemedView from '../components/UI/ThemedView';
@@ -27,6 +28,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/" component={ChatList} />
               <Route exact path="/chat/" component={ChatDetails} />
               <Route exact path="/profile" component={ChatProfileDetail} />
+              <Route exact path="/setting" component={ChatSetting} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>

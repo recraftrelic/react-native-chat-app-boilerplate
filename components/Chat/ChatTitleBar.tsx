@@ -1,42 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
+import React from 'react';
+import { GestureResponderEvent } from 'react-native';
+import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { AppTheme, lightTheme, darkTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';
 import SearchBar from '../UI/SearchBar';
 import useConstants from '../../hooks/useConstants';
 
 interface Props {
-  updateTheme: (theme: AppTheme) => void
-}
+  onSettingPress?: (event: GestureResponderEvent) => void;
+  userImageSource: ImageSourcePropType;
+};
 
 const ChatTitleBar: React.FunctionComponent<Props> = ({
-  updateTheme
+  onSettingPress,
+  userImageSource,
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppConstants = useConstants();
-
-  const [isDarkTheme, toggleDarkTheme] = useState<boolean>(false);
-
-  useEffect(() => {
-    updateTheme(isDarkTheme ? darkTheme : lightTheme)
-  }, [isDarkTheme]);
 
   return (
     <View>
       <View style={style.topContainer}>
         <View style={[style.childContainer, style.leftContainer]}>
-          <Switch trackColor={{
-            false: theme.lightTextColor,
-            true: theme.lightTextColor
-          }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
+          <Image
+            style={style.image}
+            source={userImageSource}
+          />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>
           <ThemedText styleKey="textColor" style={style.title}>{constants.chatTitle}</ThemedText>
         </View>
         <View style={[style.childContainer, style.rightContainer]}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={onSettingPress}>
             <Icon name="md-settings" size={20} color={theme.textColor} />
           </TouchableOpacity>
         </View>
@@ -58,6 +55,7 @@ interface Style {
   rightContainer: ViewStyle;
   searchContainer: ViewStyle;
   title: TextStyle;
+  image: ImageStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -92,5 +90,9 @@ const style: Style = StyleSheet.create<Style>({
   title: {
     fontSize: 20,
     fontWeight: "bold"
-  }
+  },
+  image: {
+    width: 20,
+    height: 20,
+  },
 });

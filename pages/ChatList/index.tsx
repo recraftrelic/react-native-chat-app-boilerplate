@@ -7,7 +7,7 @@ import ChatTitleBar from '../../components/Chat/ChatTitleBar';
 import { connect } from "react-redux";
 import { setThemeAction } from '../../store/reducers/config';
 import { Dispatch } from 'redux';
-import { ApplicationConfig, AppTheme } from '../../config/DefaultConfig';
+import { AppTheme } from '../../config/DefaultConfig';
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch
@@ -22,11 +22,15 @@ const ChatList: React.FunctionComponent<Props> = ({
     history.push('/chat')
   }
 
+  const goToChatSetting = () => {
+    history.push('/setting')
+  }
+
   const updateTheme = (theme: AppTheme) => dispatch(setThemeAction(theme))
 
   return (
     <>
-      <ChatTitleBar updateTheme={updateTheme} />
+      <ChatTitleBar userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }} onSettingPress={goToChatSetting}/>
       <ScrollView>
         <ChatItem
           userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}
