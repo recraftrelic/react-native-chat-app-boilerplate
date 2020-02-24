@@ -38,16 +38,23 @@ yarn install
 ```
 
 ### IOS
-We need to Install the Pods, After that we can run the App
+We can directly run the app
+```
+npx react-native run-ios
+```
+
+### Facing any error related to pods in ios
+We need to install the pods
 ```
 sudo gem install cocoapods
 cd ios
 pod install
+cd ..
 npx react-native run-ios
 ```
 
 ### Android
-We can directly run the App
+We can directly run the app
 ```
 npx react-native run-android
 ```
