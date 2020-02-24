@@ -10,7 +10,7 @@ IOS Demo
 <p align="center">
   <img width="250" src="./ios-1.gif"><img width="250" src="./ios-2.gif"><img width="250" src="./ios-3.gif">
 </p>
-<p align="left">
+<p align="center">
   <img width="250" src="./ios-4.gif">
 </p>
 
@@ -19,7 +19,7 @@ Android Demo
 <p align="center">
   <img width="250" src="./android-1.gif"><img width="250" src="./android-2.gif"><img width="250" src="./android-3.gif">
 </p>
-<p align="left">
+<p align="center">
   <img width="250" src="./android-4.gif">
 </p>
 
