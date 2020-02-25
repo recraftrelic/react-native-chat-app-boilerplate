@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 import { View, TextInput, TouchableOpacity, StyleSheet, ViewStyle, KeyboardAvoidingViewProps } from "react-native";
 import {KeyboardAvoidingView} from 'react-native';
 import useTheme from "../../hooks/useTheme";
@@ -21,12 +22,13 @@ const ChatInput: React.FunctionComponent<Props> = ({
   placeHolder
 }: Props) => {
   const theme: AppTheme = useTheme();
+  const [addItem, setItem] = useState<boolean>(false);
 
   return (
     <KeyboardAvoidingView {...keyboardAvoidingViewProps} enabled>
         <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
-            <TouchableOpacity>
-                <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} />
+            <TouchableOpacity onPress={() => {setItem(true)}}>
+                <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={style.addButton}/>
             </TouchableOpacity>  
             <View style={style.textContainer}>
                 <TextInput
@@ -36,11 +38,34 @@ const ChatInput: React.FunctionComponent<Props> = ({
                 />
             </View>
             <View style={style.iconContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => {setItem(false)}}>
                     <Icon name="md-send" size={35} color={theme.lightTextColor} />
                 </TouchableOpacity>  
             </View>
         </View>
+        { addItem ?
+                <View style={[style.searchContainer, { borderBottomWidth: 0 }]}>
+                  <TouchableOpacity>
+                    <Icon name="md-document" size={35} color={theme.lightTextColor} style={style.addIcons} />
+                  </TouchableOpacity> 
+                  <TouchableOpacity>
+                    <Icon name="ios-camera" size={35} color={theme.lightTextColor} style={style.addIcons} />
+                  </TouchableOpacity> 
+                  <TouchableOpacity>
+                    <Icon name="md-photos" size={35} color={theme.lightTextColor} style={style.addIcons} />
+                  </TouchableOpacity> 
+                  <TouchableOpacity>
+                    <EntypoIcon name="location-pin" size={35} color={theme.lightTextColor} style={style.addIcons} />
+                  </TouchableOpacity> 
+                  <TouchableOpacity>
+                    <MaterialIcon name="music-circle" size={35} color={theme.lightTextColor} style={style.addIcons} />
+                  </TouchableOpacity> 
+                  <TouchableOpacity>
+                    <Icon name="md-contact" size={35} color={theme.lightTextColor} style={style.addIcons} />
+                  </TouchableOpacity> 
+                </View>
+            :null
+        }
     </KeyboardAvoidingView>
   )
 }
@@ -51,6 +76,8 @@ interface Style {
   searchContainer: ViewStyle;
   iconContainer: ViewStyle;
   textContainer: ViewStyle;
+  addButton: ViewStyle;
+  addIcons: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -66,5 +93,12 @@ const style: Style = StyleSheet.create<Style>({
   iconContainer: {
     flex: 1,
     alignItems: "flex-end"
+  },
+  addButton: {
+    paddingTop: isIOS() ? 5 : 0,
+    paddingRight: isIOS() ? 5 : 0
+  },
+  addIcons: {
+    paddingLeft: 30,
   }
 });

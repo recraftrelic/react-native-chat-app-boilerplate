@@ -1,6 +1,6 @@
 //todo need to refactor
 import React, { useState } from 'react';
-import { GestureResponderEvent, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
+import { GestureResponderEvent, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle, TextInput } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -26,6 +26,8 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
 }: Props) => {
     const theme: AppTheme = useTheme();
     const [saveItem, setSaveItem] = useState<boolean>(false);
+    const [name, onChangeName] = React.useState(userName);
+    const [bio, onChangeBio] = React.useState(status);
 
     return (
         <View>
@@ -61,10 +63,16 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
             />
         </View>
         <View style={style.contentContainer}>
-            <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
+            { !saveItem ?
+                <ThemedText styleKey="textColor" style={style.userNameStyle}>{name}</ThemedText>
+            :   <TextInput style={[style.userNameStyle, style.inputStyle, {borderColor: theme.lightBottomColor, color: theme.textColor}]} onChangeText={text => onChangeName(text)} value={name} />
+            }
         </View>
         <View style={style.contentContainer}>
-            <ThemedText styleKey="textColor" style={{fontStyle: "italic"}}>{status}</ThemedText>
+            { !saveItem ?
+                <ThemedText styleKey="textColor" style={{fontStyle: "italic"}}>{bio}</ThemedText>
+            :   <TextInput multiline style={[style.inputStyle, { height: 100, borderColor: theme.lightBottomColor, color: theme.textColor}]} onChangeText={text =>  onChangeBio(text)} value={bio} />
+            }
         </View>
         </View>
     );
@@ -79,6 +87,7 @@ interface Style {
     editButton: ViewStyle;
     userImageContainer: ImageStyle;
     userNameStyle: TextStyle;
+    inputStyle: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -112,5 +121,9 @@ const style: Style = StyleSheet.create<Style>({
     userNameStyle: {
         fontWeight: "bold",
         fontSize: 18,
+    },
+    inputStyle: {
+        borderWidth: 2, 
+        padding: 10, 
     }
 })
