@@ -3,30 +3,31 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
 import ChatItem from '../../components/Chat/ChatItem';
-import ChatTitleBar from '../../components/Chat/ChatTitleBar';
+import AppLogo from '../../components/Chat/AppLogo';
 import { connect } from "react-redux";
-import { setThemeAction } from '../../store/reducers/config';
 import { Dispatch } from 'redux';
-import { ApplicationConfig, AppTheme } from '../../config/DefaultConfig';
+import { AppConstants } from '../../config/DefaultConfig';
+import useConstants from '../../hooks/useConstants';
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch
 }
 
 const ChatList: React.FunctionComponent<Props> = ({
-  dispatch,
   history
 }: Props) => {
-
+  const constants: AppConstants = useConstants();
   const goToChatDetails = () => {
     history.push('/chat')
   }
 
-  const updateTheme = (theme: AppTheme) => dispatch(setThemeAction(theme))
+  const goToChatSetting = () => {
+    history.push('/settings')
+  }
 
   return (
     <>
-      <ChatTitleBar updateTheme={updateTheme} />
+      <AppLogo appLogoSource={{ uri: constants.appLogo }} onSettingPress={goToChatSetting}/>
       <ScrollView>
         <ChatItem
           userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}
