@@ -10,12 +10,12 @@ import useConstants from '../../hooks/useConstants';
 
 interface Props {
   onSettingPress?: (event: GestureResponderEvent) => void;
-  userImageSource: ImageSourcePropType;
+  appLogoSource: ImageSourcePropType;
 };
 
 const AppLogo: React.FunctionComponent<Props> = ({
   onSettingPress,
-  userImageSource,
+  appLogoSource,
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppConstants = useConstants();
@@ -26,7 +26,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
         <View style={[style.childContainer, style.leftContainer]}>
           <Image
             style={style.image}
-            source={userImageSource}
+            source={appLogoSource}
           />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>

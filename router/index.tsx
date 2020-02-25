@@ -28,7 +28,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/" component={ChatList} />
               <Route exact path="/chat/" component={ChatDetails} />
               <Route exact path="/profile" component={ChatProfileDetail} />
-              <Route exact path="/setting" component={ChatSetting} />
+              <Route exact path="/settings" component={ChatSetting} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>

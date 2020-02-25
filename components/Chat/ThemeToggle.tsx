@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
+import { View, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import useConstants from '../../hooks/useConstants';
 import { ThemeKey } from '../../config/themes';
 
@@ -11,7 +10,7 @@ interface Props {
   updateTheme: (theme: ThemeKey) => void;
 };
 
-const ThemeSetting: React.FunctionComponent<Props> = ({
+const ThemeToggle: React.FunctionComponent<Props> = ({
   updateTheme,
 }: Props) => {
   const theme: AppTheme = useTheme();
@@ -37,21 +36,11 @@ const ThemeSetting: React.FunctionComponent<Props> = ({
           }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
         </View>
       </View>
-      <TouchableOpacity>
-        <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
-          <View style={style.leftContainer}>
-            <ThemedText styleKey="textColor">Logout</ThemedText>
-          </View>
-          <View style={style.rightContainer}>
-            <MaterialIcon name="logout" size={30} color={theme.warningColor} />   
-          </View>
-        </View>
-      </TouchableOpacity>
     </View>
   )
 };
 
-export default ThemeSetting;
+export default ThemeToggle;
 
 interface Style {
   container: ViewStyle;

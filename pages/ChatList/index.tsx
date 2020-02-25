@@ -6,6 +6,8 @@ import ChatItem from '../../components/Chat/ChatItem';
 import AppLogo from '../../components/Chat/AppLogo';
 import { connect } from "react-redux";
 import { Dispatch } from 'redux';
+import { AppConstants } from '../../config/DefaultConfig';
+import useConstants from '../../hooks/useConstants';
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch
@@ -14,18 +16,18 @@ interface Props extends RouteComponentProps {
 const ChatList: React.FunctionComponent<Props> = ({
   history
 }: Props) => {
-
+  const constants: AppConstants = useConstants();
   const goToChatDetails = () => {
     history.push('/chat')
   }
 
   const goToChatSetting = () => {
-    history.push('/setting')
+    history.push('/settings')
   }
 
   return (
     <>
-      <AppLogo userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }} onSettingPress={goToChatSetting}/>
+      <AppLogo appLogoSource={{ uri: constants.appLogo }} onSettingPress={goToChatSetting}/>
       <ScrollView>
         <ChatItem
           userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}

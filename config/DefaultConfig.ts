@@ -24,6 +24,7 @@ export interface AppConstants {
     searchPlacerHolder: string,
     messagePlacerHolder: string,
     chatTitle: string,
+    appLogo: string,
 }
 
 export interface ApplicationConfig {
@@ -40,6 +41,7 @@ export const defaultConfig: ApplicationConfig = {
       },
       searchPlacerHolder: "Search Chats",
       messagePlacerHolder: "Type Text here for message...",
-      chatTitle: "Chats"
+      chatTitle: "Chats",
+      appLogo: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png"
     }
 }
