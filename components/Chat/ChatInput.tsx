@@ -27,9 +27,15 @@ const ChatInput: React.FunctionComponent<Props> = ({
   return (
     <KeyboardAvoidingView {...keyboardAvoidingViewProps} enabled>
         <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
+          { addItem ?
+            <TouchableOpacity onPress={() => {setItem(false)}}>
+                <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={[style.addButton, {transform: [{ rotate: '45deg' }]}]}/>
+            </TouchableOpacity> 
+            :
             <TouchableOpacity onPress={() => {setItem(true)}}>
                 <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={style.addButton}/>
-            </TouchableOpacity>  
+            </TouchableOpacity> 
+          } 
             <View style={style.textContainer}>
                 <TextInput
                     placeholder={placeHolder}
@@ -38,7 +44,7 @@ const ChatInput: React.FunctionComponent<Props> = ({
                 />
             </View>
             <View style={style.iconContainer}>
-                <TouchableOpacity onPress={() => {setItem(false)}}>
+                <TouchableOpacity>
                     <Icon name="md-send" size={35} color={theme.lightTextColor} />
                 </TouchableOpacity>  
             </View>
