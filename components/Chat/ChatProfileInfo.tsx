@@ -26,6 +26,7 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
 }: Props) => {
     const theme: AppTheme = useTheme();
     const [saveItem, setSaveItem] = useState<boolean>(false);
+    const [image, onBrowseImage] = React.useState(userImageSource);
     const [name, onChangeName] = React.useState(userName);
     const [bio, onChangeBio] = React.useState(status);
 
@@ -56,11 +57,16 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
             }
         </View>
         <View style={style.contentContainer}>
-            <ChatUserImage
-                source={userImageSource}
+            { !saveItem ?
+                <ChatUserImage
+                source={image}
                 containerStyle={style.userImageContainer}
                 imageStyle={{width: 100, height: 100, borderRadius: 50}}
-            />
+                />
+            :   <TouchableOpacity onPress={() => {onBrowseImage(image);}}>
+                    <EntypoIcon name="upload" size={40} color={theme.textColor} />
+                </TouchableOpacity>
+            }
         </View>
         <View style={style.contentContainer}>
             { !saveItem ?
