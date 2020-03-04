@@ -1,0 +1,16 @@
+{
+  "docs": {
+    "Getting Started": [
+      "doc1",
+      "doc3"
+    ],
+    "Configure your App": [
+      "doc2",
+      "doc4",
+      "doc5"
+    ],
+    "Advanced Guides": [
+      ""
+    ]
+  }
+}
