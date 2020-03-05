@@ -16,11 +16,13 @@ const Input: React.FunctionComponent<Props> = ({
     return (
         <View>
             <View style={[style.containerNew, {borderColor: theme.lightBottomColor}]}>
-                <TextInput
-                    placeholder={placeholder}
-                    placeholderTextColor={theme.lightTextColor}
-                    style={{ color: theme.textColor }}
-                />         
+                <View style={style.textContainer}>
+                    <TextInput
+                        placeholder={placeholder}
+                        placeholderTextColor={theme.lightTextColor}
+                        style={{ color: theme.textColor }}
+                    />     
+                </View>    
             </View>   
         </View>
     );
@@ -30,6 +32,7 @@ export default Input;
 
 interface Style {
     containerNew: ViewStyle;
+    textContainer: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -38,9 +41,14 @@ const style: Style = StyleSheet.create<Style>({
         justifyContent: "space-between",
         alignItems: 'center',
         padding: 10,
-        paddingTop: isIOS() ? 20 : 10,
-        paddingBottom: isIOS() ? 10 : 0,
+        paddingTop: isIOS() ? 10 : 0,
+        paddingBottom: isIOS() ? 0 : 0,
         marginTop: 10,
         borderBottomWidth: 2,
+    },
+    textContainer: {
+        flex: 9,
+        paddingTop: isIOS() ? 10 : 0,
+        paddingBottom: isIOS() ? 10 : 0,
     },
 })
