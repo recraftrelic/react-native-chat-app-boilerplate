@@ -17,6 +17,8 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
           name="Recraft Chat App"
           username="Username"
           password="Password"
+          login="Login"
+          createAccount="If you don't have account "
           onButtonPress={goToChatList}
         />
         </>
