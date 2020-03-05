@@ -5,13 +5,11 @@ import useTheme from "../../hooks/useTheme";
 import { isIOS } from "../../utils";
 
 interface Props {
-    firstPlaceholder: string;
-    secondPlaceholder: string;
+    placeholder: string;
 };
 
-const PlaceholderField: React.FunctionComponent<Props> = ({
-    firstPlaceholder,
-    secondPlaceholder
+const Input: React.FunctionComponent<Props> = ({
+    placeholder
 }: Props) => {
     const theme: AppTheme = useTheme();
 
@@ -19,24 +17,16 @@ const PlaceholderField: React.FunctionComponent<Props> = ({
         <View>
             <View style={[style.containerNew, {borderColor: theme.lightBottomColor}]}>
                 <TextInput
-                    placeholder={firstPlaceholder}
+                    placeholder={placeholder}
                     placeholderTextColor={theme.lightTextColor}
                     style={{ color: theme.textColor }}
                 />         
-            </View>
-            <View style={[style.containerNew, {borderColor: theme.lightBottomColor}]}>
-                <TextInput
-                    placeholder={secondPlaceholder}
-                    placeholderTextColor={theme.lightTextColor}
-                    style={{ color: theme.textColor }}
-                />         
-            </View>
-           
+            </View>   
         </View>
     );
 };
 
-export default PlaceholderField;
+export default Input;
 
 interface Style {
     container: ViewStyle;
@@ -55,7 +45,9 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: 'center',
-        padding: isIOS ? 10 : 0,
+        padding: 10,
+        paddingTop: isIOS() ? 20 : 10,
+        paddingBottom: isIOS() ? 10 : 0,
         marginTop: 10,
         borderBottomWidth: 2,
     },

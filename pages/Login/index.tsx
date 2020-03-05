@@ -5,8 +5,7 @@ import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
-import PlaceholderField from '../../components/Chat/PlaceholderField';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Input from '../../components/Chat/Input';
 
 const Login: React.FunctionComponent<RouteComponentProps> = ({
     history
@@ -30,19 +29,20 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
             <View style={[style.contentContainer ,{paddingTop: 10, paddingBottom: 30}]}>
                 <ThemedText styleKey="textColor" style={style.nameStyle}>{constants.appName}</ThemedText>
             </View>
-            <PlaceholderField
-                firstPlaceholder={constants.usernamePlacerHolder}
-                secondPlaceholder={constants.passwordPlacerHolder}
+            <Input
+                placeholder={constants.usernamePlacerHolder}
+            />
+            <Input
+                placeholder={constants.passwordPlacerHolder}
             />
              <View style={[style.container,{paddingTop: 50}]}>
                 <TouchableOpacity onPress={goToChatList} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                    <ThemedText styleKey="textColor">Login</ThemedText>
-                    <MaterialIcon name="login" size={20} color={theme.textColor} style={{paddingTop: 3}}/>  
+                    <ThemedText styleKey="textColor">Login</ThemedText> 
                 </TouchableOpacity> 
             </View>
         </View>
         <View style={style.topContainer}>
-            <ThemedText styleKey="lightTextColor">If you don't have an account</ThemedText>
+            <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
             <TouchableOpacity>
                 <ThemedText styleKey="lightTextColor" style={{color:'#ed5d45'}}>Signup</ThemedText>
             </TouchableOpacity>
