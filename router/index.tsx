@@ -27,7 +27,7 @@ const Router: React.FunctionComponent<Props> = ({
           <BackHandlerHOC>
             <Switch>
               <Route exact path="/" component={Login} />
-              <Route exact path="/login" component={ChatList} />
+              <Route exact path="/chatlist" component={ChatList} />
               <Route exact path="/chat/" component={ChatDetails} />
               <Route exact path="/profile" component={ChatProfileDetail} />
               <Route exact path="/settings" component={ChatSetting} />

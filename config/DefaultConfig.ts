@@ -23,7 +23,10 @@ export interface AppConstants {
     dateFormats?: AppDateFormats,
     searchPlacerHolder: string,
     messagePlacerHolder: string,
+    usernamePlacerHolder: string,
+    passwordPlacerHolder: string,
     chatTitle: string,
+    appName: string,
     appLogo: string,
 }
 
@@ -41,7 +44,10 @@ export const defaultConfig: ApplicationConfig = {
       },
       searchPlacerHolder: "Search Chats",
       messagePlacerHolder: "Type Text here for message...",
+      usernamePlacerHolder: "Username",
+      passwordPlacerHolder: "Password",
       chatTitle: "Chats",
+      appName: "Recraft Chat App",
       appLogo: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png"
     }
 }

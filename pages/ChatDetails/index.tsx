@@ -12,7 +12,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
 }: RouteComponentProps) => {
       
     const goToChatList = () => {
-        history.push('/login')
+        history.push('/chatlist')
     }   
     const goToProfileDetail = () => {
       history.push('/profile')
