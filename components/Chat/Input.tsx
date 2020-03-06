@@ -1,30 +1,38 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle, TextInput } from 'react-native';
+import { StyleSheet, View, ViewStyle, TextInput, KeyboardAvoidingView, KeyboardAvoidingViewProps } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
-import { isIOS } from "../../utils";
+import { isIOS } from '../../utils';
 
 interface Props {
     placeholder: string;
+    value?: string;
+    onChange?: any;
+    secureCheck?: any;
 };
 
 const Input: React.FunctionComponent<Props> = ({
-    placeholder
+    placeholder,
+    value,
+    onChange,
+    secureCheck
 }: Props) => {
     const theme: AppTheme = useTheme();
 
     return (
-        <View>
+        
             <View style={[style.containerNew, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.textContainer}>
                     <TextInput
                         placeholder={placeholder}
                         placeholderTextColor={theme.lightTextColor}
                         style={{ color: theme.textColor }}
+                        value={value}
+                        onChangeText={onChange}
+                        secureTextEntry={secureCheck}
                     />     
                 </View>    
             </View>   
-        </View>
     );
 };
 
