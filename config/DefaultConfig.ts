@@ -26,6 +26,8 @@ export interface AppConstants {
     usernamePlacerHolder: string,
     passwordPlacerHolder: string,
     signupCheck: string;
+    loginButton: string;
+    signupButton: string;
     chatTitle: string,
     appName: string,
     appLogo: string,
@@ -47,6 +49,8 @@ export const defaultConfig: ApplicationConfig = {
       messagePlacerHolder: "Type Text here for message...",
       usernamePlacerHolder: "Username",
       passwordPlacerHolder: "Password",
+      loginButton: "Login",
+      signupButton: "signup",
       signupCheck: "If you don't have an account",
       chatTitle: "Chats",
       appName: "Recraft Chat App",

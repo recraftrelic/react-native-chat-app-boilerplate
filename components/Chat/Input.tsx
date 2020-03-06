@@ -1,26 +1,29 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle, TextInput, KeyboardAvoidingView, KeyboardAvoidingViewProps } from 'react-native';
+import { StyleSheet, View, ViewStyle, TextInput } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import { isIOS } from '../../utils';
+import ErrorText from './ErrorText';
 
 interface Props {
     placeholder: string;
     value?: string;
     onChange?: any;
     secureCheck?: any;
+    validation?: any;
 };
 
 const Input: React.FunctionComponent<Props> = ({
     placeholder,
     value,
     onChange,
-    secureCheck
+    secureCheck,
+    validation
 }: Props) => {
     const theme: AppTheme = useTheme();
 
     return (
-        
+        <>
             <View style={[style.containerNew, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.textContainer}>
                     <TextInput
@@ -30,9 +33,13 @@ const Input: React.FunctionComponent<Props> = ({
                         value={value}
                         onChangeText={onChange}
                         secureTextEntry={secureCheck}
-                    />     
+                    />   
                 </View>    
-            </View>   
+            </View>  
+            <ErrorText
+                error={validation}
+            /> 
+        </>
     );
 };
 

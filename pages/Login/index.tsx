@@ -9,7 +9,17 @@ import Input from '../../components/Chat/Input';
 import microValidator from 'micro-validator' ;
 import { isIOS } from '../../utils';
 
-const validate = (data: any) => {
+interface LoginField {
+    username?: string;
+    password?: string;
+}
+
+interface LoginError {
+    username?: string[];
+    password?: string[];
+}
+
+const validate = (data: LoginField): LoginError => {
     const errors = microValidator.validate({
         username: {
             required: {
@@ -22,8 +32,8 @@ const validate = (data: any) => {
             },
             length: {
                 min: 6,
-                max: 16,
-                errorMsg: 'Password length between 8 and 16'
+                max: 12,
+                errorMsg: 'Password length between 6 and 12'
             }
         },
     }, data)
@@ -41,25 +51,27 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
-    const [username,onChangeUsername] = useState("")
-    const [password,onChangePassword] = useState("")
-    const [validError,setValidError] = useState("")
-
-    const errors = validate({username: username,password: password})
+    const [username,onChangeUsername] = useState<string>("")
+    const [password,onChangePassword] = useState<string>("")
+    const [errors,setErrors] = useState<LoginError>({})
       
     const goToChatList = () => {
+        const errors: LoginError = validate({username: username,password: password})
+
         if(!Object.keys(errors).length)
         {
             history.push('/chatlist')
         }
         else {
-            setValidError(errors)
+            setErrors(errors)
         }
     }
 
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const keyboardVerticalOffset = isIOS ? 40 : 0;
+
+    console.log(errors, 'validError')
 
     return (
         <>
@@ -78,26 +90,20 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                 placeholder={constants.usernamePlacerHolder}
                 onChange={onChangeUsername}
                 value={username}
+                validation={errors.username}
             />
-            {
-                Object.keys(validError).length ? 
-                    <ThemedText styleKey="textColor" style={{padding: 10, color: 'red'}}>Username is required</ThemedText>
-                : null
-            }
+            
             <Input
                 placeholder={constants.passwordPlacerHolder}
                 onChange={onChangePassword}
                 value={password}
                 secureCheck={true}
+                validation={errors.password}
             />
-            {
-                Object.keys(validError).length ? 
-                    <ThemedText styleKey="textColor" style={{padding: 10, color: 'red'}}>Password is required</ThemedText>
-                : null
-            }
+            
              <View style={[style.container,{paddingTop: 50}]}>
                 <TouchableOpacity onPress={goToChatList} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                    <ThemedText styleKey="textColor">Login</ThemedText> 
+                    <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText> 
                 </TouchableOpacity> 
             </View>
             </KeyboardAvoidingView>
@@ -105,7 +111,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
         <View style={style.topContainer}>
             <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
             <TouchableOpacity>
-                <ThemedText styleKey="lightTextColor" style={{color:'#ed5d45'}}>Signup</ThemedText>
+                <ThemedText styleKey="lightTextColor" style={{color:'#ed5d45'}}>{constants.signupButton}</ThemedText>
             </TouchableOpacity>
         </View>
         </>
