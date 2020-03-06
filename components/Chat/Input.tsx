@@ -1,26 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle, TextInput } from 'react-native';
+import { StyleSheet, View, ViewStyle, TextInput, TextInputProps } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import { isIOS } from '../../utils';
 import ErrorText from './ErrorText';
 
-interface Props {
+const extraSpace = isIOS() ? 10 : 0;
+
+interface Props extends TextInputProps {
+    children: React.ReactChild;
     placeholder: string;
-    value?: string;
-    onChange?: any;
-    secureCheck?: any;
-    validation?: any;
+    errors: any;
 };
 
-const Input: React.FunctionComponent<Props> = ({
-    placeholder,
-    value,
-    onChange,
-    secureCheck,
-    validation
-}: Props) => {
+const Input: React.FunctionComponent<Props> = (props: Props) => {
     const theme: AppTheme = useTheme();
+    const { children, placeholder, errors, ...restProps } = props;
 
     return (
         <>
@@ -30,14 +25,12 @@ const Input: React.FunctionComponent<Props> = ({
                         placeholder={placeholder}
                         placeholderTextColor={theme.lightTextColor}
                         style={{ color: theme.textColor }}
-                        value={value}
-                        onChangeText={onChange}
-                        secureTextEntry={secureCheck}
+                        {...restProps}
                     />   
                 </View>    
             </View>  
             <ErrorText
-                error={validation}
+                error={errors}
             /> 
         </>
     );
@@ -56,14 +49,14 @@ const style: Style = StyleSheet.create<Style>({
         justifyContent: "space-between",
         alignItems: 'center',
         padding: 10,
-        paddingTop: isIOS() ? 10 : 0,
-        paddingBottom: isIOS() ? 0 : 0,
+        paddingTop: extraSpace,
+        paddingBottom: 0,
         marginTop: 10,
         borderBottomWidth: 2,
     },
     textContainer: {
         flex: 9,
-        paddingTop: isIOS() ? 10 : 0,
-        paddingBottom: isIOS() ? 10 : 0,
+        paddingTop: extraSpace,
+        paddingBottom: isIOS() ? 15 : 0,
     },
 })

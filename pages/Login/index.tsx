@@ -71,8 +71,6 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     const theme: AppTheme = useTheme();
     const keyboardVerticalOffset = isIOS ? 40 : 0;
 
-    console.log(errors, 'validError')
-
     return (
         <>
         <View style={style.mainContainer}>
@@ -90,17 +88,15 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                 placeholder={constants.usernamePlacerHolder}
                 onChange={onChangeUsername}
                 value={username}
-                validation={errors.username}
+                errors={errors.username}
             />
-            
             <Input
                 placeholder={constants.passwordPlacerHolder}
                 onChange={onChangePassword}
                 value={password}
                 secureCheck={true}
-                validation={errors.password}
+                errors={errors.password}
             />
-            
              <View style={[style.container,{paddingTop: 50}]}>
                 <TouchableOpacity onPress={goToChatList} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
                     <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText> 
@@ -111,7 +107,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
         <View style={style.topContainer}>
             <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
             <TouchableOpacity>
-                <ThemedText styleKey="lightTextColor" style={{color:'#ed5d45'}}>{constants.signupButton}</ThemedText>
+                <ThemedText styleKey="lightTextColor" style={{color: theme.appColor}}>{constants.signupButton}</ThemedText>
             </TouchableOpacity>
         </View>
         </>
