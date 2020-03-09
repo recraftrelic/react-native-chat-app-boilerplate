@@ -10,7 +10,9 @@ import microValidator from 'micro-validator' ;
 import { isIOS } from '../../utils';
 
 interface LoginField {
+    name?: string;
     username?: string;
+    email?: string;
     password?: string;
 }
 
@@ -20,9 +22,22 @@ export interface ValidationError {
 
 const validate = (data: LoginField): ValidationError => {
     const errors = microValidator.validate({
+        name: {
+            required: {
+                errorMsg: `Full Name is required`
+            }
+        },
         username: {
             required: {
                 errorMsg: `Username is required`
+            }
+        },
+        email: {
+            required: {
+                errorMsg: `Email is required`
+            },
+            email: {
+                errorMsg: 'Please enter a valid email'
             }
         },
         password: {
@@ -46,24 +61,22 @@ if (isIOS()) {
     keyboardAvoidingViewProps.behavior = "position"
 }
 
-const Login: React.FunctionComponent<RouteComponentProps> = ({
+const Signup: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
+    const [name,onChangeName] = useState<string>("")
     const [username,onChangeUsername] = useState<string>("")
+    const [email,onChangeEmail] = useState<string>("")
     const [password,onChangePassword] = useState<string>("")
     const [errors,setErrors] = useState<ValidationError>({})
-
-    const goToSignup = () => {
-        history.push('/signup')
-    }
       
-    const goToChatList = () => {
-        const errors: ValidationError = validate({username: username,password: password})
+    const goToLogin = () => {
+        const errors: ValidationError = validate({name: name,username: username,email: email,password: password})
 
         if(!Object.keys(errors).length)
         {
-            history.push('/chatlist')
+            history.goBack()
         }
         else {
             setErrors(errors)
@@ -88,10 +101,22 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                         <ThemedText styleKey="textColor" style={style.nameStyle}>{constants.appName}</ThemedText>
                     </View>
                     <Input
+                        placeholder={constants.namePlaceholder}
+                        onChangeText={onChangeName}
+                        value={name}
+                        errors={errors.name}
+                    />
+                    <Input
                         placeholder={constants.usernamePlacerHolder}
                         onChangeText={onChangeUsername}
                         value={username}
                         errors={errors.username}
+                    />
+                    <Input
+                        placeholder={constants.emailPlacerHolder}
+                        onChangeText={onChangeEmail}
+                        value={email}
+                        errors={errors.email}
                     />
                     <Input
                         placeholder={constants.passwordPlacerHolder}
@@ -101,23 +126,17 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                         errors={errors.password}
                     />
                     <View style={[style.container,{paddingTop: 50}]}>
-                        <TouchableOpacity onPress={goToChatList} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                            <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText> 
+                        <TouchableOpacity onPress={goToLogin} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
+                            <ThemedText styleKey="textColor">{constants.signupButton}</ThemedText> 
                         </TouchableOpacity> 
                     </View>
                 </KeyboardAvoidingView>
-            </View>
-            <View style={style.topContainer}>
-                <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
-                <TouchableOpacity onPress={goToSignup}>
-                    <ThemedText styleKey="lightTextColor" style={{color: theme.appColor}}>{constants.signupButton}</ThemedText>
-                </TouchableOpacity>
             </View>
         </>
     );
 }
 
-export default Login;
+export default Signup;
 
 interface Style {
     mainContainer: ViewStyle;

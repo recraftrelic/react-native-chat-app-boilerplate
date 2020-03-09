@@ -25,7 +25,9 @@ export interface AppConstants {
     dateFormats?: AppDateFormats,
     searchPlacerHolder: string,
     messagePlacerHolder: string,
+    namePlaceholder: string,
     usernamePlacerHolder: string,
+    emailPlacerHolder: string,
     passwordPlacerHolder: string,
     signupCheck: string;
     loginButton: string;
@@ -49,7 +51,9 @@ export const defaultConfig: ApplicationConfig = {
       },
       searchPlacerHolder: "Search Chats",
       messagePlacerHolder: "Type Text here for message...",
+      namePlaceholder: "Full Name",
       usernamePlacerHolder: "Username",
+      emailPlacerHolder: "Email",
       passwordPlacerHolder: "Password",
       loginButton: "Login",
       signupButton: "signup",
