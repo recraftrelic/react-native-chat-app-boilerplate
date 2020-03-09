@@ -1,6 +1,6 @@
 //todo need to refactor
 import React, { useState } from 'react';
-import { GestureResponderEvent, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle, TextInput } from 'react-native';
+import { GestureResponderEvent, Image, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle, TextInput } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,6 +8,7 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 import ChatUserImage from './ChatUserImage';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../UI/ThemedText';
+import ImagePicker from 'react-native-image-picker';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -29,6 +30,34 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
     const [image, onBrowseImage] = React.useState(userImageSource);
     const [name, onChangeName] = React.useState(userName);
     const [bio, onChangeBio] = React.useState(status);
+    const [avatarSource, setAvatarSource] = React.useState(null);
+
+    const selectPhotoTapped = (): void => {
+        const options = {
+          quality: 1.0,
+          maxWidth: 500,
+          maxHeight: 500,
+          storageOptions: {
+            skipBackup: true,
+        },
+    };
+
+    ImagePicker.showImagePicker(options, response => {
+        console.log('Response = ', response);
+  
+        if (response.didCancel) {
+          console.log('User cancelled photo picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          let source = {uri: response.uri};
+  
+          setAvatarSource(source);
+        }
+      });
+    }
 
     return (
         <View>
@@ -58,14 +87,15 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
         </View>
         <View style={style.contentContainer}>
             { !saveItem ?
-                <ChatUserImage
-                source={image}
-                containerStyle={style.userImageContainer}
-                imageStyle={{width: 100, height: 100, borderRadius: 50}}
-                />
-            :   <TouchableOpacity onPress={() => {onBrowseImage(image);}}>
+                
+                    <ChatUserImage
+                    source={image}
+                    containerStyle={style.userImageContainer}
+                    imageStyle={{width: 100, height: 100, borderRadius: 50}}
+                    />
+            :   <TouchableOpacity onPress={() => {selectPhotoTapped();}}>
                     <EntypoIcon name="upload" size={40} color={theme.textColor} />
-                </TouchableOpacity>
+                </TouchableOpacity> 
             }
         </View>
         <View style={style.contentContainer}>
