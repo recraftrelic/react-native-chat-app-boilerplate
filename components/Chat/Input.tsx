@@ -8,21 +8,18 @@ import ErrorText from './ErrorText';
 const extraSpace = isIOS() ? 10 : 0;
 
 interface Props extends TextInputProps {
-    children: React.ReactChild;
-    placeholder: string;
     errors: any;
 };
 
 const Input: React.FunctionComponent<Props> = (props: Props) => {
     const theme: AppTheme = useTheme();
-    const { children, placeholder, errors, ...restProps } = props;
+    const { errors, ...restProps } = props;
 
     return (
         <>
             <View style={[style.containerNew, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.textContainer}>
                     <TextInput
-                        placeholder={placeholder}
                         placeholderTextColor={theme.lightTextColor}
                         style={{ color: theme.textColor }}
                         {...restProps}
@@ -48,15 +45,13 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: 'center',
-        padding: 10,
-        paddingTop: extraSpace,
-        paddingBottom: 0,
+        padding: 0,
         marginTop: 10,
         borderBottomWidth: 2,
     },
     textContainer: {
         flex: 9,
         paddingTop: extraSpace,
-        paddingBottom: isIOS() ? 15 : 0,
+        paddingBottom: extraSpace,
     },
 })

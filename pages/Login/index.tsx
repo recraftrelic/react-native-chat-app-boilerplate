@@ -86,15 +86,15 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
             </View>
             <Input
                 placeholder={constants.usernamePlacerHolder}
-                onChange={onChangeUsername}
+                onChangeText={onChangeUsername}
                 value={username}
                 errors={errors.username}
             />
             <Input
                 placeholder={constants.passwordPlacerHolder}
-                onChange={onChangePassword}
+                onChangeText={onChangePassword}
                 value={password}
-                secureCheck={true}
+                secureTextEntry={true}
                 errors={errors.password}
             />
              <View style={[style.container,{paddingTop: 50}]}>

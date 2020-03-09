@@ -35,6 +35,6 @@ interface Style {
 
 const style: Style = StyleSheet.create<Style>({
     textContainer: {
-        padding: 10, 
+        paddingTop: 10, 
     },
 })
