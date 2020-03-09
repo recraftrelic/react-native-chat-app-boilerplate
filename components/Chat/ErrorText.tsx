@@ -2,14 +2,8 @@ import React from 'react';
 import { StyleSheet, View, TextStyle } from 'react-native';
 import ThemedText from '../UI/ThemedText';
 
-interface LoginError {
-    length?: LoginError;
-    username?: string[];
-    password?: string[];
-}
-
 interface Props {
-    error: LoginError;
+    error: string[];
 };
 
 const ErrorText: React.FunctionComponent<Props> = ({

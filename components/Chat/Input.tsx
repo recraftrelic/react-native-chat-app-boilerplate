@@ -8,7 +8,7 @@ import ErrorText from './ErrorText';
 const extraSpace = isIOS() ? 10 : 0;
 
 interface Props extends TextInputProps {
-    errors: any;
+    errors: string[];
 };
 
 const Input: React.FunctionComponent<Props> = (props: Props) => {

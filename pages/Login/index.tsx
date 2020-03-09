@@ -14,12 +14,11 @@ interface LoginField {
     password?: string;
 }
 
-interface LoginError {
-    username?: string[];
-    password?: string[];
+export interface ValidationError {
+    [key: string]: string[];
 }
 
-const validate = (data: LoginField): LoginError => {
+const validate = (data: LoginField): ValidationError => {
     const errors = microValidator.validate({
         username: {
             required: {
@@ -53,10 +52,10 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 
     const [username,onChangeUsername] = useState<string>("")
     const [password,onChangePassword] = useState<string>("")
-    const [errors,setErrors] = useState<LoginError>({})
+    const [errors,setErrors] = useState<ValidationError>({})
       
     const goToChatList = () => {
-        const errors: LoginError = validate({username: username,password: password})
+        const errors: ValidationError = validate({username: username,password: password})
 
         if(!Object.keys(errors).length)
         {
