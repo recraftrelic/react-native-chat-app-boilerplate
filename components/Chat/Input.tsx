@@ -27,7 +27,7 @@ const Input: React.FunctionComponent<Props> = (props: Props) => {
                 </View>    
             </View>  
             <ErrorText
-                error={errors}
+                errors={errors}
             /> 
         </>
     );

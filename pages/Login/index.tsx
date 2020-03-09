@@ -72,43 +72,43 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 
     return (
         <>
-        <View style={style.mainContainer}>
-        <KeyboardAvoidingView {...keyboardAvoidingViewProps} keyboardVerticalOffset={keyboardVerticalOffset} enabled>
-            <View style={style.container}>
-                <Image
-                    source={{ uri: constants.appLogo }}
-                    style={{width: 100, height: 100, borderRadius: 50}}
-                />
+            <View style={style.mainContainer}>
+                <KeyboardAvoidingView {...keyboardAvoidingViewProps} keyboardVerticalOffset={keyboardVerticalOffset} enabled>
+                    <View style={style.container}>
+                        <Image
+                            source={{ uri: constants.appLogo }}
+                            style={{width: 100, height: 100, borderRadius: 50}}
+                        />
+                    </View>
+                    <View style={[style.contentContainer ,{paddingTop: 10, paddingBottom: 30}]}>
+                        <ThemedText styleKey="textColor" style={style.nameStyle}>{constants.appName}</ThemedText>
+                    </View>
+                    <Input
+                        placeholder={constants.usernamePlacerHolder}
+                        onChangeText={onChangeUsername}
+                        value={username}
+                        errors={errors.username}
+                    />
+                    <Input
+                        placeholder={constants.passwordPlacerHolder}
+                        onChangeText={onChangePassword}
+                        value={password}
+                        secureTextEntry={true}
+                        errors={errors.password}
+                    />
+                    <View style={[style.container,{paddingTop: 50}]}>
+                        <TouchableOpacity onPress={goToChatList} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
+                            <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText> 
+                        </TouchableOpacity> 
+                    </View>
+                </KeyboardAvoidingView>
             </View>
-            <View style={[style.contentContainer ,{paddingTop: 10, paddingBottom: 30}]}>
-                <ThemedText styleKey="textColor" style={style.nameStyle}>{constants.appName}</ThemedText>
+            <View style={style.topContainer}>
+                <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
+                <TouchableOpacity>
+                    <ThemedText styleKey="lightTextColor" style={{color: theme.appColor}}>{constants.signupButton}</ThemedText>
+                </TouchableOpacity>
             </View>
-            <Input
-                placeholder={constants.usernamePlacerHolder}
-                onChangeText={onChangeUsername}
-                value={username}
-                errors={errors.username}
-            />
-            <Input
-                placeholder={constants.passwordPlacerHolder}
-                onChangeText={onChangePassword}
-                value={password}
-                secureTextEntry={true}
-                errors={errors.password}
-            />
-             <View style={[style.container,{paddingTop: 50}]}>
-                <TouchableOpacity onPress={goToChatList} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                    <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText> 
-                </TouchableOpacity> 
-            </View>
-            </KeyboardAvoidingView>
-        </View>
-        <View style={style.topContainer}>
-            <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
-            <TouchableOpacity>
-                <ThemedText styleKey="lightTextColor" style={{color: theme.appColor}}>{constants.signupButton}</ThemedText>
-            </TouchableOpacity>
-        </View>
         </>
     );
 }

@@ -3,18 +3,18 @@ import { StyleSheet, View, TextStyle } from 'react-native';
 import ThemedText from '../UI/ThemedText';
 
 interface Props {
-    error: string[];
+    errors: string[];
 };
 
 const ErrorText: React.FunctionComponent<Props> = ({
-    error,
+    errors,
 }: Props) => {
 
     return (
         <View>
             {
-                error && error.length ? 
-                    <ThemedText styleKey="errorColor" style={style.textContainer}>{error[0]}</ThemedText>
+                errors && errors.length ? 
+                    <ThemedText styleKey="errorColor" style={style.textContainer}>{errors[0]}</ThemedText>
                 : null
             } 
         </View>    
