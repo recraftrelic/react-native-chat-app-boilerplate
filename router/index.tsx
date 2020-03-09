@@ -3,6 +3,7 @@ import { ViewStyle, StyleSheet } from 'react-native';
 import { NativeRouter, Route, Switch } from "react-router-native";
 import { connect } from "react-redux";
 import BackHandlerHOC from '../components/HOC/BackHandlerHOC';
+import Login from '../pages/Login';
 import ChatList from '../pages/ChatList';
 import ChatDetails from '../pages/ChatDetails';
 import ChatProfileDetail from '../pages/ChatProfileDetail';
@@ -18,14 +19,15 @@ interface Props {
 const Router: React.FunctionComponent<Props> = ({
   configReducer
 }: Props) => {
-  console.log(configReducer.theme)
+  console.log(configReducer)
   return (
     <ConfigContext.Provider value={configReducer}>
       <ThemedView style={style.container}>
         <NativeRouter>
           <BackHandlerHOC>
             <Switch>
-              <Route exact path="/" component={ChatList} />
+              <Route exact path="/" component={Login} />
+              <Route exact path="/chatlist" component={ChatList} />
               <Route exact path="/chat/" component={ChatDetails} />
               <Route exact path="/profile" component={ChatProfileDetail} />
               <Route exact path="/settings" component={ChatSetting} />

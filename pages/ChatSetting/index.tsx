@@ -25,6 +25,9 @@ const ChatSetting: React.FunctionComponent<Props> = ({
     const goBack = () => {
         history.goBack()
     } 
+    const goToLogin = () => {
+        history.push('/')
+    }
     const updateTheme = (theme: ThemeKey) => {
         dispatch(setThemeAction(theme))
     }
@@ -39,7 +42,7 @@ const ChatSetting: React.FunctionComponent<Props> = ({
           editInfo={true}
         />
         <ThemeToggle updateTheme={updateTheme} />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={goToLogin}>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.leftContainer}>
                     <ThemedText styleKey="textColor">Logout</ThemedText>

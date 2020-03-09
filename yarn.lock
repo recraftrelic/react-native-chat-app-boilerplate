@@ -2615,6 +2615,11 @@ is-wsl@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
 
+is_js@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/is_js/-/is_js-0.9.0.tgz#0ab94540502ba7afa24c856aa985561669e9c52d"
+  integrity sha1-CrlFQFArp6+iTIVqqYVWFmnpxS0=
+
 isarray@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
@@ -3546,6 +3551,13 @@ metro@0.54.1, metro@^0.54.1:
     ws "^1.1.5"
     xpipe "^1.0.5"
     yargs "^9.0.0"
+
+micro-validator@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/micro-validator/-/micro-validator-0.0.5.tgz#520c85ebffbd2c955e10a3a84ab3ad8de308bc71"
+  integrity sha512-5lCuTW81XCnlQK3HmpvpO5AyOhAw99xJ0xDFrJxXXnA/W3n5Vkli+qZvwlSY36pgNyhrIqGE0PozQqY8+4J6LA==
+  dependencies:
+    is_js "^0.9.0"
 
 micromatch@^3.1.10, micromatch@^3.1.4:
   version "3.1.10"
