@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-native';
+import { RouteComponentProps, RouteProps } from 'react-router-native';
 import { View, StyleSheet, Image, ViewStyle, TextStyle, TouchableOpacity, KeyboardAvoidingView, KeyboardAvoidingViewProps} from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
@@ -15,7 +15,7 @@ if (isIOS()) {
 
 interface Props{
     goToLocation: any;
-    children: any;
+    children: React.ReactNode;
 };
 
 const AuthLayout: React.FunctionComponent<Props> = ({
