@@ -4,6 +4,7 @@ import { NativeRouter, Route, Switch } from "react-router-native";
 import { connect } from "react-redux";
 import BackHandlerHOC from '../components/HOC/BackHandlerHOC';
 import Login from '../pages/Login';
+import Signup from '../pages/Signup';
 import ChatList from '../pages/ChatList';
 import ChatDetails from '../pages/ChatDetails';
 import ChatProfileDetail from '../pages/ChatProfileDetail';
@@ -27,6 +28,7 @@ const Router: React.FunctionComponent<Props> = ({
           <BackHandlerHOC>
             <Switch>
               <Route exact path="/" component={Login} />
+              <Route exact path="/signup" component={Signup} />
               <Route exact path="/chatlist" component={ChatList} />
               <Route exact path="/chat/" component={ChatDetails} />
               <Route exact path="/profile" component={ChatProfileDetail} />
