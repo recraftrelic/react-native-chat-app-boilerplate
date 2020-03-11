@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { View, StyleSheet, ViewStyle, TextStyle, TouchableOpacity } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
+import { ValidationError } from '../../config/validation';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
 import Input from '../../components/Chat/Input';
 import microValidator from 'micro-validator' ;
-import { isIOS } from '../../utils';
 import AuthLayout from '../../components/Chat/AuthLayout';
 
 interface LoginField {
     username?: string;
     password?: string;
-}
-
-export interface ValidationError {
-    [key: string]: string[];
 }
 
 const validate = (data: LoginField): ValidationError => {
@@ -67,7 +63,6 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
-    const keyboardVerticalOffset = isIOS ? 40 : 0;
 
     return (
         <>

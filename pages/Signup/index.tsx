@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { AppConstants } from '../../config/DefaultConfig';
+import { ValidationError } from '../../config/validation';
 import useConstants from '../../hooks/useConstants';
 import Input from '../../components/Chat/Input';
 import AuthLayout from '../../components/Chat/AuthLayout';
@@ -11,10 +12,6 @@ interface LoginField {
     username?: string;
     email?: string;
     password?: string;
-}
-
-export interface ValidationError {
-    [key: string]: string[];
 }
 
 const validate = (data: LoginField): ValidationError => {
@@ -67,7 +64,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
 
         if(!Object.keys(errors).length)
         {
-            history.goBack()
+            history.push('/chatlist')
         }
         else {
             setErrors(errors)

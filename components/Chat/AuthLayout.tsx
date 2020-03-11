@@ -1,6 +1,5 @@
 import React from 'react';
-import { RouteComponentProps, RouteProps } from 'react-router-native';
-import { View, StyleSheet, Image, ViewStyle, TextStyle, TouchableOpacity, KeyboardAvoidingView, KeyboardAvoidingViewProps} from 'react-native';
+import { View, StyleSheet, Image, ViewStyle, TextStyle, TouchableOpacity, KeyboardAvoidingView, KeyboardAvoidingViewProps, ImageStyle} from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
@@ -34,10 +33,10 @@ const AuthLayout: React.FunctionComponent<Props> = ({
                     <View style={style.container}>
                         <Image
                             source={{ uri: constants.appLogo }}
-                            style={{width: 100, height: 100, borderRadius: 50}}
+                            style={style.imageStyle}
                         />
                     </View>
-                    <View style={[style.contentContainer ,{paddingTop: 10, paddingBottom: 30}]}>
+                    <View style={style.contentContainer}>
                         <ThemedText styleKey="textColor" style={style.nameStyle}>{constants.appName}</ThemedText>
                     </View>
                     {children}
@@ -61,6 +60,7 @@ interface Style {
     nameStyle: TextStyle;
     topContainer: ViewStyle;
     loginStyle: ViewStyle;
+    imageStyle: ImageStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -81,7 +81,7 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         justifyContent: "center",
         paddingTop: 10,
-        paddingBottom: 10,
+        paddingBottom: 30,
     },
     nameStyle: {
         fontWeight: "bold",
@@ -101,5 +101,10 @@ const style: Style = StyleSheet.create<Style>({
         borderWidth: 2,
         borderRadius: 50,
         padding: 10,
+    },
+    imageStyle: {
+        width: 100, 
+        height: 100, 
+        borderRadius: 50
     }
 })
