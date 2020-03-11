@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
+import { View, ViewStyle, StyleSheet, Switch, TextStyle, StatusBar } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';

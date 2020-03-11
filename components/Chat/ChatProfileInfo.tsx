@@ -27,10 +27,9 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
 }: Props) => {
     const theme: AppTheme = useTheme();
     const [saveItem, setSaveItem] = useState<boolean>(false);
-    const [image, onBrowseImage] = React.useState(userImageSource);
-    const [name, onChangeName] = React.useState(userName);
-    const [bio, onChangeBio] = React.useState(status);
-    const [avatarSource, setAvatarSource] = React.useState(null);
+    const [image, onBrowseImage] = React.useState<ImageSourcePropType>(userImageSource);
+    const [name, onChangeName] = React.useState<string>(userName);
+    const [bio, onChangeBio] = React.useState<string>(status);
 
     const selectPhotoTapped = (): void => {
         const options = {
@@ -54,7 +53,7 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
         } else {
           let source = {uri: response.uri};
   
-          setAvatarSource(source);
+          onBrowseImage(source);
         }
       });
     }
@@ -87,14 +86,17 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
         </View>
         <View style={style.contentContainer}>
             { !saveItem ?
-                
-                    <ChatUserImage
+                <ChatUserImage
                     source={image}
                     containerStyle={style.userImageContainer}
-                    imageStyle={{width: 100, height: 100, borderRadius: 50}}
-                    />
+                    imageStyle={style.imageStyle}
+                />
             :   <TouchableOpacity onPress={() => {selectPhotoTapped();}}>
-                    <EntypoIcon name="upload" size={40} color={theme.textColor} />
+                    <Image
+                        source={image}
+                        style={[style.imageStyle, {opacity: 0.5}]}
+                    />
+                    <EntypoIcon name="camera" size={40} color={theme.textColor} style={style.imageUpload}/>
                 </TouchableOpacity> 
             }
         </View>
@@ -122,6 +124,8 @@ interface Style {
     backButton: ViewStyle;
     editButton: ViewStyle;
     userImageContainer: ImageStyle;
+    imageStyle: ImageStyle;
+    imageUpload: ImageStyle;
     userNameStyle: TextStyle;
     inputStyle: ViewStyle;
 }
@@ -161,5 +165,15 @@ const style: Style = StyleSheet.create<Style>({
     inputStyle: {
         borderWidth: 2, 
         padding: 10, 
+    },
+    imageStyle: {
+        width: 100, 
+        height: 100, 
+        borderRadius: 50
+    },
+    imageUpload: {
+        position: "absolute",
+        top: 30,
+        left: 30,
     }
 })
