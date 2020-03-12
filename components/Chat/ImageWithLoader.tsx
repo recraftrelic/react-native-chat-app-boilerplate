@@ -4,16 +4,14 @@ import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 
 interface Props extends ImageProps {
-  source: ImageSourcePropType;
-  style: ImageStyle;
-  imageStyle: ImageStyle;
+  loaderStyle: ImageStyle;
 }
 
 const ImageWithLoader: React.FunctionComponent<Props> = (props: Props) => {
   const theme: AppTheme = useTheme();
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  const { source, imageStyle, ...restProps } = props;
+  const { source, loaderStyle, ...restProps } = props;
 
   return <>
     {loaded ? null : (
@@ -21,7 +19,7 @@ const ImageWithLoader: React.FunctionComponent<Props> = (props: Props) => {
     )}
     <Image
       source={source}
-      style={imageStyle}
+      style={loaderStyle}
       onLoad={() => setLoaded(true)}
     />
   </>

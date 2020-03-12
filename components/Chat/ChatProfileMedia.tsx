@@ -36,7 +36,7 @@ const ChatProfileMedia: React.FunctionComponent<Props> = ({
             <ImageWithLoader
               source={data.source}
               style={style.image}
-              imageStyle={style.image}
+              loaderStyle={style.image}
               key={index}
             />
           )
