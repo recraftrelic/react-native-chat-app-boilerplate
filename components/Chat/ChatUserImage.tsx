@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import { Modal, ImageStyle, ImageSourcePropType, View, ViewStyle, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import ImageLoader from './ImageLoader';
+import ImageWithLoader from './ImageWithLoader';
 
 interface Props {
   containerStyle?: ViewStyle;
@@ -26,7 +26,7 @@ const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle,
           onRequestClose={() => {alert('Modal');}}>
           <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.modalBackgroundColor}]} activeOpacity={1.0} onPress={() => {setModalVisible(false);}}>
             <View>
-              <ImageLoader
+              <ImageWithLoader
                 source={source}
                 style={style.modalImageStyle}
                 imageStyle={style.modalStyle}
@@ -36,7 +36,7 @@ const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle,
         </Modal> 
         : null }
         <TouchableOpacity onPress={() => {setModalVisible(true);}}>
-          <ImageLoader
+          <ImageWithLoader
             source={source}
             style={style.imageStyle}
             imageStyle={imageStyle}

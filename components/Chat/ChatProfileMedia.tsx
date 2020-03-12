@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, ImageStyle, ViewStyle, ImageSourcePropType } from 'react-native';
-import ImageLoader from './ImageLoader';
+import ImageWithLoader from './ImageWithLoader';
 
 interface Props{
     source: ImageSourcePropType;
@@ -33,12 +33,12 @@ const ChatProfileMedia: React.FunctionComponent<Props> = ({
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {
           gallery.map((data,index) => 
-          <ImageLoader
-          source={source}
-          style={style.image}
-          imageStyle={style.image}
-          key={index}
-        />
+            <ImageWithLoader
+              source={data.source}
+              style={style.image}
+              imageStyle={style.image}
+              key={index}
+            />
           )
         }
       </ScrollView>
