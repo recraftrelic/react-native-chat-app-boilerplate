@@ -3,6 +3,7 @@ import { ViewProps, SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
+import { ThemeKey } from '../../config/themes';
 
 interface Props extends ViewProps {
   children: React.ReactChild
@@ -15,7 +16,7 @@ const ThemedView: React.FunctionComponent<Props> = (props: Props) => {
 
   const { selectedTheme }: AppConstants = useConstants();
 
-  const selectedStatusBar = selectedTheme ? "dark-content" : "light-content"
+  const selectedStatusBar = selectedTheme == ThemeKey.dark ? "light-content" : "dark-content"
 
   const themeColorStyle: StyleProp<ViewStyle> = [{backgroundColor: theme.backgroundColor}];
 
