@@ -15,7 +15,7 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
     return (
         <>
         <ChatProfileInfo
-          userImageSource={{ uri: "https://picsum.photos/200" }}
+          userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}
           userName="Manoj Singh Negi"
           status="All is Well"
           onButtonPress={goToChatList}

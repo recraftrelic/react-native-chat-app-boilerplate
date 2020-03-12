@@ -22,7 +22,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     return (
         <>
         <ChatDetailHeader
-            userImageSource={{ uri: "https://picsum.photos/200" }}
+            userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}
             userName="Amenda"
             status="online"
             onBackPress={goToChatList}
