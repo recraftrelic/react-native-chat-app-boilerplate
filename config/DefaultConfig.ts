@@ -10,6 +10,8 @@ export interface AppTheme {
   alternateMessageBackgroundColor: string,
   modalBackgroundColor: string,
   warningColor: string;
+  errorColor: string;
+  appColor: string;
 }
 
 export interface AppDateFormats {
@@ -23,7 +25,15 @@ export interface AppConstants {
     dateFormats?: AppDateFormats,
     searchPlacerHolder: string,
     messagePlacerHolder: string,
+    namePlaceholder: string,
+    usernamePlacerHolder: string,
+    emailPlacerHolder: string,
+    passwordPlacerHolder: string,
+    signupCheck: string;
+    loginButton: string;
+    signupButton: string;
     chatTitle: string,
+    appName: string,
     appLogo: string,
 }
 
@@ -41,7 +51,15 @@ export const defaultConfig: ApplicationConfig = {
       },
       searchPlacerHolder: "Search Chats",
       messagePlacerHolder: "Type Text here for message...",
+      namePlaceholder: "Full Name",
+      usernamePlacerHolder: "Username",
+      emailPlacerHolder: "Email",
+      passwordPlacerHolder: "Password",
+      loginButton: "Login",
+      signupButton: "signup",
+      signupCheck: "If you don't have an account",
       chatTitle: "Chats",
+      appName: "Recraft Chat App",
       appLogo: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png"
     }
 }
