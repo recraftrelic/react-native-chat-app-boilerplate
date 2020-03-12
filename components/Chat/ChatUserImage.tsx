@@ -28,8 +28,8 @@ const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle,
             <View>
               <ImageWithLoader
                 source={source}
-                style={style.modalImageStyle}
-                loaderStyle={style.modalStyle}
+                style={style.modalStyle}
+                loaderStyle={style.modalImageStyle}
               />
             </View>
           </TouchableOpacity>
@@ -38,8 +38,8 @@ const ChatUserImage: React.FunctionComponent<Props> = ({ source, containerStyle,
         <TouchableOpacity onPress={() => {setModalVisible(true);}}>
           <ImageWithLoader
             source={source}
-            style={style.imageStyle}
-            loaderStyle={imageStyle}
+            style={imageStyle}
+            loaderStyle={style.imageStyle}
           />
         </TouchableOpacity>
       </View>
