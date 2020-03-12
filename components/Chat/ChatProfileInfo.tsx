@@ -1,6 +1,6 @@
 //todo need to refactor
 import React, { useState } from 'react';
-import { GestureResponderEvent, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle, TextInput } from 'react-native';
+import { GestureResponderEvent, Image, ImageStyle, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle, TextInput } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -8,6 +8,7 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 import ChatUserImage from './ChatUserImage';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../UI/ThemedText';
+import ImagePicker from 'react-native-image-picker';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -26,8 +27,36 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
 }: Props) => {
     const theme: AppTheme = useTheme();
     const [saveItem, setSaveItem] = useState<boolean>(false);
-    const [name, onChangeName] = React.useState(userName);
-    const [bio, onChangeBio] = React.useState(status);
+    const [image, onBrowseImage] = React.useState<ImageSourcePropType>(userImageSource);
+    const [name, onChangeName] = React.useState<string>(userName);
+    const [bio, onChangeBio] = React.useState<string>(status);
+
+    const selectPhotoTapped = (): void => {
+        const options = {
+          quality: 1.0,
+          maxWidth: 500,
+          maxHeight: 500,
+          storageOptions: {
+            skipBackup: true,
+        },
+    };
+
+    ImagePicker.showImagePicker(options, response => {
+        console.log('Response = ', response);
+  
+        if (response.didCancel) {
+          console.log('User cancelled photo picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          let source = {uri: response.uri};
+  
+          onBrowseImage(source);
+        }
+      });
+    }
 
     return (
         <View>
@@ -56,11 +85,20 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
             }
         </View>
         <View style={style.contentContainer}>
-            <ChatUserImage
-                source={userImageSource}
-                containerStyle={style.userImageContainer}
-                imageStyle={{width: 100, height: 100, borderRadius: 50}}
-            />
+            { !saveItem ?
+                <ChatUserImage
+                    source={image}
+                    containerStyle={style.userImageContainer}
+                    imageStyle={style.imageStyle}
+                />
+            :   <TouchableOpacity onPress={() => {selectPhotoTapped();}}>
+                    <Image
+                        source={image}
+                        style={[style.imageStyle, {opacity: 0.5}]}
+                    />
+                    <EntypoIcon name="camera" size={40} color={theme.textColor} style={style.imageUpload}/>
+                </TouchableOpacity> 
+            }
         </View>
         <View style={style.contentContainer}>
             { !saveItem ?
@@ -86,6 +124,8 @@ interface Style {
     backButton: ViewStyle;
     editButton: ViewStyle;
     userImageContainer: ImageStyle;
+    imageStyle: ImageStyle;
+    imageUpload: ImageStyle;
     userNameStyle: TextStyle;
     inputStyle: ViewStyle;
 }
@@ -125,5 +165,15 @@ const style: Style = StyleSheet.create<Style>({
     inputStyle: {
         borderWidth: 2, 
         padding: 10, 
+    },
+    imageStyle: {
+        width: 100, 
+        height: 100, 
+        borderRadius: 50
+    },
+    imageUpload: {
+        position: "absolute",
+        top: 30,
+        left: 30,
     }
 })
