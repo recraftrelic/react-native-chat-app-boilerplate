@@ -65,7 +65,8 @@ We can directly run the app
 npx react-native run-android
 ```
 
-### Roadmap
+Roadmap
+=======
 
 * Move all the lists to constants
 * Deploy to playstore
