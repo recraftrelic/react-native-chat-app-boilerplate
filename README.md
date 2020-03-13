@@ -8,19 +8,19 @@ The goal of this boilerplate is to provide a fully functional chat app which can
 IOS Demo
 =======
 <p align="center">
-  <img width="250" src="./ios-1.gif"><img width="250" src="./ios-2.gif"><img width="250" src="./ios-3.gif">
+  <img width="250" src="./previews/ios-1.gif"><img width="250" src="./previews/ios-2.gif"><img width="250" src="./previews/ios-3.gif">
 </p>
 <p align="center">
-  <img width="250" src="./ios-4.gif"><img width="250" src="./ios-5.gif"><img width="250" src="./ios-6.gif">
+  <img width="250" src="./previews/ios-4.gif"><img width="250" src="./previews/ios-5.gif"><img width="250" src="./previews/ios-6.gif">
 </p>
 
 Android Demo
 =======
 <p align="center">
-  <img width="250" src="./android-1.gif"><img width="250" src="./android-2.gif"><img width="250" src="./android-3.gif">
+  <img width="250" src="./previews/android-1.gif"><img width="250" src="./previews/android-2.gif"><img width="250" src="./previews/android-3.gif">
 </p>
 <p align="center">
-  <img width="250" src="./android-4.gif"><img width="250" src="./android-5.gif"><img width="250" src="./android-6.gif">
+  <img width="250" src="./previews/android-4.gif"><img width="250" src="./previews/android-5.gif"><img width="250" src="./previews/android-6.gif">
 </p>
 
 Packages & Libraries used
