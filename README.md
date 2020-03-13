@@ -65,6 +65,13 @@ We can directly run the app
 npx react-native run-android
 ```
 
+### Roadmap
+
+* Move all the lists to constants
+* Deploy to playstore
+* Implement internationalization
+* Improve documentation
+
 Contributors
 =======
 * [manojsinghnegiwd](https://github.com/manojsinghnegiwd) - Manoj Singh Negi
