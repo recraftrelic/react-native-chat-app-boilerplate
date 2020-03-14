@@ -26,12 +26,13 @@ Android Demo
 Packages & Libraries used
 =======
 
-* [React Native](https://www.npmjs.com/package/react-native)
-* [React](https://www.npmjs.com/package/react)
-* [React router native](https://www.npmjs.com/package/react-router-native)
-* [moment](https://www.npmjs.com/package/moment)
-* [TypeScript](https://www.npmjs.com/package/typescript)
-* [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons)
+* [React Native](https://www.npmjs.com/package/react-native) - A framework for building native apps with React.
+* [React](https://www.npmjs.com/package/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces.
+* [React router native](https://www.npmjs.com/package/react-router-native) - Declarative routing for React.
+* [moment](https://www.npmjs.com/package/moment) - Parse, validate, manipulate, and display dates in javascript.
+* [TypeScript](https://www.npmjs.com/package/typescript) - TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
+* [React Vector Icons](https://www.npmjs.com/package/react-native-vector-icons) - Customizable Icons for React Native with support for NavBar/TabBar/ToolbarAndroid, image source and full styling.
+* [Micro Validator](https://www.npmjs.com/package/micro-validator) - A minimalistic & extensible validation library for javascript.
 
 Steps to Run the Project in Development Mode
 =======
