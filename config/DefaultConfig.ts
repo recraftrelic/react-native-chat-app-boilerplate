@@ -56,7 +56,7 @@ export const defaultConfig: ApplicationConfig = {
       emailPlacerHolder: "Email",
       passwordPlacerHolder: "Password",
       loginButton: "Login",
-      signupButton: "signup",
+      signupButton: "Sign up",
       signupCheck: "If you don't have an account",
       chatTitle: "Chats",
       appName: "Recraft Chat App",

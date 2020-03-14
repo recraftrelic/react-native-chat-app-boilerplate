@@ -66,7 +66,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 
     return (
         <>
-            <AuthLayout goToLocation={goToChatList}>
+            <AuthLayout buttonLabel={constants.loginButton} goToLocation={goToChatList}>
                 <Input
                     placeholder={constants.usernamePlacerHolder}
                     onChangeText={onChangeUsername}
@@ -94,51 +94,14 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 export default Login;
 
 interface Style {
-    mainContainer: ViewStyle;
-    container: ViewStyle;
-    contentContainer: ViewStyle;
-    nameStyle: TextStyle;
     topContainer: ViewStyle;
-    loginStyle: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
-    mainContainer: {
-        flexDirection: 'column',
-        justifyContent: "center",
-        alignItems: 'stretch',
-        padding: 30,
-        flex: 1
-    },
-    container: {
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: 'center',
-        padding: 15,
-    },
-    contentContainer: {
-        flexDirection: 'row',
-        justifyContent: "center",
-        paddingTop: 10,
-        paddingBottom: 10,
-    },
-    nameStyle: {
-        fontWeight: "bold",
-        fontSize: 24,
-    },
     topContainer: {
         flexDirection: 'column',
         justifyContent: "flex-end",
         alignItems: 'center',
         paddingBottom: 10
-    },
-    loginStyle: {
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: 'center',
-        width: 170,
-        borderWidth: 2,
-        borderRadius: 50,
-        padding: 10,
     }
 })

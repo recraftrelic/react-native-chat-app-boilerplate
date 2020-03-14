@@ -15,11 +15,13 @@ if (isIOS()) {
 interface Props{
     goToLocation: any;
     children: React.ReactNode;
+    buttonLabel: React.ReactChild;
 };
 
 const AuthLayout: React.FunctionComponent<Props> = ({
     goToLocation,
-    children
+    children,
+    buttonLabel
 }: Props) => {
 
     const constants: AppConstants = useConstants();
@@ -42,7 +44,7 @@ const AuthLayout: React.FunctionComponent<Props> = ({
                     {children}
                     <View style={[style.container,{paddingTop: 50}]}>
                         <TouchableOpacity onPress={goToLocation} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                            <ThemedText styleKey="textColor">{constants.signupButton}</ThemedText> 
+                            <ThemedText styleKey="textColor">{buttonLabel}</ThemedText> 
                         </TouchableOpacity> 
                     </View>
                 </KeyboardAvoidingView>

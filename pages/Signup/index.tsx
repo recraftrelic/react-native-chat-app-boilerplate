@@ -74,7 +74,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
     const constants: AppConstants = useConstants();
 
     return (
-        <AuthLayout goToLocation={goToLogin}>
+        <AuthLayout buttonLabel={constants.signupButton} goToLocation={goToLogin}>
             <Input
                 placeholder={constants.namePlaceholder}
                 onChangeText={onChangeName}
