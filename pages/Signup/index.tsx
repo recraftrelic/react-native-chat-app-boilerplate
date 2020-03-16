@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { View, TouchableOpacity, ViewStyle, StyleSheet } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
-import { AppConstants } from '../../config/DefaultConfig';
+import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import { ValidationError } from '../../config/validation';
 import useConstants from '../../hooks/useConstants';
 import Input from '../../components/Chat/Input';
 import AuthLayout from '../../components/Chat/AuthLayout';
 import microValidator from 'micro-validator' ;
+import Icon from 'react-native-vector-icons/Ionicons';
+import useTheme from '../../hooks/useTheme';
 
 interface LoginField {
     name?: string;
@@ -53,6 +56,8 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
+    const theme: AppTheme = useTheme();
+
     const [name,onChangeName] = useState<string>("")
     const [username,onChangeUsername] = useState<string>("")
     const [email,onChangeEmail] = useState<string>("")
@@ -71,9 +76,19 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
         }
     }
 
+    const onBackPress = () => {
+        history.goBack()
+    }
+
     const constants: AppConstants = useConstants();
 
     return (
+        <>
+        <View style={style.container}>
+            <TouchableOpacity onPress={onBackPress}>
+                <Icon name="ios-arrow-back" size={40} color={theme.textColor} />
+            </TouchableOpacity>  
+        </View>
         <AuthLayout buttonLabel={constants.signupButton} goToLocation={goToLogin}>
             <Input
                 placeholder={constants.namePlaceholder}
@@ -101,7 +116,19 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
                 errors={errors.password}
             />
         </AuthLayout>
+        </>
     );
 }
 
 export default Signup;
+
+interface Style {
+    container: ViewStyle;
+}
+
+const style: Style = StyleSheet.create<Style>({
+    container: {
+        flexDirection: 'row',
+        padding: 20,
+    },
+})
