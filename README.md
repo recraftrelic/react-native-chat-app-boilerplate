@@ -1,9 +1,10 @@
-React native chat app boilerplate
-=======
+[<p align="center"><img width="150" src="./app-logo.png"></p>](https://github.com/recraftrelic/react-native-chat-app-boilerplate/)
 
-This chat app is a boilerplate for any react native developer who wants to build a chat app.
+<h1 align="center">Recraft React native Chat App Boilerplate</h1>
 
-The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.
+<p align="center">This chat app is a boilerplate for any react native developer who wants to build a chat app.
+
+The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.</p>
 
 IOS Demo
 =======
