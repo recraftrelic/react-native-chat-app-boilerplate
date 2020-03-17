@@ -60,6 +60,6 @@ export const defaultConfig: ApplicationConfig = {
       signupCheck: "If you don't have an account",
       chatTitle: "Chats",
       appName: "Recraft Chat App",
-      appLogo: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png"
+      appLogo: "app-logo.png"
     }
 }

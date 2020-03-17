@@ -35,7 +35,7 @@ const ChatSetting: React.FunctionComponent<Props> = ({
     return (
         <>
         <ChatProfileInfo
-          userImageSource={{ uri: "https://recraftrelic.com/images/Recraft_relic_web_logo_icon.png" }}
+          userImageSource={require(`../../app-logo.png`)}
           userName="Manoj Singh Negi"
           status="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
           onButtonPress={goBack}

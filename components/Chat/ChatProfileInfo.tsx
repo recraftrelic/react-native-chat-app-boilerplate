@@ -169,7 +169,6 @@ const style: Style = StyleSheet.create<Style>({
     imageStyle: {
         width: 100, 
         height: 100, 
-        borderRadius: 50
     },
     imageUpload: {
         position: "absolute",
