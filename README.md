@@ -2,9 +2,7 @@
 
 <h1 align="center">Recraft React native Chat App Boilerplate</h1>
 
-<p align="center">This chat app is a boilerplate for any react native developer who wants to build a chat app.
-
-The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.</p>
+<p align="center">This chat app is a boilerplate for any react native developer who wants to build a chat app. The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.</p>
 
 IOS Demo
 =======
