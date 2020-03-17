@@ -27,10 +27,10 @@ const ChatList: React.FunctionComponent<Props> = ({
 
   return (
     <>
-      <AppLogo appLogoSource={require(`../../app-logo.png`)} onSettingPress={goToChatSetting}/>
+      <AppLogo appLogoSource={constants.appLogo} onSettingPress={goToChatSetting}/>
       <ScrollView>
         <ChatItem
-          userImageSource={require(`../../app-logo.png`)}
+          userImageSource={constants.appLogo}
           userName="Amenda"
           timeStamp={new Date()}
           lastMessage={"Hey there!!!"}

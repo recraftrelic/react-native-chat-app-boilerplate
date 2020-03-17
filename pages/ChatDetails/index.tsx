@@ -22,7 +22,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     return (
         <>
         <ChatDetailHeader
-            userImageSource={require(`../../app-logo.png`)}
+            userImageSource={constants.appLogo}
             userName="Amenda"
             status="online"
             onBackPress={goToChatList}

@@ -3,10 +3,14 @@ import { RouteComponentProps } from 'react-router-native';
 import ChatProfile from '../../components/Chat/ChatProfile';
 import ChatProfileInfo from '../../components/Chat/ChatProfileInfo';
 import ChatProfileMedia from '../../components/Chat/ChatProfileMedia';
+import { AppConstants } from '../../config/DefaultConfig';
+import useConstants from '../../hooks/useConstants';
 
 const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
+
+    const constants: AppConstants = useConstants();
       
     const goToChatList = () => {
         history.goBack()
@@ -15,7 +19,7 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
     return (
         <>
         <ChatProfileInfo
-          userImageSource={require(`../../app-logo.png`)}
+          userImageSource={constants.appLogo}
           userName="Manoj Singh Negi"
           status="All is Well"
           onButtonPress={goToChatList}

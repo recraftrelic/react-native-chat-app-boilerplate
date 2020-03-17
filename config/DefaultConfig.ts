@@ -34,7 +34,7 @@ export interface AppConstants {
     signupButton: string;
     chatTitle: string,
     appName: string,
-    appLogo: string,
+    appLogo: any,
 }
 
 export interface ApplicationConfig {
@@ -60,6 +60,6 @@ export const defaultConfig: ApplicationConfig = {
       signupCheck: "If you don't have an account",
       chatTitle: "Chats",
       appName: "Recraft Chat App",
-      appLogo: "app-logo.png"
+      appLogo: require("../app-logo.png")
     }
 }

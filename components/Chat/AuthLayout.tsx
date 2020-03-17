@@ -34,7 +34,7 @@ const AuthLayout: React.FunctionComponent<Props> = ({
                 <KeyboardAvoidingView {...keyboardAvoidingViewProps} keyboardVerticalOffset={keyboardVerticalOffset} enabled>
                     <View style={style.container}>
                         <Image
-                            source={require(`../../app-logo.png`)}
+                            source={constants.appLogo}
                             style={style.imageStyle}
                         />
                     </View>
