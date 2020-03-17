@@ -13,6 +13,9 @@ IOS Demo
 <p align="center">
   <img width="250" src="./previews/ios-4.gif"><img width="250" src="./previews/ios-5.gif"><img width="250" src="./previews/ios-6.gif">
 </p>
+<p align="center">
+  <img width="250" src="./previews/ios-7.gif">
+</p>
 
 Android Demo
 =======
@@ -21,6 +24,9 @@ Android Demo
 </p>
 <p align="center">
   <img width="250" src="./previews/android-4.gif"><img width="250" src="./previews/android-5.gif"><img width="250" src="./previews/android-6.gif">
+</p>
+<p align="center">
+  <img width="250" src="./previews/android-7.gif">
 </p>
 
 Packages & Libraries used
