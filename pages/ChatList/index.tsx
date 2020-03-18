@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
 import ChatItem from '../../components/Chat/ChatItem';
 import AppLogo from '../../components/Chat/AppLogo';
@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { Dispatch } from 'redux';
 import { AppConstants } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
+import { chatList } from './constants';
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch
@@ -29,106 +30,28 @@ const ChatList: React.FunctionComponent<Props> = ({
     <>
       <AppLogo appLogoSource={constants.appLogo} onSettingPress={goToChatSetting}/>
       <ScrollView>
-        <ChatItem
-          userImageSource={constants.appLogo}
-          userName="Amenda"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-          onChatPress={goToChatDetails}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Harish"
-          timeStamp={moment().subtract(1, 'day').toDate()}
-          lastMessage={"Hey there!!!"}
-          notificationCount={2}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Manoj"
-          timeStamp={new Date()}
-          lastMessage={"The JavaScript world is moving fast. The world of frontEnd development (and web development) is moving blazingly fast."}
-          notificationCount={2}
-          isTyping={true}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Swati"
-          timeStamp={new Date('2020/01/30')}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Vikas"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Aman"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Manish"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Love"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Manoj"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Swati"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Vikas"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Aman"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Manoj"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Swati"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Vikas"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
-        <ChatItem
-          userImageSource={{ uri: "https://picsum.photos/200" }}
-          userName="Aman"
-          timeStamp={new Date()}
-          lastMessage={"Hey there!!!"}
-        />
+        {
+          chatList.map((data, indexKey) => {
+            let checkUser = data.users.filter(({ isSameUser }) => isSameUser == false);
+            return <View key={indexKey}>
+              {
+                checkUser.map((users, index) => {
+                  return <>
+                    <ChatItem
+                      key={index}
+                      userImageSource={{ uri: users.image }}
+                      userName={users.name}
+                      timeStamp={new Date()}
+                      lastMessage={data.lastMessage}
+                      onChatPress={goToChatDetails}
+                      notificationCount={data.notificationCount}
+                    />
+                  </>
+                })
+              }
+            </View>
+          })
+        }
       </ScrollView>
     </>
   );
