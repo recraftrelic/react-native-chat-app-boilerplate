@@ -11,6 +11,9 @@ let keyboardAvoidingViewProps: KeyboardAvoidingViewProps = {}
 if (isIOS()) {
     keyboardAvoidingViewProps.behavior = "position"
 }
+if (!isIOS()) {
+    keyboardAvoidingViewProps.behavior = "padding"
+}
 
 interface Props{
     goToLocation: any;
