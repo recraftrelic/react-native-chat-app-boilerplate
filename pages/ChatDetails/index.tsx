@@ -35,7 +35,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
               return <>
                 <ChatMessage
                   message={data.messages}
-                  timeStamp={new Date()}
+                  timeStamp={data.timeStamp}
                   isRightAlign={data.align}
                 />
               </>

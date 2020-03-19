@@ -9,10 +9,11 @@ export const chatList = [
       },
       {
         name: "Amenda",
-        image: "https://picsum.photos/200",
+        image: "https://raw.githubusercontent.com/recraftrelic/react-native-chat-app-boilerplate/master/app-logo.png",
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -29,6 +30,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
     notificationCount: 2
   },
@@ -46,6 +48,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "The JavaScript world is moving fast. The world of frontEnd development (and web development) is moving blazingly fast.",
     notificationCount: 3
   },
@@ -63,6 +66,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "The JavaScript world is moving fast. The world of frontEnd development (and web development) is moving blazingly fast.",
   },
   {
@@ -79,6 +83,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -95,6 +100,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -111,6 +117,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -127,6 +134,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -143,6 +151,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -159,6 +168,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -175,6 +185,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -191,6 +202,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -207,6 +219,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -223,6 +236,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
   {
@@ -239,6 +253,7 @@ export const chatList = [
         isSameUser: false
       },
     ],
+    timeStamp: new Date(),
     lastMessage: "Hey there!!!",
   },
 ]
