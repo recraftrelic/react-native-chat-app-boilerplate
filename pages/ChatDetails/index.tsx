@@ -6,6 +6,7 @@ import useConstants from '../../hooks/useConstants';
 import ChatDetailHeader from '../../components/Chat/ChatDetailHeader';
 import ChatMessage from '../../components/Chat/ChatMessage';
 import ChatInput from '../../components/Chat/ChatInput';
+import { chatDetail } from './constant';
 
 const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     history
@@ -23,52 +24,23 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
         <>
         <ChatDetailHeader
             userImageSource={constants.appLogo}
-            userName="Amenda"
-            status="online"
+            userName={chatDetail.userName}
+            status={chatDetail.status}
             onBackPress={goToChatList}
             onNextPress={goToProfileDetail}
         />
         <ScrollView>
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={true}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={false}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={true}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={false}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={true}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={true}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={false}
-          />
-          <ChatMessage
-            message="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            timeStamp={new Date()}
-            isRightAlign={true}
-          />
+          {
+            chatDetail.messageList.map((data, index) => {
+              return <>
+                <ChatMessage
+                  message={data.messages}
+                  timeStamp={data.timeStamp}
+                  isRightAlign={data.align}
+                />
+              </>
+            })
+          }
         </ScrollView>
         <ChatInput
             placeHolder={constants.messagePlacerHolder}
