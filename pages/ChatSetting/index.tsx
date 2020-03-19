@@ -13,6 +13,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
+import { settingConstant } from './constants.';
 
 interface Props extends RouteComponentProps {
     dispatch: Dispatch
@@ -34,12 +35,14 @@ const ChatSetting: React.FunctionComponent<Props> = ({
         dispatch(setThemeAction(theme))
     }
 
+    const {userName, userInfo, appVersion} = settingConstant;
+
     return (
         <>
         <ChatProfileInfo
           userImageSource={constants.appLogo}
-          userName="Manoj Singh Negi"
-          status="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          userName={userName}
+          status={userInfo}
           onButtonPress={goBack}
           editInfo={true}
         />
@@ -47,14 +50,14 @@ const ChatSetting: React.FunctionComponent<Props> = ({
         <TouchableOpacity onPress={goToLogin}>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.leftContainer}>
-                    <ThemedText styleKey="textColor">Logout</ThemedText>
+                <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText>
                 </View>
                 <View style={style.rightContainer}>
                     <MaterialIcon name="logout" size={30} color={theme.warningColor} />   
                 </View>
             </View>
         </TouchableOpacity>
-        <ChatVersion name="Chat App Version: 2.0.1" />
+        <ChatVersion name={appVersion} />
         </>
     );
 }

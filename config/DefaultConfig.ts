@@ -31,6 +31,7 @@ export interface AppConstants {
     passwordPlacerHolder: string,
     signupCheck: string;
     loginButton: string;
+    logoutButton: string;
     signupButton: string;
     chatTitle: string,
     appName: string,
@@ -56,6 +57,7 @@ export const defaultConfig: ApplicationConfig = {
       emailPlacerHolder: "Email",
       passwordPlacerHolder: "Password",
       loginButton: "Login",
+      logoutButton: "Logout",
       signupButton: "Sign up",
       signupCheck: "If you don't have an account",
       chatTitle: "Chats",

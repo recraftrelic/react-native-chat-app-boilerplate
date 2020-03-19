@@ -5,6 +5,7 @@ import ChatProfileInfo from '../../components/Chat/ChatProfileInfo';
 import ChatProfileMedia from '../../components/Chat/ChatProfileMedia';
 import { AppConstants } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
+import { chatProfileConstants } from './constants';
 
 const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
     history
@@ -16,21 +17,23 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
         history.goBack()
     } 
 
+    const {userName, status, profileImage, block, report, deleteConversation } = chatProfileConstants;
+
     return (
         <>
         <ChatProfileInfo
           userImageSource={constants.appLogo}
-          userName="Manoj Singh Negi"
-          status="All is Well"
+          userName={userName}
+          status={status}
           onButtonPress={goToChatList}
         />
         <ChatProfileMedia
-          source={{ uri: `https://picsum.photos/200?time=${new Date().getTime()}` }}
+          source={{ uri: profileImage }}
         />
         <ChatProfile
-          block="Block"
-          report="Report"
-          deleteConversation="Delete Conversation"
+          block={block}
+          report={report}
+          deleteConversation={deleteConversation}
         />
         </>
     );
