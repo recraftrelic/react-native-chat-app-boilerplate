@@ -50,7 +50,7 @@ const ChatSetting: React.FunctionComponent<Props> = ({
         <TouchableOpacity onPress={goToLogin}>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.leftContainer}>
-                <ThemedText styleKey="textColor">{constants.loginButton}</ThemedText>
+                <ThemedText styleKey="textColor">{constants.logoutButton}</ThemedText>
                 </View>
                 <View style={style.rightContainer}>
                     <MaterialIcon name="logout" size={30} color={theme.warningColor} />   

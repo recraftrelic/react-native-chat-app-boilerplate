@@ -17,10 +17,10 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
         history.goBack()
     } 
 
-    const {userName, status, profileImage, block, report, deleteConversation } = chatProfileConstants;
+    const { userName, status, profileImage } = chatProfileConstants;
 
     return (
-        <>
+      <>
         <ChatProfileInfo
           userImageSource={constants.appLogo}
           userName={userName}
@@ -31,11 +31,11 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
           source={{ uri: profileImage }}
         />
         <ChatProfile
-          block={block}
-          report={report}
-          deleteConversation={deleteConversation}
+          block={constants.blockButton}
+          report={constants.reportButton}
+          deleteConversation={constants.deleteButton}
         />
-        </>
+      </>
     );
 }
 
