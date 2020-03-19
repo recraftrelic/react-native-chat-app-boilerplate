@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { View, StyleSheet, ViewStyle, TextStyle, TouchableOpacity } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
@@ -9,6 +9,7 @@ import useConstants from '../../hooks/useConstants';
 import Input from '../../components/Chat/Input';
 import microValidator from 'micro-validator' ;
 import AuthLayout from '../../components/Chat/AuthLayout';
+import SplashScreen from 'react-native-splash-screen';
 
 interface LoginField {
     username?: string;
@@ -40,6 +41,10 @@ const validate = (data: LoginField): ValidationError => {
 const Login: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
+
+    useEffect(() => {
+        SplashScreen.hide()
+    });
 
     const [username,onChangeUsername] = useState<string>("")
     const [password,onChangePassword] = useState<string>("")
