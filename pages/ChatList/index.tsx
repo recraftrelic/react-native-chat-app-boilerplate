@@ -26,6 +26,8 @@ const ChatList: React.FunctionComponent<Props> = ({
     history.push('/settings')
   }
 
+  console.disableYellowBox = true;
+
   return (
     <>
       <AppLogo appLogoSource={constants.appLogo} onSettingPress={goToChatSetting}/>
