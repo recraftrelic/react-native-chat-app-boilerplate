@@ -20,6 +20,21 @@ export interface AppDateFormats {
   chatYesterdayText: string,
 }
 
+export interface loginValidation {
+  username: string,
+  password: string,
+  passwordLength: string,
+}
+
+export interface signupValidation {
+  name: string,
+  username: string,
+  email: string,
+  validEmail: string,
+  password: string,
+  passwordLength: string,
+}
+
 export interface AppConstants {
     selectedTheme: ThemeKey,
     dateFormats?: AppDateFormats,
@@ -39,6 +54,8 @@ export interface AppConstants {
     blockButton: string,
     reportButton: string,
     deleteButton: string,
+    loginValidation: loginValidation,
+    signupValidation: signupValidation,
 }
 
 export interface ApplicationConfig {
@@ -69,5 +86,18 @@ export const defaultConfig: ApplicationConfig = {
       blockButton: "Block",
       reportButton: "Report",
       deleteButton: "Delete Conversation",
+      loginValidation : {
+        username: `Username is required`,
+        password: `Password is required`,
+        passwordLength: 'Password length between 6 and 12',
+      },
+      signupValidation : {
+        name: `Full Name is required`,
+        username: `Username is required`,
+        email: `Email is required`,
+        validEmail: 'Please enter a valid email',
+        password: `Password is required`,
+        passwordLength: 'Password length between 6 and 12',
+      },
     }
 }

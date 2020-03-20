@@ -17,46 +17,47 @@ interface LoginField {
     password?: string;
 }
 
-const validate = (data: LoginField): ValidationError => {
-    const errors = microValidator.validate({
-        name: {
-            required: {
-                errorMsg: `Full Name is required`
-            }
-        },
-        username: {
-            required: {
-                errorMsg: `Username is required`
-            }
-        },
-        email: {
-            required: {
-                errorMsg: `Email is required`
-            },
-            email: {
-                errorMsg: 'Please enter a valid email'
-            }
-        },
-        password: {
-            required: {
-                errorMsg: `Password is required`
-            },
-            length: {
-                min: 6,
-                max: 12,
-                errorMsg: 'Password length between 6 and 12'
-            }
-        },
-    }, data)
-    
-    return errors
-}
-
 const Signup: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
     const theme: AppTheme = useTheme();
+    const constants: AppConstants = useConstants();
+
+    const validate = (data: LoginField): ValidationError => {
+        const errors = microValidator.validate({
+            name: {
+                required: {
+                    errorMsg: constants.signupValidation.name
+                }
+            },
+            username: {
+                required: {
+                    errorMsg: constants.signupValidation.username
+                }
+            },
+            email: {
+                required: {
+                    errorMsg: constants.signupValidation.email
+                },
+                email: {
+                    errorMsg: constants.signupValidation.validEmail
+                }
+            },
+            password: {
+                required: {
+                    errorMsg: constants.signupValidation.password
+                },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: constants.signupValidation.passwordLength
+                }
+            },
+        }, data)
+        
+        return errors
+    }
 
     const [name,onChangeName] = useState<string>("")
     const [username,onChangeUsername] = useState<string>("")
@@ -79,8 +80,6 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
     const onBackPress = () => {
         history.goBack()
     }
-
-    const constants: AppConstants = useConstants();
 
     return (
         <>

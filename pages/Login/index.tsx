@@ -16,31 +16,34 @@ interface LoginField {
     password?: string;
 }
 
-const validate = (data: LoginField): ValidationError => {
-    const errors = microValidator.validate({
-        username: {
-            required: {
-                errorMsg: `Username is required`
-            }
-        },
-        password: {
-            required: {
-                errorMsg: `Password is required`
-            },
-            length: {
-                min: 6,
-                max: 12,
-                errorMsg: 'Password length between 6 and 12'
-            }
-        },
-    }, data)
-    
-    return errors
-}
-
 const Login: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
+
+    const constants: AppConstants = useConstants();
+    const theme: AppTheme = useTheme();
+
+    const validate = (data: LoginField): ValidationError => {
+        const errors = microValidator.validate({
+            username: {
+                required: {
+                    errorMsg: constants.loginValidation.username
+                }
+            },
+            password: {
+                required: {
+                    errorMsg: constants.loginValidation.password
+                },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: constants.loginValidation.passwordLength
+                }
+            },
+        },data)
+        
+        return errors
+    }
 
     useEffect(() => {
         SplashScreen.hide()
@@ -65,9 +68,6 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
             setErrors(errors)
         }
     }
-
-    const constants: AppConstants = useConstants();
-    const theme: AppTheme = useTheme();
 
     return (
         <>
