@@ -34,7 +34,7 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
             <ChatUserImage
                 source={userImageSource}
                 containerStyle={style.userImageContainer}
-                imageStyle={{width: 50, height: 50}}
+                imageStyle={{width: 50, height: 50, borderRadius: 50}}
             />
             <View style={style.contentContainer}>
                 <View style={style.topContentContainer}>
