@@ -1,4 +1,5 @@
 import { themes, ThemeKey } from "./themes";
+import { LanguageKey } from "./languages";
 
 export interface AppTheme {
   backgroundColor: string,
@@ -37,6 +38,7 @@ export interface signupValidation {
 
 export interface AppConstants {
     selectedTheme: ThemeKey,
+    selectedLanguage: LanguageKey,
     dateFormats?: AppDateFormats,
     searchPlacerHolder: string,
     messagePlacerHolder: string,
@@ -65,6 +67,7 @@ export interface ApplicationConfig {
 export const defaultConfig: ApplicationConfig = {
     constants: {
       selectedTheme: ThemeKey.light,
+      selectedLanguage: LanguageKey.english,
       dateFormats: {
         chatDateFormat: "MM/DD/YY",
         chatHourDisplayFormat: "hh:mm A",
