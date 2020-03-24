@@ -23,36 +23,36 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
 }: RouteComponentProps) => {
 
     const theme: AppTheme = useTheme();
-    const constants: AppLanguage = useLanguage();
+    const language: AppLanguage = useLanguage();
 
     const validate = (data: LoginField): ValidationError => {
         const errors = microValidator.validate({
             name: {
                 required: {
-                    errorMsg: constants.signupValidation.name
+                    errorMsg: language.signupValidation.name
                 }
             },
             username: {
                 required: {
-                    errorMsg: constants.signupValidation.username
+                    errorMsg: language.signupValidation.username
                 }
             },
             email: {
                 required: {
-                    errorMsg: constants.signupValidation.email
+                    errorMsg: language.signupValidation.email
                 },
                 email: {
-                    errorMsg: constants.signupValidation.validEmail
+                    errorMsg: language.signupValidation.validEmail
                 }
             },
             password: {
                 required: {
-                    errorMsg: constants.signupValidation.password
+                    errorMsg: language.signupValidation.password
                 },
                 length: {
                     min: 6,
                     max: 12,
-                    errorMsg: constants.signupValidation.passwordLength
+                    errorMsg: language.signupValidation.passwordLength
                 }
             },
         }, data)
@@ -89,27 +89,27 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
                 <Icon name="ios-arrow-back" size={40} color={theme.textColor} />
             </TouchableOpacity>  
         </View>
-        <AuthLayout buttonLabel={constants.signupButton} goToLocation={goToLogin}>
+        <AuthLayout buttonLabel={language.signupButton} goToLocation={goToLogin}>
             <Input
-                placeholder={constants.namePlaceholder}
+                placeholder={language.namePlaceholder}
                 onChangeText={onChangeName}
                 value={name}
                 errors={errors.name}
             />
             <Input
-                placeholder={constants.usernamePlacerHolder}
+                placeholder={language.usernamePlacerHolder}
                 onChangeText={onChangeUsername}
                 value={username}
                 errors={errors.username}
             />
             <Input
-                placeholder={constants.emailPlacerHolder}
+                placeholder={language.emailPlacerHolder}
                 onChangeText={onChangeEmail}
                 value={email}
                 errors={errors.email}
             />
             <Input
-                placeholder={constants.passwordPlacerHolder}
+                placeholder={language.passwordPlacerHolder}
                 onChangeText={onChangePassword}
                 value={password}
                 secureTextEntry={true}

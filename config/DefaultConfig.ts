@@ -35,7 +35,7 @@ export interface ApplicationConfig {
 export const defaultConfig: ApplicationConfig = {
     constants: {
       selectedTheme: ThemeKey.light,
-      selectedLanguage: LanguageKey.english,
+      selectedLanguage: LanguageKey.en,
       dateFormats: {
         chatDateFormat: "MM/DD/YY",
         chatHourDisplayFormat: "hh:mm A",

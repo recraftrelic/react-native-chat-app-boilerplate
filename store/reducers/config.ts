@@ -3,10 +3,7 @@ import { ApplicationConfig, defaultConfig } from '../../config/DefaultConfig';
 import { Reducer, ReducerState } from 'react';
 
 enum ThemeActionType {
-    SET_THEME = "SET_THEME"
-}
-
-enum ThemeActionType {
+    SET_THEME = "SET_THEME",
     SET_LANGUAGE = "SET_LANGUAGE"
 }
 

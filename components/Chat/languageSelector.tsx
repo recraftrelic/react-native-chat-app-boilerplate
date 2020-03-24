@@ -21,11 +21,11 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   const [language, setLanguage] = useState<string>(selectedLanguage);
 
   const languages = [
-    { label: 'English', value: 'English' },
-    { label: 'French', value: 'French' },
-    { label: 'Spanish', value: 'Spanish' },
-    { label: 'German', value: 'German' },
-    { label: 'Chinese', value: 'Chinese' },
+    { label: 'English', value: 'en' },
+    { label: 'French', value: 'fr' },
+    { label: 'Spanish', value: 'sp' },
+    { label: 'German', value: 'gr' },
+    { label: 'Chinese', value: 'ch' },
   ];
 
   useEffect(() => {

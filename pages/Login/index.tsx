@@ -48,7 +48,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 
     useEffect(() => {
         SplashScreen.hide()
-    });
+    },[]);
 
     const [username,onChangeUsername] = useState<string>("")
     const [password,onChangePassword] = useState<string>("")
