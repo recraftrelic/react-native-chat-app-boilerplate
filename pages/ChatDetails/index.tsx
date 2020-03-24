@@ -1,12 +1,14 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
-import { AppTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppConstants } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import ChatDetailHeader from '../../components/Chat/ChatDetailHeader';
 import ChatMessage from '../../components/Chat/ChatMessage';
 import ChatInput from '../../components/Chat/ChatInput';
 import { chatDetail } from './constant';
+import { AppLanguage } from '../../config/languages';
+import useLanguage from '../../hooks/useLanguage';
 
 const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
     history
@@ -19,6 +21,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
       history.push('/profile')
     } 
     const constants: AppConstants = useConstants(); 
+    const language: AppLanguage = useLanguage(); 
 
     return (
         <>
@@ -43,7 +46,7 @@ const ChatDetails: React.FunctionComponent<RouteComponentProps> = ({
           }
         </ScrollView>
         <ChatInput
-            placeHolder={constants.messagePlacerHolder}
+            placeHolder={language.messagePlacerHolder}
         />
         </>
     );

@@ -5,6 +5,8 @@ import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
 import { ThemeKey } from '../../config/themes';
+import useLanguage from '../../hooks/useLanguage';
+import { AppLanguage } from '../../config/languages';
 
 interface Props {
   updateTheme: (theme: ThemeKey) => void;
@@ -15,6 +17,7 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const { selectedTheme }: AppConstants = useConstants();
+  const language: AppLanguage = useLanguage();
   const [isDarkTheme, toggleDarkTheme] = useState<boolean>(selectedTheme == ThemeKey.dark);
 
   useEffect(() => {
@@ -27,7 +30,7 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
     <View>
       <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
         <View style={style.leftContainer}>
-          <ThemedText styleKey="textColor">Dark Theme</ThemedText>
+          <ThemedText styleKey="textColor">{language.defaultTheme}</ThemedText>
         </View>
         <View style={style.rightContainer}>
           <Switch trackColor={{

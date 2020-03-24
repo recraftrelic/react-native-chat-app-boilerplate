@@ -4,7 +4,9 @@ import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
 import useConstants from '../../hooks/useConstants';
+import useLanguage from '../../hooks/useLanguage';
 import { isIOS } from '../../utils';
+import { AppLanguage } from '../../config/languages';
 
 let keyboardAvoidingViewProps: KeyboardAvoidingViewProps = {}
 
@@ -28,6 +30,7 @@ const AuthLayout: React.FunctionComponent<Props> = ({
 }: Props) => {
 
     const constants: AppConstants = useConstants();
+    const language: AppLanguage =  useLanguage();
     const theme: AppTheme = useTheme();
     const keyboardVerticalOffset = isIOS ? 40 : 0;
 
@@ -42,7 +45,7 @@ const AuthLayout: React.FunctionComponent<Props> = ({
                         />
                     </View>
                     <View style={style.contentContainer}>
-                        <ThemedText styleKey="textColor" style={style.nameStyle}>{constants.appName}</ThemedText>
+                        <ThemedText styleKey="textColor" style={style.nameStyle}>{language.appName}</ThemedText>
                     </View>
                     {children}
                     <View style={[style.container,{paddingTop: 50}]}>

@@ -14,8 +14,9 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
+import useLanguage from '../../hooks/useLanguage';
 import { settingConstant } from './constants.';
-import { LanguageKey } from '../../config/languages';
+import { AppLanguage, LanguageKey } from '../../config/languages';
 
 interface Props extends RouteComponentProps {
     dispatch: Dispatch
@@ -27,6 +28,7 @@ const ChatSetting: React.FunctionComponent<Props> = ({
 }: Props) => {
     const theme: AppTheme = useTheme();
     const constants: AppConstants = useConstants();
+    const language: AppLanguage = useLanguage();
     const goBack = () => {
         history.goBack()
     } 
@@ -56,7 +58,7 @@ const ChatSetting: React.FunctionComponent<Props> = ({
         <TouchableOpacity onPress={goToLogin}>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
                 <View style={style.leftContainer}>
-                <ThemedText styleKey="textColor">{constants.logoutButton}</ThemedText>
+                <ThemedText styleKey="textColor">{language.logoutButton}</ThemedText>
                 </View>
                 <View style={style.rightContainer}>
                     <MaterialIcon name="logout" size={30} color={theme.warningColor} />   

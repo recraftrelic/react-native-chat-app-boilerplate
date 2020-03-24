@@ -1,8 +1,8 @@
 import { AppConstants } from '../config/DefaultConfig';
 import useConstants from './useConstants';
-import { languages } from '../config/languages';
+import { AppLanguage, languages } from '../config/languages';
 
-const useLanguage = (): AppConstants => {
+const useLanguage = (): AppLanguage => {
   const { selectedLanguage }: AppConstants = useConstants()
 
   return languages[selectedLanguage];

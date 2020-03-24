@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, ViewStyle, StyleSheet } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
-import { AppTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppTheme } from '../../config/DefaultConfig';
 import { ValidationError } from '../../config/validation';
-import useConstants from '../../hooks/useConstants';
+import useLanguage from '../../hooks/useLanguage';
 import Input from '../../components/Chat/Input';
 import AuthLayout from '../../components/Chat/AuthLayout';
 import microValidator from 'micro-validator' ;
 import Icon from 'react-native-vector-icons/Ionicons';
 import useTheme from '../../hooks/useTheme';
+import { AppLanguage } from '../../config/languages';
 
 interface LoginField {
     name?: string;
@@ -22,7 +23,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
 }: RouteComponentProps) => {
 
     const theme: AppTheme = useTheme();
-    const constants: AppConstants = useConstants();
+    const constants: AppLanguage = useLanguage();
 
     const validate = (data: LoginField): ValidationError => {
         const errors = microValidator.validate({

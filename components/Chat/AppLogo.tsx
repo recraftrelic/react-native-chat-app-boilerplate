@@ -2,11 +2,12 @@ import React from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { AppTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import ThemedText from '../UI/ThemedText';
 import SearchBar from '../UI/SearchBar';
-import useConstants from '../../hooks/useConstants';
+import useLanguage from '../../hooks/useLanguage';
+import { AppLanguage } from '../../config/languages';
 
 interface Props {
   onSettingPress?: (event: GestureResponderEvent) => void;
@@ -18,7 +19,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
   appLogoSource,
 }: Props) => {
   const theme: AppTheme = useTheme();
-  const constants: AppConstants = useConstants();
+  const constants: AppLanguage = useLanguage();
 
   return (
     <View>

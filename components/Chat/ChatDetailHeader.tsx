@@ -1,12 +1,11 @@
 import React from 'react';
 import { GestureResponderEvent, ImageSourcePropType, StyleSheet, TouchableOpacity, View, ViewStyle, TextStyle } from 'react-native';
-import { AppTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ChatUserImage from './ChatUserImage';
 import ThemedText from '../UI/ThemedText';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import useConstants from '../../hooks/useConstants';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -24,7 +23,6 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
     status,
 }: Props) => {
     const theme: AppTheme = useTheme();
-    const constants: AppConstants = useConstants();
 
     return (
         <View style={[style.container, {borderBottomColor: theme.lightBottomColor}]}>
