@@ -1,4 +1,5 @@
-import { themes, ThemeKey } from "./themes";
+import { ThemeKey } from "./themes";
+import { LanguageKey } from "./languages";
 
 export interface AppTheme {
   backgroundColor: string,
@@ -22,23 +23,9 @@ export interface AppDateFormats {
 
 export interface AppConstants {
     selectedTheme: ThemeKey,
+    selectedLanguage: LanguageKey,
     dateFormats?: AppDateFormats,
-    searchPlacerHolder: string,
-    messagePlacerHolder: string,
-    namePlaceholder: string,
-    usernamePlacerHolder: string,
-    emailPlacerHolder: string,
-    passwordPlacerHolder: string,
-    signupCheck: string;
-    loginButton: string;
-    logoutButton: string;
-    signupButton: string;
-    chatTitle: string,
-    appName: string,
     appLogo: any,
-    blockButton: string,
-    reportButton: string,
-    deleteButton: string,
 }
 
 export interface ApplicationConfig {
@@ -48,26 +35,12 @@ export interface ApplicationConfig {
 export const defaultConfig: ApplicationConfig = {
     constants: {
       selectedTheme: ThemeKey.light,
+      selectedLanguage: LanguageKey.en,
       dateFormats: {
         chatDateFormat: "MM/DD/YY",
         chatHourDisplayFormat: "hh:mm A",
         chatYesterdayText: "Yesterday",
       },
-      searchPlacerHolder: "Search Chats",
-      messagePlacerHolder: "Type Text here for message...",
-      namePlaceholder: "Full Name",
-      usernamePlacerHolder: "Username",
-      emailPlacerHolder: "Email",
-      passwordPlacerHolder: "Password",
-      loginButton: "Login",
-      logoutButton: "Logout",
-      signupButton: "Sign up",
-      signupCheck: "If you don't have an account",
-      chatTitle: "Chats",
-      appName: "Recraft Chat App",
       appLogo: require("../app-logo.png"),
-      blockButton: "Block",
-      reportButton: "Report",
-      deleteButton: "Delete Conversation",
     }
 }

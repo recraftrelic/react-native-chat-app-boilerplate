@@ -1,50 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { View, StyleSheet, ViewStyle, TextStyle, TouchableOpacity } from 'react-native';
-import { AppTheme, AppConstants } from '../../config/DefaultConfig';
+import { AppTheme } from '../../config/DefaultConfig';
 import { ValidationError } from '../../config/validation';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../../components/UI/ThemedText';
-import useConstants from '../../hooks/useConstants';
+import useLanguage from '../../hooks/useLanguage';
 import Input from '../../components/Chat/Input';
 import microValidator from 'micro-validator' ;
 import AuthLayout from '../../components/Chat/AuthLayout';
 import SplashScreen from 'react-native-splash-screen';
+import { AppLanguage } from '../../config/languages';
 
 interface LoginField {
     username?: string;
     password?: string;
 }
 
-const validate = (data: LoginField): ValidationError => {
-    const errors = microValidator.validate({
-        username: {
-            required: {
-                errorMsg: `Username is required`
-            }
-        },
-        password: {
-            required: {
-                errorMsg: `Password is required`
-            },
-            length: {
-                min: 6,
-                max: 12,
-                errorMsg: 'Password length between 6 and 12'
-            }
-        },
-    }, data)
-    
-    return errors
-}
-
 const Login: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
+    const constants: AppLanguage = useLanguage();
+    const theme: AppTheme = useTheme();
+
+    const validate = (data: LoginField): ValidationError => {
+        const errors = microValidator.validate({
+            username: {
+                required: {
+                    errorMsg: constants.loginValidation.username
+                }
+            },
+            password: {
+                required: {
+                    errorMsg: constants.loginValidation.password
+                },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: constants.loginValidation.passwordLength
+                }
+            },
+        },data)
+        
+        return errors
+    }
+
     useEffect(() => {
         SplashScreen.hide()
-    });
+    },[]);
 
     const [username,onChangeUsername] = useState<string>("")
     const [password,onChangePassword] = useState<string>("")
@@ -65,9 +69,6 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
             setErrors(errors)
         }
     }
-
-    const constants: AppConstants = useConstants();
-    const theme: AppTheme = useTheme();
 
     return (
         <>

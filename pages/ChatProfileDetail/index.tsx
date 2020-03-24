@@ -4,14 +4,17 @@ import ChatProfile from '../../components/Chat/ChatProfile';
 import ChatProfileInfo from '../../components/Chat/ChatProfileInfo';
 import ChatProfileMedia from '../../components/Chat/ChatProfileMedia';
 import { AppConstants } from '../../config/DefaultConfig';
+import { AppLanguage } from '../../config/languages';
 import useConstants from '../../hooks/useConstants';
+import useLanguage from '../../hooks/useLanguage';
 import { chatProfileConstants } from './constants';
 
 const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
-    const constants: AppConstants = useConstants();
+    const constants: AppConstants = useConstants();  
+    const language: AppLanguage = useLanguage();
       
     const goToChatList = () => {
         history.goBack()
@@ -31,9 +34,9 @@ const ChatProfileDetail: React.FunctionComponent<RouteComponentProps> = ({
           source={{ uri: profileImage }}
         />
         <ChatProfile
-          block={constants.blockButton}
-          report={constants.reportButton}
-          deleteConversation={constants.deleteButton}
+          block={language.blockButton}
+          report={language.reportButton}
+          deleteConversation={language.deleteButton}
         />
       </>
     );

@@ -1,42 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { View, ViewStyle, StyleSheet, Switch, TextStyle } from 'react-native';
-import { AppTheme, AppConstants } from '../../config/DefaultConfig';
-import useTheme from '../../hooks/useTheme';
+import { View, ViewStyle, StyleSheet, TextStyle } from 'react-native';
+import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import ThemedText from '../UI/ThemedText';
+import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
-import { ThemeKey } from '../../config/themes';
-import useLanguage from '../../hooks/useLanguage';
+import RNPickerSelect from 'react-native-picker-select';
 import { AppLanguage } from '../../config/languages';
+import useLanguage from '../../hooks/useLanguage';
 
 interface Props {
-  updateTheme: (theme: ThemeKey) => void;
+  updateLanguage: (language: string) => void;
 };
 
 const ThemeToggle: React.FunctionComponent<Props> = ({
-  updateTheme,
+  updateLanguage,
 }: Props) => {
   const theme: AppTheme = useTheme();
-  const { selectedTheme }: AppConstants = useConstants();
-  const language: AppLanguage = useLanguage();
-  const [isDarkTheme, toggleDarkTheme] = useState<boolean>(selectedTheme == ThemeKey.dark);
+  const { selectedLanguage }: AppConstants = useConstants();
+  const constant: AppLanguage = useLanguage();
+  const [language, setLanguage] = useState<string>(selectedLanguage);
+
+  const languages = [
+    { label: 'English', value: 'en' },
+    { label: 'French', value: 'fr' },
+    { label: 'Spanish', value: 'sp' },
+    { label: 'German', value: 'gr' },
+    { label: 'Chinese', value: 'ch' },
+  ];
 
   useEffect(() => {
-    const newSelectedTheme = isDarkTheme ? ThemeKey.dark : ThemeKey.light
+    updateLanguage(language)
+  }, []);
 
-    updateTheme(newSelectedTheme)
-  }, [isDarkTheme]);
+  const onChangeLanguage = (value) => {
+    updateLanguage(value)
+    setLanguage(value)
+  }
 
   return (
     <View>
-      <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
+      <View style={[style.container, {borderWidth: 0}]}>
         <View style={style.leftContainer}>
-          <ThemedText styleKey="textColor">{language.defaultTheme}</ThemedText>
+          <ThemedText styleKey="textColor">{constant.defaultLanguage}</ThemedText>
         </View>
         <View style={style.rightContainer}>
-          <Switch trackColor={{
-            false: theme.lightTextColor,
-            true: theme.lightTextColor
-          }} thumbColor={theme.textColor} value={isDarkTheme} onValueChange={toggleDarkTheme} />
+          <RNPickerSelect value={language} onValueChange={(value) => onChangeLanguage(value)} items={languages} useNativeAndroidPickerStyle={false}/>
         </View>
       </View>
     </View>
