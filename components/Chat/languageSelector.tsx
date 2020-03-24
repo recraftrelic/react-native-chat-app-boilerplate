@@ -26,7 +26,6 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   ];
 
   useEffect(() => {
-
     updateLanguage(language)
   }, []);
 
