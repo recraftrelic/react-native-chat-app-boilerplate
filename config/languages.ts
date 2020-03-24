@@ -73,11 +73,11 @@ export const french: AppConstants = {
       },
       signupValidation : {
         name: `Full Name is required`,
-        username: `Username is required`,
-        email: `Email is required`,
-        validEmail: 'Please enter a valid email',
-        password: `Password is required`,
-        passwordLength: 'Password length between 6 and 12',
+        username: `Nom d'utilisateur est nécessaire`,
+        email: `L'email est requis`,
+        validEmail: 'Veuillez saisir un e-mail valide',
+        password: `Mot de passe requis`,
+        passwordLength: 'Longueur du mot de passe entre 6 et 12',
       },
 }
 

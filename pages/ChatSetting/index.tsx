@@ -37,7 +37,6 @@ const ChatSetting: React.FunctionComponent<Props> = ({
         dispatch(setThemeAction(theme))
     }
     const updateLanguage = (language: LanguageKey) => {
-        console.log(language , "fdfdgsfgfgdfg")
         dispatch(setLanguageAction(language))
     }
 

@@ -5,7 +5,6 @@ import ThemedText from '../UI/ThemedText';
 import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
 import RNPickerSelect from 'react-native-picker-select';
-import { LanguageKey } from '../../config/languages';
 
 interface Props {
   updateLanguage: (language: string) => void;
@@ -17,8 +16,6 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
   const { selectedLanguage }: AppConstants = useConstants();
   const [language, setLanguage] = useState<string>(selectedLanguage);
-
-  console.log(selectedLanguage , "check")
 
   const languages = [
     { label: 'English', value: 'English' },
@@ -37,8 +34,6 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
     updateLanguage(value)
     setLanguage(value)
   }
-
-  console.log(language , "lang")
 
   return (
     <View>
