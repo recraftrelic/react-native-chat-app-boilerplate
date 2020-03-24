@@ -8,7 +8,7 @@ import RNPickerSelect from 'react-native-picker-select';
 import { LanguageKey } from '../../config/languages';
 
 interface Props {
-  updateLanguage: (language: LanguageKey) => void;
+  updateLanguage: (language: string) => void;
 };
 
 const ThemeToggle: React.FunctionComponent<Props> = ({
@@ -17,6 +17,8 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
   const { selectedLanguage }: AppConstants = useConstants();
   const [language, setLanguage] = useState<string>(selectedLanguage);
+
+  console.log(selectedLanguage , "check")
 
   const languages = [
     { label: 'English', value: 'English' },
@@ -27,28 +29,16 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   ];
 
   useEffect(() => {
-    const newSelectedLanguage = () => {
-        switch(selectedLanguage)
-        {
-            case LanguageKey.english:
-                return LanguageKey.english;
-            case LanguageKey.french:
-                return LanguageKey.french;
-            case LanguageKey.spanish:
-                return LanguageKey.spanish;
-            case LanguageKey.german:
-                return LanguageKey.german;
-            case LanguageKey.chinese:
-                return LanguageKey.chinese;
-            default:
-                return 
-        }
-    }
 
-    updateLanguage(newSelectedLanguage())
-  }, [selectedLanguage]);
+    updateLanguage(language)
+  }, []);
 
-  console.log(language)
+  const onChangeLanguage = (value) => {
+    updateLanguage(value)
+    setLanguage(value)
+  }
+
+  console.log(language , "lang")
 
   return (
     <View>
@@ -57,7 +47,7 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
           <ThemedText styleKey="textColor">Default Language</ThemedText>
         </View>
         <View style={style.rightContainer}>
-          <RNPickerSelect value={language} onValueChange={setLanguage} items={languages} useNativeAndroidPickerStyle={false}/>
+          <RNPickerSelect value={language} onValueChange={(value) => onChangeLanguage(value)} items={languages} useNativeAndroidPickerStyle={false}/>
         </View>
       </View>
     </View>
