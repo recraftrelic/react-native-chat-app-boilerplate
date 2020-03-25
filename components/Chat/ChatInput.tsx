@@ -8,6 +8,7 @@ import {KeyboardAvoidingView} from 'react-native';
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import { isIOS } from "../../utils";
+import * as Animatable from "react-native-animatable";
 
 let keyboardAvoidingViewProps: KeyboardAvoidingViewProps = {}
 
@@ -24,55 +25,63 @@ const ChatInput: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const [addItem, setItem] = useState<boolean>(false);
+  const [animate, setAnimate] = useState<Number>(0);
+
+  const firstAnimation = () => {
+    setItem(true);
+    setAnimate(1);
+  }
 
   return (
     <KeyboardAvoidingView {...keyboardAvoidingViewProps} enabled>
+      <Animatable.View style={{ backgroundColor: theme.backgroundColor }} animation={ addItem ? "zoomInUp" : animate == 1 ? "slideInDown" : null }>
         <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
           { addItem ?
             <TouchableOpacity onPress={() => {setItem(false)}}>
-                <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={[style.addButton, {transform: [{ rotate: '45deg' }]}]}/>
+              <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={[style.addButton, {transform: [{ rotate: '45deg' }]}]}/>
             </TouchableOpacity> 
             :
-            <TouchableOpacity onPress={() => {setItem(true)}}>
-                <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={style.addButton}/>
+            <TouchableOpacity onPress={() => {firstAnimation()}}>
+              <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={style.addButton}/>
             </TouchableOpacity> 
           } 
-            <View style={style.textContainer}>
-                <TextInput
-                    placeholder={placeHolder}
-                    placeholderTextColor={theme.lightTextColor}
-                    style={{ color: theme.textColor }}
-                />
-            </View>
-            <View style={style.iconContainer}>
-                <TouchableOpacity>
-                    <Icon name="md-send" size={35} color={theme.lightTextColor} />
-                </TouchableOpacity>  
-            </View>
+          <View style={style.textContainer}>
+            <TextInput
+              placeholder={placeHolder}
+              placeholderTextColor={theme.lightTextColor}
+              style={{ color: theme.textColor }}
+            />
+          </View>
+          <View style={style.iconContainer}>
+            <TouchableOpacity>
+              <Icon name="md-send" size={35} color={theme.lightTextColor} />
+            </TouchableOpacity>  
+          </View>
         </View>
         { addItem ?
-                <View style={[style.searchContainer, { borderBottomWidth: 0 }]}>
-                  <TouchableOpacity>
-                    <Icon name="md-document" size={35} color={theme.lightTextColor} style={style.addIcons} />
-                  </TouchableOpacity> 
-                  <TouchableOpacity>
-                    <Icon name="ios-camera" size={35} color={theme.lightTextColor} style={style.addIcons} />
-                  </TouchableOpacity> 
-                  <TouchableOpacity>
-                    <Icon name="md-photos" size={35} color={theme.lightTextColor} style={style.addIcons} />
-                  </TouchableOpacity> 
-                  <TouchableOpacity>
-                    <EntypoIcon name="location-pin" size={35} color={theme.lightTextColor} style={style.addIcons} />
-                  </TouchableOpacity> 
-                  <TouchableOpacity>
-                    <MaterialIcon name="music-circle" size={35} color={theme.lightTextColor} style={style.addIcons} />
-                  </TouchableOpacity> 
-                  <TouchableOpacity>
-                    <Icon name="md-contact" size={35} color={theme.lightTextColor} style={style.addIcons} />
-                  </TouchableOpacity> 
-                </View>
-            :null
+          <View style={[style.searchContainer, { borderBottomWidth: 0 }]}>
+            <TouchableOpacity>
+              <Icon name="md-document" size={35} color={theme.lightTextColor} style={style.addIcons} />
+            </TouchableOpacity> 
+            <TouchableOpacity>
+              <Icon name="ios-camera" size={35} color={theme.lightTextColor} style={style.addIcons} />
+            </TouchableOpacity> 
+            <TouchableOpacity>
+              <Icon name="md-photos" size={35} color={theme.lightTextColor} style={style.addIcons} />
+            </TouchableOpacity> 
+            <TouchableOpacity>
+              <EntypoIcon name="location-pin" size={35} color={theme.lightTextColor} style={style.addIcons} />
+            </TouchableOpacity> 
+            <TouchableOpacity>
+              <MaterialIcon name="music-circle" size={35} color={theme.lightTextColor} style={style.addIcons} />
+            </TouchableOpacity> 
+            <TouchableOpacity>
+              <Icon name="md-contact" size={35} color={theme.lightTextColor} style={style.addIcons} />
+            </TouchableOpacity> 
+          </View>
+          :null
         }
+      </Animatable.View>
     </KeyboardAvoidingView>
   )
 }

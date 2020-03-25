@@ -44,7 +44,7 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
           <ThemedText styleKey="textColor">{constant.defaultLanguage}</ThemedText>
         </View>
         <View style={style.rightContainer}>
-          <RNPickerSelect value={language} onValueChange={(value) => onChangeLanguage(value)} items={languages} useNativeAndroidPickerStyle={false}/>
+          <RNPickerSelect style={{inputIOS:{color: theme.lightTextColor},inputAndroid:{color: theme.lightTextColor}}} value={language} onValueChange={(value) => onChangeLanguage(value)} items={languages} useNativeAndroidPickerStyle={false}/>
         </View>
       </View>
     </View>
