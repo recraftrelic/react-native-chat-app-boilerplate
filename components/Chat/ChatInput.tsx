@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import { View, TextInput, TouchableOpacity, StyleSheet, ViewStyle, KeyboardAvoidingViewProps } from "react-native";
+import { View, TextInput, TouchableOpacity, StyleSheet, ViewStyle, KeyboardAvoidingViewProps, Animated, Dimensions } from "react-native";
 import {KeyboardAvoidingView} from 'react-native';
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import { isIOS } from "../../utils";
-import * as Animatable from "react-native-animatable";
 
 let keyboardAvoidingViewProps: KeyboardAvoidingViewProps = {}
 
 if (isIOS()) {
     keyboardAvoidingViewProps.behavior = "padding"
 }
+
+const { height, width}: any = Dimensions.get('window');
 
 interface Props {
   placeHolder: string
@@ -26,18 +27,53 @@ const ChatInput: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
   const [addItem, setItem] = useState<boolean>(false);
   const [animate, setAnimate] = useState<Number>(0);
+  const [fadeAnim] = useState(new Animated.Value(0))
 
   const firstAnimation = () => {
     setItem(true);
     setAnimate(1);
+    Animated.spring(
+      fadeAnim,
+      {
+        toValue: 1,
+        friction: 5
+      }
+    ).start();
   }
+
+  const closeAnimation = () => {
+    setItem(false);
+    setAnimate(1);
+    Animated.spring(
+      fadeAnim,
+      {
+        toValue: 0,
+        friction: 7
+      }
+    ).start();
+  }
+
+  const menu_moveY = fadeAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, -70]
+  });
 
   return (
     <KeyboardAvoidingView {...keyboardAvoidingViewProps} enabled>
-      <Animatable.View style={{ backgroundColor: theme.backgroundColor }} animation={ addItem ? "zoomInUp" : animate == 1 ? "slideInDown" : null }>
+      <Animated.View style={[ 
+        style.footer_menu,
+        {
+          backgroundColor: theme.backgroundColor,
+          transform: [
+            {
+              translateY: menu_moveY
+            }
+          ]
+        }
+      ]} animation={ addItem ? "mySlideInDown" : animate == 1 ? "slideInDown" : null }>
         <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
           { addItem ?
-            <TouchableOpacity onPress={() => {setItem(false)}}>
+            <TouchableOpacity onPress={() => {closeAnimation()}}>
               <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={[style.addButton, {transform: [{ rotate: '45deg' }]}]}/>
             </TouchableOpacity> 
             :
@@ -61,7 +97,7 @@ const ChatInput: React.FunctionComponent<Props> = ({
         { addItem ?
           <View style={[style.searchContainer, { borderBottomWidth: 0 }]}>
             <TouchableOpacity>
-              <Icon name="md-document" size={35} color={theme.lightTextColor} style={style.addIcons} />
+              <Icon name="md-document" size={35} color={theme.lightTextColor} style={[style.addIcons, {paddingLeft: 0}]} />
             </TouchableOpacity> 
             <TouchableOpacity>
               <Icon name="ios-camera" size={35} color={theme.lightTextColor} style={style.addIcons} />
@@ -81,7 +117,7 @@ const ChatInput: React.FunctionComponent<Props> = ({
           </View>
           :null
         }
-      </Animatable.View>
+      </Animated.View>
     </KeyboardAvoidingView>
   )
 }
@@ -94,6 +130,7 @@ interface Style {
   textContainer: ViewStyle;
   addButton: ViewStyle;
   addIcons: ViewStyle;
+  footer_menu: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -116,5 +153,12 @@ const style: Style = StyleSheet.create<Style>({
   },
   addIcons: {
     paddingLeft: 30,
-  }
+  },
+  footer_menu: {
+    position: 'absolute',
+    width: width,
+    height: 350, 
+    bottom: -270, 
+    alignItems: 'center'
+  },
 });
