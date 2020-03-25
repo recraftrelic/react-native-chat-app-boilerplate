@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import { View, TextInput, TouchableOpacity, StyleSheet, ViewStyle, KeyboardAvoidingViewProps, Animated, Dimensions } from "react-native";
+import { View, TextInput, TouchableOpacity, StyleSheet, ViewStyle, KeyboardAvoidingViewProps, Animated } from "react-native";
 import {KeyboardAvoidingView} from 'react-native';
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
@@ -14,8 +14,6 @@ let keyboardAvoidingViewProps: KeyboardAvoidingViewProps = {}
 if (isIOS()) {
     keyboardAvoidingViewProps.behavior = "padding"
 }
-
-const { height, width}: any = Dimensions.get('window');
 
 interface Props {
   placeHolder: string
@@ -55,22 +53,17 @@ const ChatInput: React.FunctionComponent<Props> = ({
 
   const menu_moveY = fadeAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, -70]
+    outputRange: [0, -30]
   });
 
   return (
     <KeyboardAvoidingView {...keyboardAvoidingViewProps} enabled>
-      <Animated.View style={[ 
-        style.footer_menu,
+      <Animated.View style={
         {
           backgroundColor: theme.backgroundColor,
-          transform: [
-            {
-              translateY: menu_moveY
-            }
-          ]
+          transform: [{ translateY: menu_moveY }]
         }
-      ]} animation={ addItem ? "mySlideInDown" : animate == 1 ? "slideInDown" : null }>
+      }>
         <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
           { addItem ?
             <TouchableOpacity onPress={() => {closeAnimation()}}>
@@ -97,7 +90,7 @@ const ChatInput: React.FunctionComponent<Props> = ({
         { addItem ?
           <View style={[style.searchContainer, { borderBottomWidth: 0 }]}>
             <TouchableOpacity>
-              <Icon name="md-document" size={35} color={theme.lightTextColor} style={[style.addIcons, {paddingLeft: 0}]} />
+              <Icon name="md-document" size={35} color={theme.lightTextColor} style={style.addIcons} />
             </TouchableOpacity> 
             <TouchableOpacity>
               <Icon name="ios-camera" size={35} color={theme.lightTextColor} style={style.addIcons} />
@@ -152,13 +145,8 @@ const style: Style = StyleSheet.create<Style>({
     paddingRight: isIOS() ? 5 : 0
   },
   addIcons: {
-    paddingLeft: 30,
+    paddingLeft: 27,
   },
   footer_menu: {
-    position: 'absolute',
-    width: width,
-    height: 350, 
-    bottom: -270, 
-    alignItems: 'center'
   },
 });
