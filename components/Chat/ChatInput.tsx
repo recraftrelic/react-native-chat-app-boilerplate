@@ -145,7 +145,7 @@ const style: Style = StyleSheet.create<Style>({
     paddingRight: isIOS() ? 5 : 0
   },
   addIcons: {
-    paddingLeft: 27,
+    paddingLeft: 29,
   },
   footer_menu: {
   },
