@@ -4,6 +4,11 @@
 
 <p align="center">This chat app is a boilerplate for any react native developer who wants to build a chat app. The goal of this boilerplate is to provide a fully functional chat app which can be reused with very little to no modification.</p>
 
+Note
+=======
+
+> You can also get the app on play store https://play.google.com/store/apps/details?id=com.reactnativechatappboilerplate
+
 IOS Demo
 =======
 <p align="center">
@@ -70,11 +75,10 @@ We can directly run the app
 ```
 npx react-native run-android
 ```
-
 Note
 =======
 
-> You can also get the app on play store https://play.google.com/store/apps/details?id=com.reactnativechatappboilerplate
+> Once you clone and if you want to change the name of the application you can follow this article https://medium.com/the-react-native-log/how-to-rename-a-react-native-app-dafd92161c35
 
 Roadmap
 =======
