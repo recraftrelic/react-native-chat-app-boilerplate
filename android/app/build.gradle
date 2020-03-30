@@ -78,6 +78,8 @@ import com.android.build.OutputFile
 project.ext.react = [
     entryFile: "index.js",
     enableHermes: false,  // clean and rebuild if changing
+    bundleInRelease        : true,
+    resourcesDirRelease   : "src/release/res",
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -131,8 +133,8 @@ android {
         applicationId "com.reactnativechatappboilerplate"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 12
+        versionName "1.1"
     }
     splits {
         abi {
