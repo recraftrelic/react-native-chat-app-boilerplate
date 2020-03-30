@@ -90,7 +90,7 @@ const ChatInput: React.FunctionComponent<Props> = ({
         { addItem ?
           <View style={[style.searchContainer, { borderBottomWidth: 0 }]}>
             <TouchableOpacity>
-              <Icon name="md-document" size={35} color={theme.lightTextColor} style={style.addIcons} />
+              <Icon name="md-document" size={35} color={theme.lightTextColor} style={[style.addIcons,{paddingLeft: 0}]} />
             </TouchableOpacity> 
             <TouchableOpacity>
               <Icon name="ios-camera" size={35} color={theme.lightTextColor} style={style.addIcons} />
@@ -134,6 +134,7 @@ const style: Style = StyleSheet.create<Style>({
     borderBottomWidth: 1,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     padding: 20,
   },
   iconContainer: {
@@ -145,7 +146,8 @@ const style: Style = StyleSheet.create<Style>({
     paddingRight: isIOS() ? 5 : 0
   },
   addIcons: {
-    paddingLeft: 29,
+    alignItems: "center",
+    paddingLeft: 20,
   },
   footer_menu: {
   },

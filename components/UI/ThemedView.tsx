@@ -24,7 +24,7 @@ const ThemedView: React.FunctionComponent<Props> = (props: Props) => {
 
   return (
     <SafeAreaView style={newStyle} {...restProps}>
-      <StatusBar barStyle={selectedStatusBar} />
+      <StatusBar barStyle={selectedStatusBar} backgroundColor={theme.backgroundColor}/>
       {props.children}
     </SafeAreaView>
   )
