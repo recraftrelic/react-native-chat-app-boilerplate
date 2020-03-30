@@ -74,7 +74,7 @@ npx react-native run-android
 Note
 =======
 
-> Once you clone and if you want to change the name of the application you can follow this article https://medium.com/the-react-native-log/how-to-rename-a-react-native-app-dafd92161c35
+> You can also get the app on play store https://play.google.com/store/apps/details?id=com.reactnativechatappboilerplate
 
 Roadmap
 =======
