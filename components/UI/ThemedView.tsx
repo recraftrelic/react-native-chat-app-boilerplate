@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewProps, SafeAreaView, StyleProp, ViewStyle, StatusBar, TextStyle } from 'react-native';
+import { ViewProps, SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
