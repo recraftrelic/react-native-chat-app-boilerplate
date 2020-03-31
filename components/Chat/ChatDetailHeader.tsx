@@ -6,6 +6,7 @@ import ChatUserImage from './ChatUserImage';
 import ThemedText from '../UI/ThemedText';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -23,11 +24,12 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
     status,
 }: Props) => {
     const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
 
     return (
-        <View style={[style.container, {borderBottomColor: theme.lightBottomColor}]}>
+        <View style={[style.container, {borderBottomColor: mode ? 'grey' : theme.lightBottomColor}]}>
             <TouchableOpacity onPress={onBackPress}>
-                <Icon name="ios-arrow-back" size={40} color={theme.textColor} style={style.contentIcons}/>
+                <Icon name="ios-arrow-back" size={40} color={mode ? theme.lightTextColor : theme.textColor} style={style.contentIcons}/>
             </TouchableOpacity>  
             <ChatUserImage
                 source={userImageSource}
@@ -37,13 +39,13 @@ const ChatDetailHeader: React.FunctionComponent<Props> = ({
             <View style={style.contentContainer}>
                 <View style={style.topContentContainer}>
                     <TouchableOpacity onPress={onNextPress}>
-                        <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
-                        <ThemedText styleKey="textColor">{status}</ThemedText>
+                        <ThemedText styleKey="textColor" style={[style.userNameStyle,{color: mode ? theme.lightTextColor : theme.textColor}]}>{userName}</ThemedText>
+                        <ThemedText styleKey="textColor" style={{color: mode ? theme.lightTextColor : theme.textColor}}>{status}</ThemedText>
                     </TouchableOpacity> 
                 </View>
             </View>
             <View style={style.topContentContainer}>
-                <MaterialIcon name="dots-vertical" size={40} color={theme.textColor} style={style.contentMaterialIcons} />
+                <MaterialIcon name="dots-vertical" size={40} color={mode ? theme.lightTextColor : theme.textColor} style={style.contentMaterialIcons} />
             </View>
         </View>
     );

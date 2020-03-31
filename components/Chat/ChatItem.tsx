@@ -5,6 +5,9 @@ import LastMessage from './LastMessage';
 import NotificationDot from './NotificationDot';
 import TimeDuration from './TimeDuration';
 import ThemedText from '../UI/ThemedText';
+import { useDarkMode } from 'react-native-dark-mode';
+import { AppTheme } from '../../config/DefaultConfig';
+import useTheme from '../../hooks/useTheme';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -26,6 +29,9 @@ const ChatItem: React.FunctionComponent<Props> = ({
     userName,
 }: Props) => {
 
+    const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
+
     return (
         <View style={style.container}>
             <ChatUserImage
@@ -36,7 +42,7 @@ const ChatItem: React.FunctionComponent<Props> = ({
             <View style={style.contentContainer}>
                 <TouchableOpacity onPress={onChatPress}>
                     <View style={style.topContentContainer}>
-                        <ThemedText styleKey="textColor" style={style.userNameStyle}>{userName}</ThemedText>
+                        <ThemedText styleKey="textColor" style={[style.userNameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{userName}</ThemedText>
                         <TimeDuration
                             date={timeStamp}
                         />

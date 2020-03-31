@@ -9,6 +9,7 @@ import ChatUserImage from './ChatUserImage';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../UI/ThemedText';
 import ImagePicker from 'react-native-image-picker';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
     userImageSource: ImageSourcePropType;
@@ -26,6 +27,7 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
     onButtonPress
 }: Props) => {
     const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
     const [saveItem, setSaveItem] = useState<boolean>(false);
     const [image, onBrowseImage] = React.useState<ImageSourcePropType>(userImageSource);
     const [name, onChangeName] = React.useState<string>(userName);
@@ -62,12 +64,12 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
         <View>
         <View style={style.container}>
             <TouchableOpacity onPress={onButtonPress}>
-                <Icon name="ios-arrow-back" size={40} color={theme.textColor} style={style.backButton}/>
+                <Icon name="ios-arrow-back" size={40} color={mode ? theme.lightTextColor : theme.textColor} style={style.backButton}/>
             </TouchableOpacity> 
             {
                 editInfo && !saveItem ?
                     <TouchableOpacity onPress={() => {setSaveItem(true);}}>
-                        <MaterialIcon name="account-edit" size={40} color={theme.textColor} style={style.editButton}/>
+                        <MaterialIcon name="account-edit" size={40} color={mode ? theme.lightTextColor : theme.textColor} style={style.editButton}/>
                     </TouchableOpacity> 
                 : null
             }
@@ -75,10 +77,10 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
                 editInfo && saveItem ?
                 <View style={[style.container, {padding: 0}]}>
                     <TouchableOpacity onPress={() => {setSaveItem(false);}}>
-                        <MaterialIcon name="check" size={40} color={theme.textColor} />
+                        <MaterialIcon name="check" size={40} color={mode ? theme.lightTextColor : theme.textColor} />
                     </TouchableOpacity> 
                     <TouchableOpacity onPress={() => {setSaveItem(false);}}>
-                        <EntypoIcon name="cross" size={40} color={theme.textColor} />
+                        <EntypoIcon name="cross" size={40} color={mode ? theme.lightTextColor : theme.textColor} />
                     </TouchableOpacity>
                 </View>
                 :null
@@ -96,20 +98,20 @@ const ChatProfileInfo: React.FunctionComponent<Props> = ({
                         source={image}
                         style={[style.imageStyle, {opacity: 0.5}]}
                     />
-                    <EntypoIcon name="camera" size={40} color={theme.textColor} style={style.imageUpload}/>
+                    <EntypoIcon name="camera" size={40} color={mode ? theme.lightTextColor : theme.textColor} style={style.imageUpload}/>
                 </TouchableOpacity> 
             }
         </View>
         <View style={style.contentContainer}>
             { !saveItem ?
-                <ThemedText styleKey="textColor" style={style.userNameStyle}>{name}</ThemedText>
-            :   <TextInput style={[style.userNameStyle, style.inputStyle, {borderColor: theme.lightBottomColor, color: theme.textColor}]} onChangeText={text => onChangeName(text)} value={name} />
+                <ThemedText styleKey="textColor" style={[style.userNameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{name}</ThemedText>
+            :   <TextInput style={[style.userNameStyle, style.inputStyle, {borderColor: theme.lightBottomColor, color: mode ? theme.lightTextColor : theme.textColor}]} onChangeText={text => onChangeName(text)} value={name} />
             }
         </View>
         <View style={style.contentContainer}>
             { !saveItem ?
-                <ThemedText styleKey="textColor" style={{fontStyle: "italic"}}>{bio}</ThemedText>
-            :   <TextInput multiline style={[style.inputStyle, { height: 100, borderColor: theme.lightBottomColor, color: theme.textColor}]} onChangeText={text =>  onChangeBio(text)} value={bio} />
+                <ThemedText styleKey="textColor" style={{fontStyle: "italic", color: mode ? theme.lightTextColor : theme.textColor}}>{bio}</ThemedText>
+            :   <TextInput multiline style={[style.inputStyle, { height: 100, borderColor: theme.lightBottomColor, color: mode ? theme.lightTextColor : theme.textColor}]} onChangeText={text =>  onChangeBio(text)} value={bio} />
             }
         </View>
         </View>

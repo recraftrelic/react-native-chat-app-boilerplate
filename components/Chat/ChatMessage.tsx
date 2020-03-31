@@ -4,6 +4,8 @@ import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ThemedText from '../UI/ThemedText';
 import TimeDuration from './TimeDuration';
+import { useDarkMode } from 'react-native-dark-mode';
+import { ThemeKey } from '../../config/themes';
 
 interface Props {
     message: string;
@@ -17,6 +19,7 @@ const ChatMessage: React.FunctionComponent<Props> = ({
     isRightAlign,
 }: Props) => {
     const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
     const rowStyle: ViewStyle = { flexDirection: isRightAlign ? 'row' : 'row-reverse' }
 
     return (
@@ -28,9 +31,9 @@ const ChatMessage: React.FunctionComponent<Props> = ({
                     />
                 </View>
             </View>
-            <View style={ isRightAlign ? [style.topContentData, {backgroundColor: theme.lightBottomColor}] :  [style.flipContentData, {backgroundColor: theme.alternateMessageBackgroundColor}]}>
+            <View style={ isRightAlign ? [style.topContentData, {backgroundColor: mode ? '#666666' : theme.lightBottomColor}] :  [style.flipContentData, {backgroundColor: mode ? '#4682b4' : theme.alternateMessageBackgroundColor}]}>
                 <View style={style.dataContainer}>
-                    <ThemedText styleKey="textColor" style={style.userNameStyle}>{message}</ThemedText>
+                    <ThemedText styleKey="textColor" style={[style.userNameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{message}</ThemedText>
                 </View>
             </View>
         </View>

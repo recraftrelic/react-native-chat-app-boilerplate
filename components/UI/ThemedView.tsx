@@ -1,9 +1,10 @@
 import React from 'react';
-import { ViewProps, SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-native';
+import { ViewProps, SafeAreaView, StyleProp, ViewStyle, StatusBar, TextStyle } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import useConstants from '../../hooks/useConstants';
 import { ThemeKey } from '../../config/themes';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props extends ViewProps {
   children: React.ReactChild
@@ -11,6 +12,7 @@ interface Props extends ViewProps {
 
 const ThemedView: React.FunctionComponent<Props> = (props: Props) => {
   const theme: AppTheme = useTheme();
+  const isDarkMode = useDarkMode();
 
   const { children, style, ...restProps } = props;
 
@@ -20,10 +22,12 @@ const ThemedView: React.FunctionComponent<Props> = (props: Props) => {
 
   const themeColorStyle: StyleProp<ViewStyle> = [{backgroundColor: theme.backgroundColor}];
 
+  const defaultMode: StyleProp<ViewStyle> = [{backgroundColor: isDarkMode ? 'black' : 'white'}];
+
   const newStyle: StyleProp<ViewStyle> = themeColorStyle.concat(style)
 
   return (
-    <SafeAreaView style={newStyle} {...restProps}>
+    <SafeAreaView style={[newStyle, defaultMode]} {...restProps}>
       <StatusBar barStyle={selectedStatusBar} backgroundColor={theme.backgroundColor}/>
       {props.children}
     </SafeAreaView>

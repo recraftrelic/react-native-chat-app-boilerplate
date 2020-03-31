@@ -8,6 +8,7 @@ import {KeyboardAvoidingView} from 'react-native';
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import { isIOS } from "../../utils";
+import { useDarkMode } from 'react-native-dark-mode';
 
 let keyboardAvoidingViewProps: KeyboardAvoidingViewProps = {}
 
@@ -23,6 +24,7 @@ const ChatInput: React.FunctionComponent<Props> = ({
   placeHolder
 }: Props) => {
   const theme: AppTheme = useTheme();
+  const mode = useDarkMode();
   const [addItem, setItem] = useState<boolean>(false);
   const [animate, setAnimate] = useState<Number>(0);
   const [fadeAnim] = useState(new Animated.Value(0))
@@ -53,18 +55,18 @@ const ChatInput: React.FunctionComponent<Props> = ({
 
   const menu_moveY = fadeAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, -30]
+    outputRange: [0, -10]
   });
 
   return (
     <KeyboardAvoidingView {...keyboardAvoidingViewProps} enabled>
       <Animated.View style={
         {
-          backgroundColor: theme.backgroundColor,
+          backgroundColor: mode ? 'black' : theme.backgroundColor,
           transform: [{ translateY: menu_moveY }]
         }
       }>
-        <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
+        <View style={[style.searchContainer, { borderBottomColor: mode ? 'grey' : theme.lightBottomColor }]}>
           { addItem ?
             <TouchableOpacity onPress={() => {closeAnimation()}}>
               <MaterialIcon name="plus-circle-outline" size={40} color={theme.lightTextColor} style={[style.addButton, {transform: [{ rotate: '45deg' }]}]}/>
@@ -123,7 +125,6 @@ interface Style {
   textContainer: ViewStyle;
   addButton: ViewStyle;
   addIcons: ViewStyle;
-  footer_menu: ViewStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -148,7 +149,5 @@ const style: Style = StyleSheet.create<Style>({
   addIcons: {
     alignItems: "center",
     paddingLeft: 20,
-  },
-  footer_menu: {
   },
 });

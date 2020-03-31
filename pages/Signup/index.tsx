@@ -10,6 +10,7 @@ import microValidator from 'micro-validator' ;
 import Icon from 'react-native-vector-icons/Ionicons';
 import useTheme from '../../hooks/useTheme';
 import { AppLanguage } from '../../config/languages';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface LoginField {
     name?: string;
@@ -24,6 +25,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
 
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
+    const mode = useDarkMode();
 
     const validate = (data: LoginField): ValidationError => {
         const errors = microValidator.validate({
@@ -86,7 +88,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
         <>
         <View style={style.container}>
             <TouchableOpacity onPress={onBackPress}>
-                <Icon name="ios-arrow-back" size={40} color={theme.textColor} />
+                <Icon name="ios-arrow-back" size={40} color={mode ? theme.lightTextColor : theme.textColor} />
             </TouchableOpacity>  
         </View>
         <AuthLayout buttonLabel={language.signupButton} goToLocation={goToLogin}>
@@ -95,18 +97,21 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
                 onChangeText={onChangeName}
                 value={name}
                 errors={errors.name}
+                style={{color: mode ? theme.lightTextColor : theme.textColor}}
             />
             <Input
                 placeholder={language.usernamePlacerHolder}
                 onChangeText={onChangeUsername}
                 value={username}
                 errors={errors.username}
+                style={{color: mode ? theme.lightTextColor : theme.textColor}}
             />
             <Input
                 placeholder={language.emailPlacerHolder}
                 onChangeText={onChangeEmail}
                 value={email}
                 errors={errors.email}
+                style={{color: mode ? theme.lightTextColor : theme.textColor}}
             />
             <Input
                 placeholder={language.passwordPlacerHolder}
@@ -114,6 +119,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
                 value={password}
                 secureTextEntry={true}
                 errors={errors.password}
+                style={{color: mode ? theme.lightTextColor : theme.textColor}}
             />
         </AuthLayout>
         </>
