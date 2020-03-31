@@ -22,7 +22,7 @@ const SearchBar: React.FunctionComponent<Props> = ({
         <TextInput
           placeholder={placeHolder}
           placeholderTextColor={theme.lightTextColor}
-          style={{ color: theme.textColor }}
+          style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
         />
       </View>
       <View style={style.iconContainer}>

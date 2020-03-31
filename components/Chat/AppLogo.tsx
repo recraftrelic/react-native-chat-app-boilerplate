@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GestureResponderEvent } from 'react-native';
 import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,7 +8,6 @@ import ThemedText from '../UI/ThemedText';
 import SearchBar from '../UI/SearchBar';
 import useLanguage from '../../hooks/useLanguage';
 import { AppLanguage } from '../../config/languages';
-import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
   onSettingPress?: (event: GestureResponderEvent) => void;
@@ -21,7 +20,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppLanguage = useLanguage();
-  const mode = useDarkMode();
+  const [searchBar,setSearchBar] = useState<Boolean>(false);
 
   return (
     <View>
@@ -33,17 +32,26 @@ const AppLogo: React.FunctionComponent<Props> = ({
           />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>
-          <ThemedText styleKey="textColor" style={[style.title, {color : mode ? theme.lightTextColor : theme.textColor}]}>{constants.chatTitle}</ThemedText>
+          <ThemedText styleKey="textColor" style={style.title}>{constants.chatTitle}</ThemedText>
         </View>
-        <View style={[style.childContainer, style.rightContainer]}>
-          <TouchableOpacity onPress={onSettingPress}>
-            <Icon name="md-settings" size={20} color={mode ? theme.lightTextColor : theme.textColor} />
+        <View style={[style.searchContainer, style.rightContainer]}>
+          
+        <View style={[style.newContainer]}>
+          <TouchableOpacity >
+            <Icon name="ios-search" size={20} color={theme.lightTextColor} />
           </TouchableOpacity>
         </View>
+        <View style={[style.newContainer, {paddingRight: 0}]}>
+          <TouchableOpacity onPress={onSettingPress}>
+            <Icon name="md-settings" size={20} color={theme.textColor} />
+          </TouchableOpacity>
+        </View>
+        </View>
       </View>
-      <SearchBar
-        placeHolder={constants.searchPlacerHolder}
-      />
+          <SearchBar
+            placeHolder={constants.searchPlacerHolder}
+          />
+      
     </View>
   )
 };
@@ -53,6 +61,7 @@ export default AppLogo;
 interface Style {
   topContainer: ViewStyle;
   childContainer: ViewStyle;
+  newContainer: ViewStyle;
   leftContainer: ViewStyle;
   centerContainer: ViewStyle;
   rightContainer: ViewStyle;
@@ -73,22 +82,23 @@ const style: Style = StyleSheet.create<Style>({
     flex: 1,
     justifyContent: "center",
   },
+  newContainer: {
+    paddingRight: 15,
+  },
   leftContainer: {
     alignItems: "flex-start",
   },
   centerContainer: {
     alignItems: "center",
+    flex: 8,
   },
   rightContainer: {
     alignItems: "flex-end",
   },
   searchContainer: {
-    borderBottomWidth: 1,
     flexDirection: "row",
-    alignItems: "center",
+    justifyContent: "space-between",
     paddingLeft: 10,
-    paddingRight: 10,
-    paddingTop: 10,
   },
   title: {
     fontSize: 20,

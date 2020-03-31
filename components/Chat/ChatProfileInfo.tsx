@@ -137,15 +137,15 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: 'center',
-        padding: 15,
+        padding: 5,
     },
     contentContainer: {
         flexDirection: 'row',
         justifyContent: "center",
         paddingTop: 5,
         paddingBottom: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     backButton: {
         padding: 10,

@@ -12,6 +12,7 @@ import AuthLayout from '../../components/Chat/AuthLayout';
 import SplashScreen from 'react-native-splash-screen';
 import { AppLanguage } from '../../config/languages';
 import { useDarkMode } from 'react-native-dark-mode';
+import { isIOS } from '../../utils';
 
 interface LoginField {
     username?: string;
@@ -80,7 +81,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                     onChangeText={onChangeUsername}
                     value={username}
                     errors={errors.username}
-                    style={{color: mode ? theme.lightTextColor : theme.textColor}}
+                    style={{color: mode ? theme.lightTextColor : theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
                 />
                 <Input
                     placeholder={constants.passwordPlacerHolder}
@@ -88,7 +89,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                     value={password}
                     secureTextEntry={true}
                     errors={errors.password}
-                    style={{color: mode ? theme.lightTextColor : theme.textColor}}
+                    style={{color: mode ? theme.lightTextColor : theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
                 />
             </AuthLayout>
             <View style={style.topContainer}>
