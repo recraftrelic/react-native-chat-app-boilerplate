@@ -4,6 +4,7 @@ import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import ThemedText from '../UI/ThemedText';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props{
     block: string;
@@ -17,24 +18,25 @@ const ChatProfile: React.FunctionComponent<Props> = ({
     deleteConversation
 }: Props) => {
     const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
 
     return (
         <View>
         <TouchableOpacity>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
-                <ThemedText styleKey="textColor" style={style.userNameStyle}>{block}</ThemedText>
+                <ThemedText styleKey="textColor" style={[style.userNameStyle, {color : mode ? theme.lightTextColor : theme.textColor}]}>{block}</ThemedText>
                 <MaterialIcon name="block-helper" size={20} color={theme.textColor} style={[style.materialStyle, {color: theme.warningColor}]}/>           
             </View>
         </TouchableOpacity>
         <TouchableOpacity>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
-                <ThemedText styleKey="textColor" style={style.userNameStyle}>{report}</ThemedText>
+                <ThemedText styleKey="textColor" style={[style.userNameStyle, {color : mode ? theme.lightTextColor : theme.textColor}]}>{report}</ThemedText>
                 <MaterialIcon name="flag-variant" size={20} color={theme.textColor} style={[style.materialStyle, {color: theme.warningColor}]}/>   
             </View>
         </TouchableOpacity>
         <TouchableOpacity>
             <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
-                <ThemedText styleKey="textColor" style={style.userNameStyle}>{deleteConversation}</ThemedText>
+                <ThemedText styleKey="textColor" style={[style.userNameStyle, {color : mode ? theme.lightTextColor : theme.textColor}]}>{deleteConversation}</ThemedText>
                 <MaterialIcon name="delete" size={20} color={theme.textColor} style={[style.materialStyle, {color: theme.warningColor}]}/>   
             </View>
         </TouchableOpacity>

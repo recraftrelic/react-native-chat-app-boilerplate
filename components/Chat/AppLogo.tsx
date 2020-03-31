@@ -8,6 +8,7 @@ import ThemedText from '../UI/ThemedText';
 import SearchBar from '../UI/SearchBar';
 import useLanguage from '../../hooks/useLanguage';
 import { AppLanguage } from '../../config/languages';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
   onSettingPress?: (event: GestureResponderEvent) => void;
@@ -20,6 +21,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppLanguage = useLanguage();
+  const mode = useDarkMode();
 
   return (
     <View>
@@ -31,11 +33,11 @@ const AppLogo: React.FunctionComponent<Props> = ({
           />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>
-          <ThemedText styleKey="textColor" style={style.title}>{constants.chatTitle}</ThemedText>
+          <ThemedText styleKey="textColor" style={[style.title, {color : mode ? theme.lightTextColor : theme.textColor}]}>{constants.chatTitle}</ThemedText>
         </View>
         <View style={[style.childContainer, style.rightContainer]}>
           <TouchableOpacity onPress={onSettingPress}>
-            <Icon name="md-settings" size={20} color={theme.textColor} />
+            <Icon name="md-settings" size={20} color={mode ? theme.lightTextColor : theme.textColor} />
           </TouchableOpacity>
         </View>
       </View>

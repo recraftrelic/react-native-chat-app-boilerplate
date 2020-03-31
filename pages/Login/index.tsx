@@ -11,6 +11,7 @@ import microValidator from 'micro-validator' ;
 import AuthLayout from '../../components/Chat/AuthLayout';
 import SplashScreen from 'react-native-splash-screen';
 import { AppLanguage } from '../../config/languages';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface LoginField {
     username?: string;
@@ -23,6 +24,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
 
     const constants: AppLanguage = useLanguage();
     const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
 
     const validate = (data: LoginField): ValidationError => {
         const errors = microValidator.validate({
@@ -78,6 +80,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                     onChangeText={onChangeUsername}
                     value={username}
                     errors={errors.username}
+                    style={{color: mode ? theme.lightTextColor : theme.textColor}}
                 />
                 <Input
                     placeholder={constants.passwordPlacerHolder}
@@ -85,12 +88,13 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                     value={password}
                     secureTextEntry={true}
                     errors={errors.password}
+                    style={{color: mode ? theme.lightTextColor : theme.textColor}}
                 />
             </AuthLayout>
             <View style={style.topContainer}>
                 <ThemedText styleKey="lightTextColor">{constants.signupCheck}</ThemedText>
                 <TouchableOpacity onPress={goToSignup}>
-                    <ThemedText styleKey="lightTextColor" style={{color: theme.appColor}}>{constants.signupButton}</ThemedText>
+                    <ThemedText styleKey="lightTextColor" style={{color: mode ? theme.appColor : theme.appColor}}>{constants.signupButton}</ThemedText>
                 </TouchableOpacity>
             </View>
         </>

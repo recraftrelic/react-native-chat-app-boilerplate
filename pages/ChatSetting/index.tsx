@@ -17,6 +17,7 @@ import useConstants from '../../hooks/useConstants';
 import useLanguage from '../../hooks/useLanguage';
 import { settingConstant } from './constants.';
 import { AppLanguage, LanguageKey } from '../../config/languages';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props extends RouteComponentProps {
     dispatch: Dispatch
@@ -27,6 +28,7 @@ const ChatSetting: React.FunctionComponent<Props> = ({
     history
 }: Props) => {
     const theme: AppTheme = useTheme();
+    const mode = useDarkMode();
     const constants: AppConstants = useConstants();
     const language: AppLanguage = useLanguage();
     const goBack = () => {
@@ -56,9 +58,9 @@ const ChatSetting: React.FunctionComponent<Props> = ({
         <LanguageSelector updateLanguage={updateLanguage} />
         <ThemeToggle updateTheme={updateTheme} />
         <TouchableOpacity onPress={goToLogin}>
-            <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
+            <View style={[style.container, {borderColor: mode ? 'grey' : theme.lightBottomColor}]}>
                 <View style={style.leftContainer}>
-                <ThemedText styleKey="textColor">{language.logoutButton}</ThemedText>
+                <ThemedText styleKey="textColor" style={{color: mode ? theme.lightTextColor : theme.textColor}}>{language.logoutButton}</ThemedText>
                 </View>
                 <View style={style.rightContainer}>
                     <MaterialIcon name="logout" size={30} color={theme.warningColor} />   

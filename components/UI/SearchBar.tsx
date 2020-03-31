@@ -4,6 +4,7 @@ import { View, TextInput, StyleSheet, ViewStyle } from "react-native";
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import { isIOS } from "../../utils";
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
   placeHolder: string
@@ -13,9 +14,10 @@ const SearchBar: React.FunctionComponent<Props> = ({
   placeHolder
 }: Props) => {
   const theme: AppTheme = useTheme();
+  const mode = useDarkMode();
 
   return (
-    <View style={[style.searchContainer, { borderBottomColor: theme.lightBottomColor }]}>
+    <View style={[style.searchContainer, { borderBottomColor: mode ? 'grey' : theme.lightBottomColor }]}>
       <View style={style.textContainer}>
         <TextInput
           placeholder={placeHolder}

@@ -7,6 +7,7 @@ import useConstants from '../../hooks/useConstants';
 import { ThemeKey } from '../../config/themes';
 import useLanguage from '../../hooks/useLanguage';
 import { AppLanguage } from '../../config/languages';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
   updateTheme: (theme: ThemeKey) => void;
@@ -16,6 +17,7 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
   updateTheme,
 }: Props) => {
   const theme: AppTheme = useTheme();
+  const mode = useDarkMode();
   const { selectedTheme }: AppConstants = useConstants();
   const language: AppLanguage = useLanguage();
   const [isDarkTheme, toggleDarkTheme] = useState<boolean>(selectedTheme == ThemeKey.dark);
@@ -28,9 +30,9 @@ const ThemeToggle: React.FunctionComponent<Props> = ({
 
   return (
     <View>
-      <View style={[style.container, {borderColor: theme.lightBottomColor}]}>
+      <View style={[style.container, {borderColor: mode ? 'grey' : theme.lightBottomColor}]}>
         <View style={style.leftContainer}>
-          <ThemedText styleKey="textColor">{language.defaultTheme}</ThemedText>
+          <ThemedText styleKey="textColor" style={{color : mode ? theme.lightTextColor : theme.textColor}}>{language.defaultTheme}</ThemedText>
         </View>
         <View style={style.rightContainer}>
           <Switch trackColor={{
