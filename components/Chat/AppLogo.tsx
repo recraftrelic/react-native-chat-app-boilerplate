@@ -37,7 +37,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
         <View style={[style.searchContainer, style.rightContainer]}>
           
         <View style={[style.newContainer]}>
-          <TouchableOpacity >
+          <TouchableOpacity onPress={() => setSearchBar(true)}>
             <Icon name="ios-search" size={20} color={theme.lightTextColor} />
           </TouchableOpacity>
         </View>
@@ -48,10 +48,13 @@ const AppLogo: React.FunctionComponent<Props> = ({
         </View>
         </View>
       </View>
+      {
+        searchBar ?
           <SearchBar
             placeHolder={constants.searchPlacerHolder}
           />
-      
+        : null
+      }     
     </View>
   )
 };
