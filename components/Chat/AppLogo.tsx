@@ -52,6 +52,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
         searchBar ?
           <SearchBar
             placeHolder={constants.searchPlacerHolder}
+            closeBar={() => setSearchBar(false)}
           />
         : null
       }     
