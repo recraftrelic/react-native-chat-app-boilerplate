@@ -1,17 +1,19 @@
 import React from "react";
-import Icon from 'react-native-vector-icons/Ionicons';
-import { View, TextInput, StyleSheet, ViewStyle } from "react-native";
+import { View, TextInput, StyleSheet, ViewStyle, TouchableOpacity, GestureResponderEvent } from "react-native";
 import useTheme from "../../hooks/useTheme";
 import { AppTheme } from "../../config/DefaultConfig";
 import { isIOS } from "../../utils";
 import { useDarkMode } from 'react-native-dark-mode';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 interface Props {
-  placeHolder: string
+  placeHolder: string,
+  closeBar: (event: GestureResponderEvent) => void;
 }
 
 const SearchBar: React.FunctionComponent<Props> = ({
-  placeHolder
+  placeHolder,
+  closeBar
 }: Props) => {
   const theme: AppTheme = useTheme();
   const mode = useDarkMode();
@@ -22,11 +24,13 @@ const SearchBar: React.FunctionComponent<Props> = ({
         <TextInput
           placeholder={placeHolder}
           placeholderTextColor={theme.lightTextColor}
-          style={{ color: theme.textColor }}
+          style={{ color: theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
         />
       </View>
       <View style={style.iconContainer}>
-        <Icon name="ios-search" size={15} color={theme.lightTextColor} />
+        <TouchableOpacity onPress={closeBar}>
+          <EntypoIcon name="cross" size={15} color={theme.lightTextColor} />
+        </TouchableOpacity>
       </View>
     </View>
   )

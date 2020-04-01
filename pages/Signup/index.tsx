@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import useTheme from '../../hooks/useTheme';
 import { AppLanguage } from '../../config/languages';
 import { useDarkMode } from 'react-native-dark-mode';
+import { isIOS } from '../../utils';
 
 interface LoginField {
     name?: string;
@@ -97,21 +98,21 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
                 onChangeText={onChangeName}
                 value={name}
                 errors={errors.name}
-                style={{color: mode ? theme.lightTextColor : theme.textColor}}
+                style={{color: mode ? theme.lightTextColor : theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
             />
             <Input
                 placeholder={language.usernamePlacerHolder}
                 onChangeText={onChangeUsername}
                 value={username}
                 errors={errors.username}
-                style={{color: mode ? theme.lightTextColor : theme.textColor}}
+                style={{color: mode ? theme.lightTextColor : theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
             />
             <Input
                 placeholder={language.emailPlacerHolder}
                 onChangeText={onChangeEmail}
                 value={email}
                 errors={errors.email}
-                style={{color: mode ? theme.lightTextColor : theme.textColor}}
+                style={{color: mode ? theme.lightTextColor : theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
             />
             <Input
                 placeholder={language.passwordPlacerHolder}
@@ -119,7 +120,7 @@ const Signup: React.FunctionComponent<RouteComponentProps> = ({
                 value={password}
                 secureTextEntry={true}
                 errors={errors.password}
-                style={{color: mode ? theme.lightTextColor : theme.textColor}}
+                style={{color: mode ? theme.lightTextColor : theme.textColor, paddingBottom: isIOS() ? 0 : 7, height: isIOS() ? 15 : 35 }}
             />
         </AuthLayout>
         </>

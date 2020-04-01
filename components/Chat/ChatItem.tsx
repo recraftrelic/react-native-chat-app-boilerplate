@@ -110,6 +110,7 @@ const style: Style = StyleSheet.create<Style>({
         flex: 3
     },
     userNameStyle: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        width: 100,
     }
 })

@@ -66,7 +66,7 @@ interface Style {
 const style: Style = StyleSheet.create<Style>({
     container: {
         flexDirection: 'row',
-        padding: 20,
+        padding: 10,
         borderBottomWidth: 1,
     },
     contentContainer: {

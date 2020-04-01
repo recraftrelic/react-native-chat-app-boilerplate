@@ -38,25 +38,25 @@ const AuthLayout: React.FunctionComponent<Props> = ({
 
     return (
  
-            <View style={style.mainContainer}>
-                <KeyboardAvoidingView {...keyboardAvoidingViewProps} keyboardVerticalOffset={keyboardVerticalOffset} enabled>
-                    <View style={style.container}>
-                        <Image
-                            source={constants.appLogo}
-                            style={style.imageStyle}
-                        />
-                    </View>
-                    <View style={style.contentContainer}>
-                        <ThemedText styleKey="textColor" style={[style.nameStyle, {color: mode ? theme.lightTextColor : null}]}>{language.appName}</ThemedText>
-                    </View>
-                    {children}
-                    <View style={[style.container,{paddingTop: 50}]}>
-                        <TouchableOpacity onPress={goToLocation} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                            <ThemedText styleKey="textColor" style={{color: mode ? theme.lightTextColor : null}}>{buttonLabel}</ThemedText> 
-                        </TouchableOpacity> 
-                    </View>
-                </KeyboardAvoidingView>
-            </View>
+        <View style={style.mainContainer}>
+            <KeyboardAvoidingView {...keyboardAvoidingViewProps} keyboardVerticalOffset={keyboardVerticalOffset} enabled>
+                <View style={style.container}>
+                    <Image
+                        source={constants.appLogo}
+                        style={style.imageStyle}
+                    />
+                </View>
+                <View style={style.contentContainer}>
+                    <ThemedText styleKey="textColor" style={[style.nameStyle, {color: mode ? theme.lightTextColor : null}]}>{language.appName}</ThemedText>
+                </View>
+                {children}
+                <View style={[style.container,{paddingTop: 40}]}>
+                    <TouchableOpacity onPress={goToLocation} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
+                        <ThemedText styleKey="textColor" style={{color: mode ? theme.lightTextColor : null}}>{buttonLabel}</ThemedText> 
+                    </TouchableOpacity> 
+                </View>
+            </KeyboardAvoidingView>
+        </View>
 
     );
 }
