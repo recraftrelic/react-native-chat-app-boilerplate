@@ -9,6 +9,18 @@ Note
 
 > You can also get the app on play store https://play.google.com/store/apps/details?id=com.reactnativechatappboilerplate
 
+Documentation
+=======
+
+* [Installation](https://documentation.recraftrelic.com/chatapp/docs/Installation.html)
+* [Run the Project in Development Mode](https://documentation.recraftrelic.com/chatapp/docs/Installation.html)
+* [Folder Structure](https://documentation.recraftrelic.com/chatapp/docs/Folder_Structure/)
+* [Constants](https://documentation.recraftrelic.com/chatapp/docs/Constants/)
+* [Themes](https://documentation.recraftrelic.com/chatapp/docs/Themes/)
+* [Languages](https://documentation.recraftrelic.com/chatapp/docs/Languages/)
+* [Pages](https://documentation.recraftrelic.com/chatapp/docs/Pages/)
+* [Available Hooks](https://documentation.recraftrelic.com/chatapp/docs/Hooks/)
+
 IOS Demo
 =======
 <p align="center">
