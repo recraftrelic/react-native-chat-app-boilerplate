@@ -21,7 +21,7 @@ Documentation
 * [Pages](https://documentation.recraftrelic.com/chatapp/docs/Pages/)
 * [Available Hooks](https://documentation.recraftrelic.com/chatapp/docs/Hooks/)
 
-Browse the full documentation on ( [https://documentation.recraftrelic.com/chatapp/docs/](https://documentation.recraftrelic.com/chatapp/docs/) )
+Browse the full documentation on ( [https://documentation.recraftrelic.com/chatapp/docs/Installation/](https://documentation.recraftrelic.com/chatapp/docs/Installation/) )
 
 IOS Demo
 =======
