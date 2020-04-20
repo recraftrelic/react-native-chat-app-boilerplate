@@ -18,6 +18,11 @@ export const fr: AppLanguage = {
     deleteButton: "Supprimer la conversation",
     defaultLanguage: "Idioma predeterminado",
     defaultTheme: "Tema oscuro",
+    newChat: "Nouveau chat",
+    newGroup: "Nouveau groupe",
+    selectUser: "Sélectionnez un utilisateur",
+    addParty: "Ajouter des participants",
+    groupName: "Entrez GroupName ",
     loginValidation : {
       username: `Nom d'utilisateur est nécessaire`,
       password: `Mot de passe requis`,

@@ -18,6 +18,11 @@ export const ch: AppLanguage = {
   deleteButton: "删除对话",
   defaultLanguage: "预设语言",
   defaultTheme: "黑暗主题",
+  newChat: "新聊天",
+  newGroup: "新组",
+  selectUser: "选择用户",
+  addParty: "添加参与者",
+  groupName: "输入群组名称 ",
   loginValidation : {
     username: `用户名为必填项`,
     password: `密码是必需的`,

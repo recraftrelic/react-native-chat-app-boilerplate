@@ -26,11 +26,19 @@ const ChatList: React.FunctionComponent<Props> = ({
     history.push('/settings')
   }
 
+  const goToChatUser = () => {
+    history.push('/chatusers')
+  }
+
+  const goToChatGroup = () => {
+    history.push('/chatgroup')
+  }
+
   console.disableYellowBox = true;
 
   return (
     <>
-      <AppLogo appLogoSource={constants.appLogo} onSettingPress={goToChatSetting}/>
+      <AppLogo appLogoSource={constants.appLogo} onSettingPress={goToChatSetting} onUserPress={goToChatUser} onGroupPress={goToChatGroup}/>
       <ScrollView>
         {
           chatList.map((data, indexKey) => {
