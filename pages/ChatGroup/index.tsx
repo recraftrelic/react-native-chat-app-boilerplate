@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, TouchableOpacity, ViewStyle, TextStyle, Modal, TextInput, Dimensions } from 'react-native';
+import { ScrollView, View, StyleSheet, TouchableOpacity, ViewStyle, TextStyle, Modal, TextInput, Dimensions, FlatList, Image } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import UserItem from '../../components/Chat/UserItem';
@@ -23,8 +23,9 @@ const ChatGroup: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppLanguage = useLanguage();
-  const [option,setOption] = useState<Boolean>(false);
+  const [selectedUsers,setSelectedUsers] = useState<Boolean>(false);
   const [isModalsVisible, setModalVisible] = useState<boolean>(false);
+  const [listId, setListId] = useState<Number>(0);
   const goToChatDetails = () => {
     history.push('/chat')
   }
@@ -33,12 +34,21 @@ const ChatGroup: React.FunctionComponent<Props> = ({
     history.goBack();
   }
 
-  const combine = () => {
-    setModalVisible(false);
-    setOption(true);
-  }
+  const [selected, setSelected] = React.useState(new Map());
 
-  console.disableYellowBox = true;
+  const onSelect = React.useCallback(
+    id => {
+      const newSelected = new Map(selected);
+      newSelected.set(id, !selected.get(id));
+
+      setSelected(newSelected);
+      setListId(id);
+      setSelectedUsers(true);
+    },
+    [selected],
+  );
+
+  const chatUsers = chatGroups.filter(({ id }) => id <= listId);
 
   return (
     <>
@@ -58,20 +68,48 @@ const ChatGroup: React.FunctionComponent<Props> = ({
           <Icon name="ios-search" size={20} color={theme.lightTextColor} />
         </View>
       </View>
+      {
+        selectedUsers ? 
+        <>
+        <View style={[style.container, {borderBottomColor: theme.lightBottomColor, justifyContent: "space-between"}]}>
+            {
+              chatUsers.map((item, index) => {
+                return <>
+                  <Image
+                    key={index}
+                    source={{ uri: item.image }}
+                    style={{width: 50, height: 50, borderRadius: 50, backgroundColor: 'red', marginRight: 15}}
+                  />
+                </>
+              })
+            }
+          <View style={{flex: 1, justifyContent: "center", alignItems: "flex-end"}}>
+            <View style={{width: 50, height: 50, paddingTop: 10, paddingLeft: 20, borderRadius: 50, backgroundColor: theme.appColor}}>
+              <TouchableOpacity onPress={() => setModalVisible(true)}>
+                <Icon name="ios-arrow-forward" size={30} color={theme.highlightTextColor}/>
+              </TouchableOpacity>
+            </View>
+          </View> 
+        </View>
+        </>
+        : null
+      }
       <ScrollView>
-        {
-          chatGroups.map((data, index) => {
-            return (
-              <UserItem
-                key={index}
-                userImageSource={{ uri: data.image }}
-                userName={data.name}
-                status={data.status}
-                selectItem={() => setModalVisible(true)}
-              />
-            )
-          })
-        }
+        <FlatList
+          data={chatGroups}
+          renderItem={({ item }) => (
+            <UserItem
+              key={item.id}
+              userImageSource={{ uri: item.image }}
+              userName={item.name}
+              status={item.status}
+              selected={selected.get(item.id)}
+              onSelect={onSelect}
+              id={item.id}
+            />
+          )}
+          extraData={selected}
+        />
       </ScrollView>
       { isModalsVisible ? 
         <Modal
@@ -79,7 +117,7 @@ const ChatGroup: React.FunctionComponent<Props> = ({
           transparent={true}
           visible={isModalsVisible}
           onRequestClose={() => {alert('Modal');}}>
-          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.highlightTextColor}]} activeOpacity={1.0} onPress={() => {combine()}}>
+          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.highlightTextColor}]} activeOpacity={1.0} onPress={goToChatDetails}>
             <View style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20, paddingRight: 20}}>
               <View style={{alignItems: "flex-start", flex: 1, justifyContent: 'center'}}>
                 <TextInput placeholder={constants.groupName} style={{padding: 10, width: 250, borderWidth: 1, borderColor: theme.lightBottomColor}}/>
@@ -90,17 +128,7 @@ const ChatGroup: React.FunctionComponent<Props> = ({
             </View>
           </TouchableOpacity>
         </Modal> 
-        : null }
-      {
-        option ?
-        <View style={[style.extraStyle, {backgroundColor: theme.appColor}]}>
-        <TouchableOpacity onPress={goToChatDetails}>
-          <Icon name="ios-arrow-forward" size={30} color={theme.highlightTextColor}/>
-        </TouchableOpacity>
-        </View>
-        :
-        null
-      }
+      : null }
     </>
   );
 };

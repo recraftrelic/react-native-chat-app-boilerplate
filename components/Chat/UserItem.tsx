@@ -11,28 +11,31 @@ interface Props {
     userImageSource: ImageSourcePropType;
     userName: string;
     status: string;
-    selectItem: (event: GestureResponderEvent) => void
+    selected?: any;
+    onSelect?: any;
+    id?: number;
 };
 
 const UserItem: React.FunctionComponent<Props> = ({
     status,
     userImageSource,
     userName,
-    selectItem
+    selected,
+    onSelect,
+    id,
 }: Props) => {
 
     const theme: AppTheme = useTheme();
     const mode = useDarkMode();
 
     return (
-        <View style={style.container}>
+        <TouchableOpacity onPress={() => onSelect(id)} style={[style.container, {backgroundColor: selected ? theme.lightBottomColor : theme.highlightTextColor}]}>
             <ChatUserImage
                 source={userImageSource}
                 containerStyle={style.userImageContainer}
                 imageStyle={{width: 50, height: 50, borderRadius: 50}}
             />
             <View style={style.contentContainer}>
-                <TouchableOpacity onPress={selectItem}>
                     <View style={style.topContentContainer}>
                         <ThemedText styleKey="textColor" style={[style.userNameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{userName}</ThemedText>
                     </View>
@@ -43,9 +46,8 @@ const UserItem: React.FunctionComponent<Props> = ({
                             />
                         </View>
                     </View>
-                </TouchableOpacity>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

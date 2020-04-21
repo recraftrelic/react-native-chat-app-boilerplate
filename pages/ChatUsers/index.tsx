@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View, StyleSheet, TouchableOpacity, ViewStyle, TextStyle } from 'react-native';
+import { ScrollView, View, StyleSheet, TouchableOpacity, ViewStyle, TextStyle, FlatList } from 'react-native';
 import { RouteComponentProps } from 'react-router-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import UserItem from '../../components/Chat/UserItem';
@@ -28,9 +28,20 @@ const ChatUsers: React.FunctionComponent<Props> = ({
 
   const goToBack = () => {
     history.goBack();
-  }
+  }  
 
-  console.disableYellowBox = true;
+  const [selected, setSelected] = React.useState(new Map());
+
+  const onSelect = React.useCallback(
+    id => {
+      const newSelected = new Map(selected);
+      newSelected.set(id, !selected.get(id));
+
+      setSelected(newSelected);
+      setOption(true);
+    },
+    [selected],
+  );
 
   return (
     <>
@@ -51,19 +62,21 @@ const ChatUsers: React.FunctionComponent<Props> = ({
         </View>
       </View>
       <ScrollView>
-        {
-          chatUsers.map((data, index) => {
-            return (
-              <UserItem
-                key={index}
-                userImageSource={{ uri: data.image }}
-                userName={data.name}
-                status={data.status}
-                selectItem={() => setOption(true)}
-              />
-            )
-          })
-        }
+        <FlatList
+          data={chatUsers}
+          renderItem={({ item }) => (
+            <UserItem
+              key={item.id}
+              userImageSource={{ uri: item.image }}
+              userName={item.name}
+              status={item.status}
+              selected={selected.get(item.id)}
+              onSelect={onSelect}
+              id={item.id}
+            />
+          )}
+          extraData={selected}
+        />
       </ScrollView>
       {
         option ?

@@ -60,13 +60,13 @@ export const chatUsers = [
     status: "Hey there!!!",
   },
   {
-    id: 9,
+    id: 11,
     name: "Yogesh",
     image: "https://picsum.photos/200",
     status: "Hey there!!!",
   },
   {
-    id: 10,
+    id: 12,
     name: "Puran",
     image: "https://picsum.photos/200",
     status: "Hey there!!!",
