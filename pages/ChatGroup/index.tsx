@@ -117,13 +117,15 @@ const ChatGroup: React.FunctionComponent<Props> = ({
           transparent={true}
           visible={isModalsVisible}
           onRequestClose={() => {alert('Modal');}}>
-          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.highlightTextColor}]} activeOpacity={1.0} onPress={goToChatDetails}>
+          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.highlightTextColor}]} activeOpacity={1.0}>
             <View style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20, paddingRight: 20}}>
               <View style={{alignItems: "flex-start", flex: 1, justifyContent: 'center'}}>
                 <TextInput placeholder={constants.groupName} style={{padding: 10, width: 250, borderWidth: 1, borderColor: theme.lightBottomColor}}/>
               </View>
               <View style={{alignItems: "flex-end", flex: 1, justifyContent: 'center'}}>
-                <Icon name="ios-checkmark-circle" size={30} color={theme.appColor}/>
+                <TouchableOpacity onPress={goToChatDetails}>
+                  <Icon name="ios-checkmark-circle" size={30} color={theme.appColor}/>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableOpacity>
