@@ -53,7 +53,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
 
   const menu_moveY = fadeAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, -1]
+    outputRange: [5, -1]
   });
 
   return (
@@ -107,23 +107,25 @@ const AppLogo: React.FunctionComponent<Props> = ({
       }    
       {
         option ?
-        <View style={{width: 170, backgroundColor: 'white'}}>
-          <TouchableOpacity style={style.topContainer} onPress={onUserPress}>
-            <View style={[style.childContainer, style.leftContainer]}>
-              <Icon name="ios-contact" size={30} color={theme.textColor} />
-            </View>
-            <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
-              <ThemedText styleKey="textColor" style={style.content}>{constants.newChat}</ThemedText>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={[style.topContainer,{paddingTop: 0}]} onPress={onGroupPress}>
-            <View style={[style.childContainer, style.leftContainer]}>
-              <Icon name="ios-contacts" size={30} color={theme.textColor} />
-            </View>
-            <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
-              <ThemedText styleKey="textColor" style={style.content}>{constants.newGroup}</ThemedText>
-            </View>
-          </TouchableOpacity>
+        <View style={{width: '100%', height: 120, backgroundColor: 'white', position: 'relative'}}>
+          <View style={{width: 170, backgroundColor: 'white', height: 85, position: 'absolute', right: 0, marginTop: 20, shadowColor: '#000000', shadowRadius: 3, shadowOpacity: 0.5, shadowOffset: {width: 1,height: 1},}}>
+            <TouchableOpacity style={style.topContainer} onPress={onUserPress}>
+              <View style={[style.childContainer, style.leftContainer]}>
+                <Icon name="ios-contact" size={30} color={theme.textColor} />
+              </View>
+              <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
+                <ThemedText styleKey="textColor" style={style.content}>{constants.newChat}</ThemedText>
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={[style.topContainer,{paddingTop: 0, paddingBottom: 5}]} onPress={onGroupPress}>
+              <View style={[style.childContainer, style.leftContainer]}>
+                <Icon name="ios-contacts" size={30} color={theme.textColor} />
+              </View>
+              <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
+                <ThemedText styleKey="textColor" style={style.content}>{constants.newGroup}</ThemedText>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
         : null
       }   
