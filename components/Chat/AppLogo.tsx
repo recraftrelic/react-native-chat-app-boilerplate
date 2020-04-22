@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GestureResponderEvent } from 'react-native';
-import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle, Animated } from 'react-native';
+import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
@@ -9,12 +9,13 @@ import SearchBar from '../UI/SearchBar';
 import useLanguage from '../../hooks/useLanguage';
 import { AppLanguage } from '../../config/languages';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import { Menu, MenuOptions, MenuOption, MenuTrigger,} from 'react-native-popup-menu';
 
 interface Props {
   onSettingPress?: (event: GestureResponderEvent) => void;
   appLogoSource: ImageSourcePropType;
-  onUserPress?: (event: GestureResponderEvent) => void;
-  onGroupPress?: (event: GestureResponderEvent) => void;
+  onUserPress?: any;
+  onGroupPress?: any;
 };
 
 const AppLogo: React.FunctionComponent<Props> = ({
@@ -26,42 +27,9 @@ const AppLogo: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
   const constants: AppLanguage = useLanguage();
   const [searchBar,setSearchBar] = useState<Boolean>(false);
-  const [option,setOption] = useState<Boolean>(false);
-  const [fadeAnim] = useState(new Animated.Value(0))
-
-  const firstAnimation = () => {
-    setOption(true);
-    Animated.spring(
-      fadeAnim,
-      {
-        toValue: 1,
-        friction: 5
-      }
-    ).start();
-  }
-
-  const closeAnimation = () => {
-    setOption(false);
-    Animated.spring(
-      fadeAnim,
-      {
-        toValue: 0,
-        friction: 7
-      }
-    ).start();
-  }
-
-  const menu_moveY = fadeAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: [5, -1]
-  });
 
   return (
-    <Animated.View style={
-      {
-        transform: [{ translateY: menu_moveY }]
-      }
-    }>
+    <View>
       <View style={style.topContainer}>
         <View style={[style.childContainer, style.leftContainer]}>
           <Image
@@ -79,16 +47,33 @@ const AppLogo: React.FunctionComponent<Props> = ({
             </TouchableOpacity>
           </View>
           <View style={[style.newContainer]}>
-            {
-              option ?
-              <TouchableOpacity onPress={() => {closeAnimation()}}>
-                <EntypoIcon name="cross" size={20} color={theme.lightTextColor} />
-              </TouchableOpacity>
-              :
-              <TouchableOpacity onPress={() => {firstAnimation()}}>
+            <Menu>
+              <MenuTrigger>
                 <EntypoIcon name="plus" size={20} color={theme.lightTextColor} />
-              </TouchableOpacity>
-            }
+              </MenuTrigger>
+              <MenuOptions customStyles={{backgroundColor: 'red'}}>
+                <MenuOption onSelect={onUserPress}>
+                  <View style={style.topContainer}>
+                    <View style={[style.childContainer, style.leftContainer]}>
+                      <Icon name="ios-contact" size={30} color={theme.textColor} />
+                    </View>
+                    <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
+                      <ThemedText styleKey="textColor" style={style.content}>{constants.newChat}</ThemedText>
+                    </View>
+                  </View>
+                </MenuOption>
+                <MenuOption onSelect={onGroupPress}>
+                  <View style={[style.topContainer,{paddingTop: 0, paddingBottom: 5}]}>
+                    <View style={[style.childContainer, style.leftContainer]}>
+                      <Icon name="ios-contacts" size={30} color={theme.textColor} />
+                    </View>
+                    <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
+                      <ThemedText styleKey="textColor" style={style.content}>{constants.newGroup}</ThemedText>
+                    </View>
+                  </View>
+                </MenuOption>
+              </MenuOptions>
+            </Menu>
           </View>
           <View style={[style.newContainer, {paddingRight: 0}]}>
             <TouchableOpacity onPress={onSettingPress}>
@@ -105,31 +90,8 @@ const AppLogo: React.FunctionComponent<Props> = ({
           />
         : null
       }    
-      {
-        option ?
-        <View style={{width: '100%', height: 120, backgroundColor: 'white', position: 'relative'}}>
-          <View style={{width: 170, backgroundColor: 'white', height: 85, position: 'absolute', right: 0, marginTop: 20, shadowColor: '#000000', shadowRadius: 3, shadowOpacity: 0.5, shadowOffset: {width: 1,height: 1},}}>
-            <TouchableOpacity style={style.topContainer} onPress={onUserPress}>
-              <View style={[style.childContainer, style.leftContainer]}>
-                <Icon name="ios-contact" size={30} color={theme.textColor} />
-              </View>
-              <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
-                <ThemedText styleKey="textColor" style={style.content}>{constants.newChat}</ThemedText>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={[style.topContainer,{paddingTop: 0, paddingBottom: 5}]} onPress={onGroupPress}>
-              <View style={[style.childContainer, style.leftContainer]}>
-                <Icon name="ios-contacts" size={30} color={theme.textColor} />
-              </View>
-              <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
-                <ThemedText styleKey="textColor" style={style.content}>{constants.newGroup}</ThemedText>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-        : null
-      }   
-    </Animated.View>
+      
+    </View>
   )
 };
 
