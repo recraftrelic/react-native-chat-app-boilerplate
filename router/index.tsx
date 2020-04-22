@@ -12,6 +12,8 @@ import ChatSetting from '../pages/ChatSetting';
 import { ApplicationConfig } from '../config/DefaultConfig';
 import ConfigContext from '../config/AppConfigProvider';
 import ThemedView from '../components/UI/ThemedView';
+import ChatUsers from '../pages/ChatUsers';
+import ChatGroup from '../pages/ChatGroup';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -32,6 +34,8 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/chat/" component={ChatDetails} />
               <Route exact path="/profile" component={ChatProfileDetail} />
               <Route exact path="/settings" component={ChatSetting} />
+              <Route exact path="/chatusers" component={ChatUsers} />
+              <Route exact path="/chatgroup" component={ChatGroup} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>

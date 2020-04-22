@@ -18,6 +18,11 @@ export const en: AppLanguage = {
     deleteButton: "Delete Conversation",
     defaultLanguage: "Default Language",
     defaultTheme: "Dark Theme",
+    newChat: "New Chat",
+    newGroup: "New Group",
+    selectUser: "Select User",
+    addParty: "Add Participants",
+    groupName: "Enter GroupName ",
     loginValidation : {
       username: `Username is required`,
       password: `Password is required`,

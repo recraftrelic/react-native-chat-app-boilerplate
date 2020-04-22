@@ -32,6 +32,11 @@ export interface AppLanguage {
   defaultTheme: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
+  newChat: string,
+  newGroup: string,
+  selectUser: string,
+  addParty: string,
+  groupName: string,
 }
 
 export interface LanguagesMap {
