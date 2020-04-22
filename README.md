@@ -32,7 +32,7 @@ IOS Demo
   <img width="250" src="./previews/ios-4.gif"><img width="250" src="./previews/ios-5.gif"><img width="250" src="./previews/ios-6.gif">
 </p>
 <p align="center">
-  <img width="250" src="./previews/ios-7.gif">
+  <img width="250" src="./previews/ios-7.gif"><img width="250" src="./previews/ios-8.gif">
 </p>
 
 Android Demo
@@ -44,7 +44,7 @@ Android Demo
   <img width="250" src="./previews/android-4.gif"><img width="250" src="./previews/android-5.gif"><img width="250" src="./previews/android-6.gif">
 </p>
 <p align="center">
-  <img width="250" src="./previews/android-7.gif">
+  <img width="250" src="./previews/android-7.gif"><img width="250" src="./previews/android-8.gif">
 </p>
 
 Packages & Libraries used
@@ -93,14 +93,6 @@ Note
 =======
 
 > Once you clone and if you want to change the name of the application you can follow this article https://medium.com/the-react-native-log/how-to-rename-a-react-native-app-dafd92161c35
-
-Roadmap
-=======
-
-* Move all the lists to constants
-* Deploy to playstore
-* Implement internationalization
-* Improve documentation
 
 Contributors
 =======
