@@ -11,6 +11,7 @@ import useTheme from '../../hooks/useTheme';
 import ThemedText from '../../components/UI/ThemedText';
 import useLanguage from '../../hooks/useLanguage';
 import { AppLanguage } from '../../config/languages';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props extends RouteComponentProps {
   dispatch: Dispatch
@@ -23,6 +24,7 @@ const ChatGroup: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppLanguage = useLanguage();
+  const mode = useDarkMode();
   const [selectedUsers,setSelectedUsers] = useState<Boolean>(false);
   const [isModalsVisible, setModalVisible] = useState<boolean>(false);
   const [listId, setListId] = useState<Number>(0);
@@ -78,7 +80,7 @@ const ChatGroup: React.FunctionComponent<Props> = ({
                   <Image
                     key={index}
                     source={{ uri: item.image }}
-                    style={{width: 50, height: 50, borderRadius: 50, backgroundColor: 'red', marginRight: 15}}
+                    style={{width: 50, height: 50, borderRadius: 50, marginRight: 15}}
                   />
                 </>
               })
@@ -117,10 +119,10 @@ const ChatGroup: React.FunctionComponent<Props> = ({
           transparent={true}
           visible={isModalsVisible}
           onRequestClose={() => {alert('Modal');}}>
-          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.highlightTextColor}]} activeOpacity={1.0}>
+          <TouchableOpacity style={[style.modalContainer, {backgroundColor: theme.backgroundColor}]} activeOpacity={1.0}>
             <View style={{flexDirection: 'row', justifyContent: "space-between", paddingLeft: 20, paddingRight: 20}}>
               <View style={{alignItems: "flex-start", flex: 1, justifyContent: 'center'}}>
-                <TextInput placeholder={constants.groupName} style={{padding: 10, width: 250, borderWidth: 1, borderColor: theme.lightBottomColor}}/>
+                <TextInput placeholder={constants.groupName} placeholderTextColor={theme.lightTextColor} style={{ color: mode ? theme.lightTextColor : theme.textColor, padding: 10, width: 250, borderWidth: 1, borderColor: theme.lightBottomColor}}/>
               </View>
               <View style={{alignItems: "flex-end", flex: 1, justifyContent: 'center'}}>
                 <TouchableOpacity onPress={goToChatDetails}>

@@ -47,12 +47,12 @@ const AuthLayout: React.FunctionComponent<Props> = ({
                     />
                 </View>
                 <View style={style.contentContainer}>
-                    <ThemedText styleKey="textColor" style={[style.nameStyle, {color: mode ? theme.lightTextColor : null}]}>{language.appName}</ThemedText>
+                    <ThemedText styleKey="textColor" style={[style.nameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{language.appName}</ThemedText>
                 </View>
                 {children}
                 <View style={[style.container,{paddingTop: 40}]}>
                     <TouchableOpacity onPress={goToLocation} style={[style.loginStyle, {borderColor: theme.lightBottomColor}]}>
-                        <ThemedText styleKey="textColor" style={{color: mode ? theme.lightTextColor : null}}>{buttonLabel}</ThemedText> 
+                        <ThemedText styleKey="textColor" style={{color: mode ? theme.lightTextColor : theme.textColor}}>{buttonLabel}</ThemedText> 
                     </TouchableOpacity> 
                 </View>
             </KeyboardAvoidingView>

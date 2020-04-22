@@ -29,23 +29,23 @@ const UserItem: React.FunctionComponent<Props> = ({
     const mode = useDarkMode();
 
     return (
-        <TouchableOpacity onPress={() => onSelect(id)} style={[style.container, {backgroundColor: selected ? theme.lightBottomColor : theme.highlightTextColor}]}>
+        <TouchableOpacity onPress={() => onSelect(id)} style={[style.container, {backgroundColor: selected ? theme.lightBottomColor : theme.backgroundColor}]}>
             <ChatUserImage
                 source={userImageSource}
                 containerStyle={style.userImageContainer}
                 imageStyle={{width: 50, height: 50, borderRadius: 50}}
             />
             <View style={style.contentContainer}>
-                    <View style={style.topContentContainer}>
-                        <ThemedText styleKey="textColor" style={[style.userNameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{userName}</ThemedText>
+                <View style={style.topContentContainer}>
+                    <ThemedText styleKey="textColor" style={[style.userNameStyle, {color: mode ? theme.lightTextColor : theme.textColor}]}>{userName}</ThemedText>
+                </View>
+                <View style={[style.topContentContainer, { alignItems: 'flex-end' }]}>
+                    <View style={style.lastMessageContainer}>
+                        <LastMessage
+                            lastMessage={status}
+                        />
                     </View>
-                    <View style={[style.topContentContainer, { alignItems: 'flex-end' }]}>
-                        <View style={style.lastMessageContainer}>
-                            <LastMessage
-                                lastMessage={status}
-                            />
-                        </View>
-                    </View>
+                </View>
             </View>
         </TouchableOpacity>
     );

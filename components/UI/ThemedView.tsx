@@ -27,8 +27,8 @@ const ThemedView: React.FunctionComponent<Props> = (props: Props) => {
   const newStyle: StyleProp<ViewStyle> = themeColorStyle.concat(style)
 
   return (
-    <SafeAreaView style={[newStyle, defaultMode]} {...restProps}>
-      <StatusBar barStyle={selectedStatusBar} backgroundColor={theme.backgroundColor}/>
+    <SafeAreaView style={isDarkMode ? [newStyle, defaultMode] : newStyle} {...restProps}>
+      <StatusBar barStyle={selectedStatusBar} backgroundColor={isDarkMode ? 'white' : theme.backgroundColor}/>
       {props.children}
     </SafeAreaView>
   )

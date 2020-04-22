@@ -10,6 +10,7 @@ import useLanguage from '../../hooks/useLanguage';
 import { AppLanguage } from '../../config/languages';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import { Menu, MenuOptions, MenuOption, MenuTrigger,} from 'react-native-popup-menu';
+import { useDarkMode } from 'react-native-dark-mode';
 
 interface Props {
   onSettingPress?: (event: GestureResponderEvent) => void;
@@ -26,6 +27,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
 }: Props) => {
   const theme: AppTheme = useTheme();
   const constants: AppLanguage = useLanguage();
+  const mode = useDarkMode();
   const [searchBar,setSearchBar] = useState<Boolean>(false);
 
   return (
@@ -38,37 +40,37 @@ const AppLogo: React.FunctionComponent<Props> = ({
           />
         </View>
         <View style={[style.childContainer, style.centerContainer]}>
-          <ThemedText styleKey="textColor" style={style.title}>{constants.chatTitle}</ThemedText>
+          <ThemedText styleKey="textColor" style={[style.title, {color: mode ? theme.lightTextColor : theme.textColor}]}>{constants.chatTitle}</ThemedText>
         </View>
         <View style={[style.searchContainer, style.rightContainer]}>
           <View style={[style.newContainer]}>
             <TouchableOpacity onPress={() => setSearchBar(true)}>
-              <Icon name="ios-search" size={20} color={theme.lightTextColor} />
+              <Icon name="ios-search" size={20} color={mode ? theme.lightTextColor : theme.textColor} />
             </TouchableOpacity>
           </View>
           <View style={[style.newContainer]}>
             <Menu>
               <MenuTrigger>
-                <EntypoIcon name="plus" size={20} color={theme.lightTextColor} />
+                <EntypoIcon name="plus" size={20} color={mode ? theme.lightTextColor : theme.textColor} />
               </MenuTrigger>
-              <MenuOptions>
+              <MenuOptions customStyles={optionsStyles}>
                 <MenuOption onSelect={onUserPress}>
-                  <View style={style.topContainer}>
+                  <View style={[style.topContainer, {backgroundColor: mode ? theme.highlightTextColor : theme.backgroundColor}]}>
                     <View style={[style.childContainer, style.leftContainer]}>
-                      <Icon name="ios-contact" size={30} color={theme.textColor} />
+                      <Icon name="ios-contact" size={30} color={mode ? theme.lightTextColor : theme.textColor} />
                     </View>
                     <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
-                      <ThemedText styleKey="textColor" style={style.content}>{constants.newChat}</ThemedText>
+                      <ThemedText styleKey="textColor" style={[style.content, {color: mode ? theme.lightTextColor : theme.textColor}]}>{constants.newChat}</ThemedText>
                     </View>
                   </View>
                 </MenuOption>
                 <MenuOption onSelect={onGroupPress}>
-                  <View style={[style.topContainer,{paddingTop: 0, paddingBottom: 5}]}>
+                  <View style={[style.topContainer,{paddingTop: 0, paddingBottom: 5, backgroundColor: mode ? theme.highlightTextColor : theme.backgroundColor}]}>
                     <View style={[style.childContainer, style.leftContainer]}>
-                      <Icon name="ios-contacts" size={30} color={theme.textColor} />
+                      <Icon name="ios-contacts" size={30} color={mode ? theme.lightTextColor : theme.textColor} />
                     </View>
                     <View style={[style.childContainer, style.centerContainer, {flex: 3}]}>
-                      <ThemedText styleKey="textColor" style={style.content}>{constants.newGroup}</ThemedText>
+                      <ThemedText styleKey="textColor" style={[style.content, {color: mode ? theme.lightTextColor : theme.textColor}]}>{constants.newGroup}</ThemedText>
                     </View>
                   </View>
                 </MenuOption>
@@ -77,7 +79,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
           </View>
           <View style={[style.newContainer, {paddingRight: 0}]}>
             <TouchableOpacity onPress={onSettingPress}>
-              <Icon name="md-settings" size={20} color={theme.textColor} />
+              <Icon name="md-settings" size={20} color={mode ? theme.lightTextColor : theme.textColor} />
             </TouchableOpacity>
           </View>
         </View>
@@ -153,3 +155,12 @@ const style: Style = StyleSheet.create<Style>({
     height: 20,
   },
 });
+
+const optionsStyles = {
+  optionsWrapper: {
+    padding: 0,
+  },
+  optionWrapper: {
+    padding: 0,
+  }
+};
