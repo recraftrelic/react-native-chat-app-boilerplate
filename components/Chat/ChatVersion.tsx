@@ -33,6 +33,6 @@ const style: Style = StyleSheet.create<Style>({
       justifyContent: "center",
       alignItems: 'center',
       width: width,
-      height: height - 200,
+      height: height - 300,
   }
 });

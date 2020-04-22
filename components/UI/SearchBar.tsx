@@ -29,7 +29,7 @@ const SearchBar: React.FunctionComponent<Props> = ({
       </View>
       <View style={style.iconContainer}>
         <TouchableOpacity onPress={closeBar}>
-          <EntypoIcon name="cross" size={15} color={theme.lightTextColor} />
+          <EntypoIcon name="cross" size={20} color={theme.lightTextColor} />
         </TouchableOpacity>
       </View>
     </View>
