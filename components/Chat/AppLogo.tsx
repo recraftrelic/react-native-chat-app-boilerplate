@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GestureResponderEvent } from 'react-native';
-import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle, Text } from 'react-native';
+import { View, TouchableOpacity, Image, ViewStyle, ImageStyle, ImageSourcePropType, StyleSheet, TextStyle } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
@@ -51,7 +51,7 @@ const AppLogo: React.FunctionComponent<Props> = ({
               <MenuTrigger>
                 <EntypoIcon name="plus" size={20} color={theme.lightTextColor} />
               </MenuTrigger>
-              <MenuOptions customStyles={{backgroundColor: 'red'}}>
+              <MenuOptions>
                 <MenuOption onSelect={onUserPress}>
                   <View style={style.topContainer}>
                     <View style={[style.childContainer, style.leftContainer]}>
