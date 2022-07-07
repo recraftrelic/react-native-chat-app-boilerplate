@@ -10,7 +10,7 @@
     "@types/react-router": "^5.1.4",
     "@types/react-router-native": "^5.1.0",
     "micro-validator": "^0.0.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-dark-mode": "^0.2.2",
